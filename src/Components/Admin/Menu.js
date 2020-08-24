@@ -86,10 +86,11 @@ export default class Menu extends Component {
                                     <a href=""> Head of Department<span className="fa fa-chevron-right" style={{ float: 'right' }} /></a>
                                     <ul className="nav nav-second-level">
                                         <li>
-                                            <a href="/Admin/ViewHOD"> View Head of Department<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></a>
+                                            <Link to="/Admin/ViewHOD"> View Head of Committees<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
+
                                         </li>
                                         <li>
-                                            <a href="/Admin/AddHOD"> Add Head of Department<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></a>
+                                        <Link to="/Admin/AddHOD"> View Head of Committees<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
                                         </li>
                                     </ul>
                                     {/* /.nav-second-level */}
