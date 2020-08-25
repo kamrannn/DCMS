@@ -58,7 +58,6 @@ export default class ViewCommeetiee extends Component {
                                         <td>
                                             Member of Committee
                                         </td>
-                                       
                                     </tr>
                                     <tr>
                                         <td>
@@ -74,7 +73,6 @@ export default class ViewCommeetiee extends Component {
                                         <td>
                                             Head of Committee
                                         </td>
-                                       
                                     </tr>
                                     <tr>
                                         <td>
@@ -90,7 +88,6 @@ export default class ViewCommeetiee extends Component {
                                         <td>
                                             Head of Committee
                                         </td>
-                                       
                                     </tr>
                                 </tbody></table>
                             <br />
