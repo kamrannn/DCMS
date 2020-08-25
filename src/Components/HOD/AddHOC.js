@@ -9,7 +9,7 @@ export default class AddHOC extends Component {
                     <div className="row">
                         <div className="col-lg-12">
                             <h2>Add New HOD</h2>
-                            <form action="/Admin/AddHOC"><input name="__RequestVerificationToken" type="hidden" defaultValue="ZGaiNbLxv56lU8y27n2YZzmclN20ZHlbLndh2_ZRfWfy1jLv3yYscHF8OTMXqKyl6JJ38wb5TWqKFvO7uI-mm8mQ9QcpJZpoTz2D2lndnAeofB2z5530aAjRF3H6l2Qz0" />    <div className="form-horizontal">
+                            <form action="/HOD/AddHOC"><input name="__RequestVerificationToken" type="hidden" defaultValue="ZGaiNbLxv56lU8y27n2YZzmclN20ZHlbLndh2_ZRfWfy1jLv3yYscHF8OTMXqKyl6JJ38wb5TWqKFvO7uI-mm8mQ9QcpJZpoTz2D2lndnAeofB2z5530aAjRF3H6l2Qz0" />    <div className="form-horizontal">
                                 <hr />
                                 <input id="Password" name="Password" type="hidden" defaultValue />
                                 <div className="form-group">

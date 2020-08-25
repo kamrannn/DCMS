@@ -10,7 +10,7 @@ export default class ViewStudents extends Component {
                         <div className="col-lg-12">
                             <link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
                             <h2>Student</h2>
-                            <form action="/Admin/Student" method="get" onsubmit="return check(this) && false;">        <div style={{ display: 'flex' }}>
+                            <form action="/HOD/Student" method="get" onsubmit="return check(this) && false;">        <div style={{ display: 'flex' }}>
                                 <p style={{ paddingTop: 7, marginLeft: 20 }}> <b>Search:</b></p> <select className="form-control" id="ListItems" name="ListItems" style={{ marginLeft: 5 }}><option selected="selected" value>Select Search Criteria</option>
                                     <option value="Name">Search by Name</option>
                                     <option value="regNo">Search by Registration No</option>
@@ -21,12 +21,12 @@ export default class ViewStudents extends Component {
                             </div>
                             </form>
                             <br />
-                            <form action="/Admin/DeleteStudentMultiple" method="post" onsubmit="return confirmDelete(this) && false;"><table className="table table-striped table-condensed table-bordered">
+                            <form action="/HOD/DeleteStudentMultiple" method="post" onsubmit="return confirmDelete(this) && false;"><table className="table table-striped table-condensed table-bordered">
                                 <tbody><tr>
                                     <th>
                                     </th>
                                     <th>
-                                        <a href="/Admin/Student?sortOrder=name_desc">Name</a>
+                                        <a href="/HOD/Student?sortOrder=name_desc">Name</a>
                                     </th>
                                     <th>
                                         Registration No.
@@ -63,12 +63,12 @@ export default class ViewStudents extends Component {
                                             0
                                         </td>
                                         <td>
-                                            <Link to="/Admin/Student/AssignCourse" className="btn btn-primary">Assign Course</Link>
+                                            <Link to="/HOD/Student/AssignCourse" className="btn btn-primary">Assign Course</Link>
                                         </td>
                                         <td>
-                                            <Link to="/Admin/EditStudent">Edit</Link> |
-                                            <Link to="/Admin/DetailsStudent">Details</Link> |
-                                            <a href="/Admin/DeleteStudent">Delete</a>
+                                            <Link to="/HOD/EditStudent">Edit</Link> |
+                                            <Link to="/HOD/DetailsStudent">Details</Link> |
+                                            <a href="/HOD/DeleteStudent">Delete</a>
                                         </td>
                                     </tr>
                                 </tbody>

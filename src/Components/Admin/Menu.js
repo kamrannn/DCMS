@@ -25,9 +25,9 @@ export default class Menu extends Component {
                                         <li>
                                             <Link to="/Admin/ExcelCommittee"> Import Excel Sheet<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
                                         </li>
-                                        <li>
+                                        {/* <li>
                                             <Link to="/Admin/CommitteeFeedbackQuestions"> Feedback Questions<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
-                                        </li>
+                                        </li> */}
                                     </ul>
                                     {/* /.nav-second-level */}
                                 </li>
@@ -94,7 +94,7 @@ export default class Menu extends Component {
 
                                         </li>
                                         <li>
-                                        <Link to="/Admin/AddHOD"> View Head of Committees<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
+                                        <Link to="/Admin/AddHOD"> Add Head of Committees<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
                                         </li>
                                     </ul>
                                     {/* /.nav-second-level */}

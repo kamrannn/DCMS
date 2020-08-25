@@ -34,9 +34,9 @@ export default class ViewCommitteeMembers extends Component {
                                         <td>20-08-2020</td>
                                         <td>30-08-2020</td>
                                         <td>Description of Task Goes here</td>
-                                        <td><Link to="/Admin/DeleteCourse" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
-                                        <td><Link to="/Admin/EditCourse" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Edit</button></Link></td>
-                                        <td><Link to="/Admin/DetailsCourse" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Details</button></Link></td>
+                                        <td><Link to="/HOD/DeleteCourse" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
+                                        <td><Link to="/HOD/EditCourse" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Edit</button></Link></td>
+                                        <td><Link to="/HOD/DetailsCourse" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Details</button></Link></td>
                                     
                                             </tr>
                                     <tr>
@@ -48,9 +48,9 @@ export default class ViewCommitteeMembers extends Component {
                                         <td>20-08-2020</td>
                                         <td>30-08-2020</td>
                                         <td>Description of Task Goes here</td>
-                                        <td><Link to="/Admin/DeleteCourse" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
-                                        <td><Link to="/Admin/EditCourse" onClick={() => (window.confirm('Edit the item?'))}><button className="btn btn-primary">Edit</button></Link></td>
-                                        <td><Link to="/Admin/DetailsCourse" onClick={() => (window.confirm('Details of this item?'))}><button className="btn btn-primary">Details</button></Link></td>                                    </tr>
+                                        <td><Link to="/HOD/DeleteCourse" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
+                                        <td><Link to="/HOD/EditCourse" onClick={() => (window.confirm('Edit the item?'))}><button className="btn btn-primary">Edit</button></Link></td>
+                                        <td><Link to="/HOD/DetailsCourse" onClick={() => (window.confirm('Details of this item?'))}><button className="btn btn-primary">Details</button></Link></td>                                    </tr>
                                     <tr>
                                         <th scope="row">3</th>
                                         <td>Larry</td>
@@ -60,9 +60,9 @@ export default class ViewCommitteeMembers extends Component {
                                         <td>20-08-2020</td>
                                         <td>30-08-2020</td>
                                         <td>Description of Task Goes here</td>
-                                        <td><Link to="/Admin/DeleteCourse" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
-                                        <td><Link to="/Admin/EditCourse" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Edit</button></Link></td>
-                                        <td><Link to="/Admin/DetailsCourse" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Details</button></Link></td>                                    </tr>
+                                        <td><Link to="/HOD/DeleteCourse" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
+                                        <td><Link to="/HOD/EditCourse" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Edit</button></Link></td>
+                                        <td><Link to="/HOD/DetailsCourse" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Details</button></Link></td>                                    </tr>
                                 </tbody>
                             </table>
                                             

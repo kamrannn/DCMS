@@ -10,7 +10,7 @@ export default class ViewFaculty extends Component {
                         <div className="col-lg-12">
                             <link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
                             <h2>Faculty</h2>
-                            <form action="/Admin/Faculty" method="get" onsubmit="return check(this) && false;">    <div style={{ display: 'flex' }}>
+                            <form action="/HOD/Faculty" method="get" onsubmit="return check(this) && false;">    <div style={{ display: 'flex' }}>
                                 <p style={{ paddingTop: 7, marginLeft: 20 }}> <b>Search:</b></p> <select className="form-control" id="ListItems" name="ListItems" style={{ marginLeft: 5 }}><option selected="selected" value>Select Search Criteria</option>
                                     <option value="Name">Search by Name</option>
                                     <option value="email">Search by Email</option>
@@ -22,7 +22,7 @@ export default class ViewFaculty extends Component {
                             <table className="table table-striped table-condensed table-bordered">
                                 <tbody><tr>
                                     <th>
-                                        <a href="/Admin/Faculty?sortOrder=name_desc">Name</a>
+                                        <a href="/HOD/Faculty?sortOrder=name_desc">Name</a>
                                     </th>
                                     <th>
                                         Contact No.
@@ -44,12 +44,12 @@ export default class ViewFaculty extends Component {
                                             <Link to="mailto:kamran.bcs095@gmail.com">kamran.bcs095@gmail.com</Link>
                                         </td>
                                         <td>
-                                            <Link to="/Admin/Faculty/AssignCourseFaculty">Assign Course</Link>
+                                            <Link to="/HOD/Faculty/AssignCourseFaculty">Assign Course</Link>
                                         </td>
                                         <td>
-                                            <Link to="/Admin/EditFaculty">Edit</Link> |
-                                            <Link to="/Admin/DetailsFaculty">Details</Link> |
-                                            <Link to="/Admin/DeleteFaculty">Delete</Link>
+                                            <Link to="/HOD/EditFaculty">Edit</Link> |
+                                            <Link to="/HOD/DetailsFaculty">Details</Link> |
+                                            <Link to="/HOD/DeleteFaculty">Delete</Link>
                                         </td>
                                     </tr>
                                 </tbody></table>

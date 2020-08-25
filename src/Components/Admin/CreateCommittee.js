@@ -100,7 +100,7 @@ export default class CreateCommittee extends Component {
                             </div>
                             </form>
                             <div>
-                                <Link to="/Admin/Alumni">Back to List</Link>
+                                <Link to="/Admin/ViewCommittees">Back to List</Link>
                             </div>
                         </div>
                         {/* /.col-lg-12 */}

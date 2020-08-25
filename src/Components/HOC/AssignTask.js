@@ -82,7 +82,7 @@ export default class AssignTask extends Component {
                             </table>
                                     {/* Ending of table */}
                             <div>
-                                <a href="/Admin/Session_View">View all Assigned Tasks</a>
+                                <a href="/HOC/Session_View">View all Assigned Tasks</a>
                             </div>
                             <div id="spinner" className="spinner" style={{ display: 'none' }}>
                                 <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', margin: '0 auto', backgroundColor: '#000', opacity: '.4', zIndex: 999999 }}>

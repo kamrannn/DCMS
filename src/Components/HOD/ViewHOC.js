@@ -33,8 +33,8 @@ export default class ViewHOC extends Component {
                                         <td>20-08-2020</td>
                                         <td>FYP</td>
                                         <td>Description of Committee Goes here</td>
-                                        <td><Link to="/Admin/DeletePLO" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
-                                        <td><Link to="/Admin/EditPLO" onClick={() => (window.confirm('Edit the item?'))}><button className="btn btn-primary">Edit</button></Link></td>    
+                                        <td><Link to="/HOD/DeletePLO" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
+                                        <td><Link to="/HOD/EditPLO" onClick={() => (window.confirm('Edit the item?'))}><button className="btn btn-primary">Edit</button></Link></td>    
                                     </tr>
                                     <tr>
                                         <th scope="row">2</th>
@@ -44,8 +44,8 @@ export default class ViewHOC extends Component {
                                         <td>20-08-2020</td>
                                         <td>Thesis</td>
                                         <td>Description of Committee Goes here</td>
-                                        <td><Link to="/Admin/DeletePLO" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
-                                        <td><Link to="/Admin/EditPLO" onClick={() => (window.confirm('Edit the item?'))}><button className="btn btn-primary">Edit</button></Link></td>
+                                        <td><Link to="/HOD/DeletePLO" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
+                                        <td><Link to="/HOD/EditPLO" onClick={() => (window.confirm('Edit the item?'))}><button className="btn btn-primary">Edit</button></Link></td>
 
                                     </tr>
                                     <tr>
@@ -56,8 +56,8 @@ export default class ViewHOC extends Component {
                                         <td>20-08-2020</td>
                                         <td>Exams</td>
                                         <td>Description of Committee Goes here</td>
-                                        <td><Link to="/Admin/DeletePLO" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
-                                        <td><Link to="/Admin/EditPLO" onClick={() => (window.confirm('Edit the item?'))}><button className="btn btn-primary">Edit</button></Link></td>
+                                        <td><Link to="/HOD/DeletePLO" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
+                                        <td><Link to="/HOD/EditPLO" onClick={() => (window.confirm('Edit the item?'))}><button className="btn btn-primary">Edit</button></Link></td>
                                     </tr>
                                 </tbody>
                             </table>

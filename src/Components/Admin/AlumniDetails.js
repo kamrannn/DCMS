@@ -8,18 +8,19 @@ export default class AlumniDetails extends Component {
                 
                 <div id="page-wrapper" style={{}}>
                 <hr></hr>
-                <h1>Details of a Committee</h1>
+        <h1>Details of Committee [FYP]</h1>
                 <hr></hr>
-
+            <h2>Head of Committee [Dr. Yasir Faheem]</h2>
+            <hr></hr>
                     <div className="row">
                         <div className="col-lg-12">
                         <table class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th scope="col">Committee ID</th>
-                                        <th scope="col">Committee Name</th>
+                                        {/* <th scope="col">Committee Name</th> */}
                                         <th scope="col">Members Name</th>
-                                        <th scope="col">Head</th>
+                                        {/* <th scope="col">Head</th> */}
                                          {/* <th scope="col">Creation Date</th>
                                          <th scope="col">Desolving Date</th>
                                          <th scope="col">Total Members</th>
@@ -31,43 +32,37 @@ export default class AlumniDetails extends Component {
                                     <tr>
                                         <th scope="row">1</th>
                                         
-                                        <td>FYP Committee-2020</td>
+                                        {/* <td>FYP Committee-2020</td> */}
                                         <td>Kamran Abbasi</td>
-                                        <td>Dr. Yasir Faheem</td>
+                                        {/* <td>Dr. Yasir Faheem</td> */}
                                         {/* <td>20-08-2020</td>
                                         <td>30-08-2020</td>
                                         <td>20</td>
                                         <td>Description of Committee Goes here</td> */}
-                                        <td><Link to="/Admin/DeleteAlumni" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
-                                        <td><Link to="/Admin/EditAlumni" onClick={() => (window.confirm('Edit the item?'))}><button className="btn btn-primary">Edit</button></Link></td>
-                                        <td><Link to="/Admin/DetailsAlumni" onClick={() => (window.confirm('Details the item?'))}><button className="btn btn-primary">Details</button></Link></td>
+                                    
                                     
                                             </tr>
                                     <tr>
                                         <th scope="row">1</th>
-                                        <td>FYP Committee-2020</td>
+                                        {/* <td>FYP Committee-2020</td> */}
                                         <td>Rohan Ilyas</td>
-                                        <td>Dr. Yasir Faheem</td>                                       
+                                        {/* <td>Dr. Yasir Faheem</td>                                        */}
                                          {/* <td>20-07-2020</td>
                                         <td>10-08-2020</td>
                                         <td>10</td>
                                         <td>Description of Committee Goes here</td> */}
-                                        <td><Link to="/Admin/DeleteAlumni" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
-                                        <td><Link to="/Admin/EditAlumni" onClick={() => (window.confirm('Edit the item?'))}><button className="btn btn-primary">Edit</button></Link></td>
-                                        <td><Link to="/Admin/DetailsAlumni" onClick={() => (window.confirm('Details the item?'))}><button className="btn btn-primary">Details</button></Link></td>
+                                      
                                     </tr>
                                     <tr>
                                         <th scope="row">1</th>
-                                        <td>FYP Committee-2020</td>
+                                        {/* <td>FYP Committee-2020</td> */}
                                         <td>Musab Khatri</td>
-                                        <td>Dr. Yasir Faheem</td>
+                                        {/* <td>Dr. Yasir Faheem</td> */}
                                         {/* <td>20-10-2020</td>
                                         <td>30-12-2020</td>
                                         <td>5</td>
                                         <td>Description of Committee Goes here</td> */}
-                                        <td><Link to="/Admin/DeleteAlumni" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
-                                        <td><Link to="/Admin/EditAlumni" onClick={() => (window.confirm('Edit the item?'))}><button className="btn btn-primary">Edit</button></Link></td>
-                                        <td><Link to="/Admin/DetailsAlumni" onClick={() => (window.confirm('Details the item?'))}><button className="btn btn-primary">Details</button></Link></td>                                    
+                                         
                                     </tr>
                                 </tbody>
                             </table>
@@ -109,8 +104,7 @@ export default class AlumniDetails extends Component {
                                 </dl> */}
                             {/* </div> */}
                             <p>
-                                <Link to="/Admin/EditAlumni">Edit</Link> |
-                                <Link to="/Admin/Alumni">Back to List</Link>
+                                <Link to="/Admin/ViewCommittees">Back to List</Link>
                             </p>
                         </div>
                         {/* /.col-lg-12 */}
