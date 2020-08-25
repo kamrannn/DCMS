@@ -65,18 +65,18 @@ export default class StudentDetails extends Component {
                                                     <td>
                                                         A
                     </td>
-                                                    <td>
+                                                    {/* <td>
                                                         <a href="/HOD/StudentCourseRemove" onclick="return confirm('Are you sure you want to remove this course?');">Remove Course</a>
-                                                    </td>
+                                                    </td> */}
                                                 </tr>
                                             </tbody></table>
                                     </dd>
                                 </dl>
                             </div>
-                            <p>
+                            {/* <p>
                                 <Link to="/HOD/EditStudent">Edit</Link> |
                                 <Link to="/HOD/Student">Back to List</Link>
-                            </p>
+                            </p> */}
                         </div>
                         {/* /.col-lg-12 */}
                     </div>

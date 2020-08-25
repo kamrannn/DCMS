@@ -18,9 +18,10 @@ export default class ViewCommitteeMembers extends Component {
                                         <th scope="col">Last Name</th>
                                         <th scope="col">Major Role</th>
                                         <th scope="col">Committee Name</th>
-                                        <th scope="col">Assigning Date</th>
+                                        <th></th>
+                                        {/* <th scope="col">Assigning Date</th>
                                         <th scope="col">Task Deadline</th>
-                                        <th scope="col">Task Description</th>
+                                        <th scope="col">Task Description</th> */}
                                         {/* <th scope="col">Assign</th> */}
                                     </tr>
                                 </thead>
@@ -31,11 +32,11 @@ export default class ViewCommitteeMembers extends Component {
                                         <td>Otto</td>
                                         <td>Head of Department</td>
                                         <td>FYP Committee</td>
-                                        <td>20-08-2020</td>
+                                        {/* <td>20-08-2020</td>
                                         <td>30-08-2020</td>
-                                        <td>Description of Task Goes here</td>
-                                        <td><Link to="/HOD/DeleteCourse" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
-                                        <td><Link to="/HOD/EditCourse" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Edit</button></Link></td>
+                                        <td>Description of Task Goes here</td> */}
+                                        {/* <td><Link to="/HOD/DeleteCourse" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td> */}
+                                        {/* <td><Link to="/HOD/EditCourse" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Edit</button></Link></td> */}
                                         <td><Link to="/HOD/DetailsCourse" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Details</button></Link></td>
                                     
                                             </tr>
@@ -45,11 +46,11 @@ export default class ViewCommitteeMembers extends Component {
                                         <td>Thornton</td>
                                         <td>Head of Committee</td>
                                         <td>Thesis Committee</td>
-                                        <td>20-08-2020</td>
+                                        {/* <td>20-08-2020</td>
                                         <td>30-08-2020</td>
-                                        <td>Description of Task Goes here</td>
-                                        <td><Link to="/HOD/DeleteCourse" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
-                                        <td><Link to="/HOD/EditCourse" onClick={() => (window.confirm('Edit the item?'))}><button className="btn btn-primary">Edit</button></Link></td>
+                                        <td>Description of Task Goes here</td> */}
+                                        {/* <td><Link to="/HOD/DeleteCourse" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td> */}
+                                        {/* <td><Link to="/HOD/EditCourse" onClick={() => (window.confirm('Edit the item?'))}><button className="btn btn-primary">Edit</button></Link></td> */}
                                         <td><Link to="/HOD/DetailsCourse" onClick={() => (window.confirm('Details of this item?'))}><button className="btn btn-primary">Details</button></Link></td>                                    </tr>
                                     <tr>
                                         <th scope="row">3</th>
@@ -57,11 +58,11 @@ export default class ViewCommitteeMembers extends Component {
                                         <td>the Bird</td>
                                         <td>Student</td>
                                         <td>Exams Committee</td>
-                                        <td>20-08-2020</td>
+                                        {/* <td>20-08-2020</td>
                                         <td>30-08-2020</td>
-                                        <td>Description of Task Goes here</td>
-                                        <td><Link to="/HOD/DeleteCourse" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
-                                        <td><Link to="/HOD/EditCourse" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Edit</button></Link></td>
+                                        <td>Description of Task Goes here</td> */}
+                                        {/* <td><Link to="/HOD/DeleteCourse" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td> */}
+                                        {/* <td><Link to="/HOD/EditCourse" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Edit</button></Link></td> */}
                                         <td><Link to="/HOD/DetailsCourse" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Details</button></Link></td>                                    </tr>
                                 </tbody>
                             </table>
