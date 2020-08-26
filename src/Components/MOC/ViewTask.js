@@ -24,9 +24,9 @@ export default class ViewTask extends Component {
                                     <th>
                                         Due Date
                                     </th>
-                                    <th>
+                                    {/* <th>
                                         
-                                    </th>
+                                    </th> */}
                                     
                                     <th />
                                 </tr>
