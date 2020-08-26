@@ -16,7 +16,7 @@ export default class ViewTask extends Component {
                                         Task id
                                     </th>
                                     <th>
-                                        Assigned To
+                                        Assigned by
                                     </th>
                                     <th>
                                         Status
