@@ -52,9 +52,9 @@ export default class Menu extends Component {
                                         <li>
                                             <Link to="/MOC/ViewTask"> View Task<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
                                         </li>
-                                        <li>
+                                        {/* <li>
                                             <Link to="/MOC/AddmoreTask"> Add Task<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
-                                        </li>
+                                        </li> */}
                                     </ul>
                                     {/* /.nav-second-level */}
                                 </li>
