@@ -9,8 +9,7 @@ Router.get('/', (req, res) =>{
             result: data
         })
     })
-})
-
+});
 
 Router.post('/',function(req, res){
     let email = req.body.email;
@@ -24,6 +23,7 @@ Router.post('/',function(req, res){
             });
             return;
         }
+
         if(data && data.length==1){
             res.json({
                 success:true,
