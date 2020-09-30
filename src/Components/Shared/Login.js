@@ -31,7 +31,28 @@ export const Login=()=> {
             var result= response.data;
             console.log(result);
             if(result){
-                history.push(result.role);
+                localStorage.setItem('token', result.Token);
+                localStorage.setItem('role', result.role);
+
+                if(result.role=='Admin'){
+                    history.push(result.role);
+                }
+                if(result.role=='HOD'){
+                    history.push(result.role);
+                }
+                if(result.role=='HOC'){
+                    history.push(result.role);
+                }
+                if(result.role=='Faculty'){
+                    history.push(result.role);
+                }
+                if(result.role=='MOC'){
+                    history.push(result.role);
+                }
+                if(result.role=='Student'){
+                    history.push(result.role);
+                }
+
             }
             else{
                 console.log(result);

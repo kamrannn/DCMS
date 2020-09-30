@@ -31,17 +31,25 @@ export default class App extends Component {
         <Route path="/HOD" exact strict render={() => { return (<HODRouting/>) }} />
         </Switch> */}
 
-<Route path="/Admin" render={() => { return (<AdminRoutes />) }} />
-
 
           {/* <AdminRoutes></AdminRoutes> */}
+        <Route path="/Admin" render={() => { return (<AdminRoutes />) }} />
 
-          <HODRouting></HODRouting>
-          <FacultyRouting></FacultyRouting>
-          <HOCRouting></HOCRouting>
-          <StudentRouting></StudentRouting>
-          <MOCRouting></MOCRouting>
-          
+          {/* <HODRouting></HODRouting> */}
+          <Route path="/HOD" render={() => { return (<HODRouting />) }} />
+
+          {/* <FacultyRouting></FacultyRouting> */}
+          <Route path="/Faculty" render={() => { return (<FacultyRouting />) }} />
+
+          {/* <HOCRouting></HOCRouting> */}
+          <Route path="/HOC" render={() => { return (<HOCRouting />) }} />
+
+          {/* <StudentRouting></StudentRouting> */}
+          <Route path="/Student" render={() => { return (<StudentRouting />) }} />
+
+          {/* <MOCRouting></MOCRouting> */}
+          <Route path="/MOC" render={() => { return (<MOCRouting />) }} />
+
           <Footer/>
         </div>
       </Router>
