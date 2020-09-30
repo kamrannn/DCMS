@@ -11,7 +11,6 @@ import HOCRouting from './HOCRouting'
 import StudentRouting from './StudentRouting'
 import MOCRouting from './MOCRouting'
 import AboutUs from './Components/Shared/AboutUs'
-
 export default class App extends Component {
   render() {
     return (
@@ -32,7 +31,11 @@ export default class App extends Component {
         <Route path="/HOD" exact strict render={() => { return (<HODRouting/>) }} />
         </Switch> */}
 
-          <AdminRoutes></AdminRoutes>
+<Route path="/Admin" render={() => { return (<AdminRoutes />) }} />
+
+
+          {/* <AdminRoutes></AdminRoutes> */}
+
           <HODRouting></HODRouting>
           <FacultyRouting></FacultyRouting>
           <HOCRouting></HOCRouting>
