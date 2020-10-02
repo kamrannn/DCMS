@@ -52,7 +52,6 @@ export const Login=()=> {
                 if(result.role=='Student'){
                     history.push(result.role);
                 }
-
             }
             else{
                 console.log(result);
