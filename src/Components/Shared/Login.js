@@ -22,7 +22,7 @@ export const Login=()=> {
             var password= Password;
             var response= await axios({
                 method:'post',
-                url:'http://localhost:3000/login',
+                url:'http://localhost:3306/login',
                 data:{
                     email: email,
                     password: password
@@ -38,7 +38,7 @@ export const Login=()=> {
                     history.push(result.role);
                 }
                 if(result.role=='HOD'){
-                    history.push(result.role);
+                    history.push(result.role_name);
                 }
                 if(result.role=='HOC'){
                     history.push(result.role);
