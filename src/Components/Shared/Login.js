@@ -38,7 +38,7 @@ export const Login=()=> {
                     history.push(result.role);
                 }
                 if(result.role=='HOD'){
-                    history.push(result.role_name);
+                    history.push(result.role);
                 }
                 if(result.role=='HOC'){
                     history.push(result.role);
