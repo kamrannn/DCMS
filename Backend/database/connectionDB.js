@@ -3,11 +3,18 @@ var mysql = require ('mysql');
 
 var express = require ('express');
 
+// const db = mysql.createConnection({
+//     host:"localhost",
+//     user: "root",
+//     password:"",
+//     database:"dcms"
+// });
+
 const db = mysql.createConnection({
-    host:"localhost",
-    user: "root",
-    password:"",
-    database:"dcms"
+    host:"remotemysql.com",
+    user: "cO4dIPDQlQ",
+    password:"GDmbPithNm",
+    database:"cO4dIPDQlQ"
 });
 
 db.connect(function(err){

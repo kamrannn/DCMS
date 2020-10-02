@@ -22,7 +22,7 @@ export const Login=()=> {
             var password= Password;
             var response= await axios({
                 method:'post',
-                url:'http://localhost:3002/login',
+                url:'http://localhost:3000/login',
                 data:{
                     email: email,
                     password: password
