@@ -7,7 +7,9 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var login = require('./routes/login');
-
+var viewCommittee = require('./routes/HOD/viewCommittee')
+var createCommittee = require('./routes/HOD/createCommittee')
+var viewUpcommingMeeting = require('./routes/HOD/UpcommingCommittee')
 var app = express();
 
 // view engine setup
@@ -30,6 +32,9 @@ app.use(function(req, res, next){
 // app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', login);
+app.use('/viewCommittee/', viewCommittee)
+app.use('/createCommittee/', createCommittee)
+app.use('/viewUpcommingMeeting/', viewUpcommingMeeting)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

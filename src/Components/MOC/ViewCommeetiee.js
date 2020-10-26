@@ -1,8 +1,74 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import ReactTable from "react-table-6";
+import "react-table-6/react-table.css"
 
 export default class ViewCommittees extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            posts: []
+        }
+    }
+
+    componentDidMount() {
+        const url = "http://localhost:3307/viewCommittee";
+        fetch(url, {
+            method: "GET"
+        }).then(response => response.json()).then(post => {
+            this.setState({posts: post.result})
+        })
+    }
+
     render() {
+        const columns = [ 
+            {
+                Header: "CommitteeId",
+                accessor: "idCommittee",
+                style: {
+                    textAlign: "center"
+                },
+                width: 100,
+                maxWidth: 100,
+                minWidth: 100
+            },
+            {
+                Header: "Committee Name",
+                accessor: "CommitteeName",
+                sortable: false
+            },
+            {
+                Header: "Goal",
+                accessor: "goal",
+                sortable: false,
+                filterable: false
+            },
+            {
+                Header: "Head",
+                accessor: "Name",
+                sortable: false
+            },
+            {
+                Header: "Creation Date",
+                accessor: "committeeCreationDate"
+            },
+            {
+                Header: "Desolving Date",
+                accessor: "committeeDesolveDate"
+            },
+            {
+                Header: "Total Members",
+                accessor: "Email"
+            },
+            {
+                Header: "Description",
+                accessor: "Description",
+                sortable: false,
+                filterable: false
+            }
+        ]
         return (
             <div>
                 <div id="page-wrapper" style={{}}>
@@ -11,7 +77,20 @@ export default class ViewCommittees extends Component {
                             <link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
                             <h2>Committees in CS Department</h2>
                             <hr></hr>
-                            <form action="/MOC/ViewCommittees" method="get" onsubmit="return check(this) && false;">    <div style={{ display: 'flex' }}>
+                            
+                            <ReactTable
+                                columns = {columns}
+                                data = {
+                                    this.state.posts
+                                }
+                                filterable
+                                defaultPageSize = {10}
+                                noDataText = {"Please Wait.."}
+                                pageSizeOptions = {[2,4,6]}
+                                >
+                            </ReactTable>
+
+                            {/* <form action="/MOC/ViewCommittees" method="get" onsubmit="return check(this) && false;">    <div style={{ display: 'flex' }}>
                                 <p style={{ paddingTop: 7, marginLeft: 20 }}> <b>Search:</b></p> <select className="form-control" id="ListItems" name="ListItems" style={{ marginLeft: 5 }}><option selected="selected" value>Select Search Criteria</option>
                                     <option value="Name">Search by Name</option>
                                     <option value="email">Search by Email</option>
@@ -19,8 +98,8 @@ export default class ViewCommittees extends Component {
                                 <p style={{ paddingTop: 7 }} /> <input className="form-control" id="SearchString" name="SearchString" style={{ marginLeft: 5 }} type="text" defaultValue />
                                 <input type="submit" defaultValue="Search" className="btn btn-primary" style={{ marginLeft: 5 }} />
                             </div>
-                            </form><br />
-                            <table class="table table-bordered">
+                            </form><br /> */}
+                            {/* <table class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
@@ -31,7 +110,7 @@ export default class ViewCommittees extends Component {
                                         <th scope="col">Desolving Date</th>
                                         <th scope="col">Total Members</th>
                                         <th scope="col">Description</th>
-                                        {/* <th scope="col">Assign</th> */}
+                                        <th scope="col">Assign</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -45,9 +124,11 @@ export default class ViewCommittees extends Component {
                                         <td>30-08-2020</td>
                                         <td>20</td>
                                         <td>Description of Committee Goes here</td>
-                                        {/* <td><Link to="/Admin/DeleteAlumni" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
+
+                                        
+                                        <td><Link to="/Admin/DeleteAlumni" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
                                         <td><Link to="/Admin/EditAlumni" onClick={() => (window.confirm('Edit the item?'))}><button className="btn btn-primary">Edit</button></Link></td>
-                                        <td><Link to="/Admin/DetailsAlumni" onClick={() => (window.confirm('Details the item?'))}><button className="btn btn-primary">Details</button></Link></td> */}
+                                        <td><Link to="/Admin/DetailsAlumni" onClick={() => (window.confirm('Details the item?'))}><button className="btn btn-primary">Details</button></Link></td>
                                     
                                             </tr>
                                     <tr>
@@ -59,9 +140,9 @@ export default class ViewCommittees extends Component {
                                         <td>10-08-2020</td>
                                         <td>10</td>
                                         <td>Description of Committee Goes here</td>
-                                        {/* <td><Link to="/Admin/DeleteAlumni" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
+                                        <td><Link to="/Admin/DeleteAlumni" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
                                         <td><Link to="/Admin/EditAlumni" onClick={() => (window.confirm('Edit the item?'))}><button className="btn btn-primary">Edit</button></Link></td>
-                                        <td><Link to="/Admin/DetailsAlumni" onClick={() => (window.confirm('Details the item?'))}><button className="btn btn-primary">Details</button></Link></td> */}
+                                        <td><Link to="/Admin/DetailsAlumni" onClick={() => (window.confirm('Details the item?'))}><button className="btn btn-primary">Details</button></Link></td>
                                     </tr>
                                     <tr>
                                         <th scope="row">3</th>
@@ -72,12 +153,12 @@ export default class ViewCommittees extends Component {
                                         <td>30-12-2020</td>
                                         <td>5</td>
                                         <td>Description of Committee Goes here</td>
-                                        {/* <td><Link to="/Admin/DeleteAlumni" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
+                                        <td><Link to="/Admin/DeleteAlumni" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
                                         <td><Link to="/Admin/EditAlumni" onClick={() => (window.confirm('Edit the item?'))}><button className="btn btn-primary">Edit</button></Link></td>
-                                        <td><Link to="/Admin/DetailsAlumni" onClick={() => (window.confirm('Details the item?'))}><button className="btn btn-primary">Details</button></Link></td>                                     */}
+                                        <td><Link to="/Admin/DetailsAlumni" onClick={() => (window.confirm('Details the item?'))}><button className="btn btn-primary">Details</button></Link></td>                                    
                                     </tr>
                                 </tbody>
-                            </table>
+                            </table> */}
                         </div>
                         {/* /.col-lg-12 */}
                     </div>

@@ -1,8 +1,73 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import ReactTable from "react-table-6";
+import "react-table-6/react-table.css"
 
 export default class UpcomingMeetings extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            posts: []
+        }
+    }
+
+    componentDidMount() {
+        const url = "http://localhost:3307/viewUpcommingMeeting";
+        fetch(url, {
+            method: "GET"
+        }).then(response => response.json()).then(post => {
+            this.setState({posts: post.result})
+        })
+    }
+
     render() {
+        const columns = [ 
+            {
+                Header: "MeetingID",
+                accessor: "idMeeting",
+                style: {
+                    textAlign: "center"
+                },
+                width: 100,
+                maxWidth: 100,
+                minWidth: 100
+            },
+            {
+                Header: "Date",
+                accessor: "Date",
+                sortable: false
+            },
+            {
+                Header: "Time",
+                accessor: "Time",
+                sortable: false,
+                filterable: false
+            },
+            {
+                Header: "Duration",
+                accessor: "Duration",
+                sortable: false
+            },
+            {
+                Header: "Agenda",
+                accessor: "Agenda"
+            },
+            {
+                Header: "Venue",
+                accessor: "Venue"
+            },
+            {
+                Header: "Participants Invited",
+                accessor: "ParticipantInvited"
+            },
+            {
+                Header: "Head of Committee",
+                accessor: "Name",
+                sortable: false
+            }
+        ]
         return (
             <div>
                 <div id="page-wrapper" style={{}}>
@@ -10,7 +75,19 @@ export default class UpcomingMeetings extends Component {
                         <div className="col-lg-12">
                             <h2>Upcoming Meeting Details</h2>
                             <hr></hr>
-                            <table class="table table-bordered">
+                            <ReactTable
+                                columns = {columns}
+                                data = {
+                                    this.state.posts
+                                }
+                                filterable
+                                defaultPageSize = {10}
+                                noDataText = {"Please Wait.."}
+                                pageSizeOptions = {[2,4,6]}
+                                >
+                            </ReactTable>
+
+                            {/* <table class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th scope="col">Meeting ID</th>
@@ -21,7 +98,7 @@ export default class UpcomingMeetings extends Component {
                                         <th scope="col">Venue</th>
                                         <th scope="col">Participants Invited</th>
                                         <th scope="col">Head of Committee</th>
-                                        {/* <th scope="col">Assign</th> */}
+                                        <th scope="col">Assign</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -34,7 +111,7 @@ export default class UpcomingMeetings extends Component {
                                         <td>Room G05, CS Department</td>
                                         <td>5</td>
                                         <td>Dr. Yasir Faheem</td>
-                                        {/* <td><Link to="/HOD/Session_View" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td> */}
+                                        <td><Link to="/HOD/Session_View" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
                                             </tr>
                                     <tr>
                                         <th scope="row">2</th>
@@ -45,7 +122,7 @@ export default class UpcomingMeetings extends Component {
                                         <td>Room G05, CS Department</td>
                                         <td>10</td>
                                         <td>Dr. Kamran Abbasi</td>
-                                        {/* <td><Link to="/HOD/Session_View" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td> */}
+                                        <td><Link to="/HOD/Session_View" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
                                     </tr>
                                     <tr>
                                         <th scope="row">3</th>
@@ -56,10 +133,10 @@ export default class UpcomingMeetings extends Component {
                                         <td>Room G05, CS Department</td>
                                         <td>20</td>
                                         <td>Dr. Rohan Ilyas</td>
-                                        {/* <td><Link to="/HOD/Session_View" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td> */}
+                                        <td><Link to="/HOD/Session_View" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
                                     </tr>
                                 </tbody>
-                            </table>
+                            </table> */}
         {/* Page 1 of 1 */}
                         <div className="pagination-container"><ul className="pagination"><li className="active"><a>1</a></li></ul></div>
                             <div id="spinner" className="spinner" style={{ display: 'none' }}>
