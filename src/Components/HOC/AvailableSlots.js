@@ -1,64 +1,118 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios';
+import ReactTable from "react-table-6";
+import "react-table-6/react-table.css";
 
-export default class ViewCommittee extends Component {
+
+export default class SubmittedTask extends Component {
+    constructor (props) {
+        super(props);
+        this.state = {
+            data: []
+        }
+    }
+
+    async componentDidMount() {
+        await axios.get('http://localhost:3307/Availableslots').then(
+            res => {
+                this.setState({
+                    data: res.data.sessionsData
+                })
+            },
+            err => {
+                console.log(err);
+            }
+        )
+    }
     render() {
+        
+            const columns = [
+            //     {
+            //     Header: "ID",
+            //     accessor:"idMilestone"
+                
+            // },
+               { 
+                Header: "S.No",
+                accessor:"",
+                width:"100",
+                filterable:'',
+                style:{
+                    textAlign:"center"
+                }
+            },
+            {
+                Header: "Date",
+                accessor:"",
+                width:"150",
+                filterable:'',
+                style:{
+                    textAlign:"center"
+                }
+
+            }, 
+            {
+                Header: "Start Time",
+                accessor:"",
+                width:"150",
+                filterable:'',
+                
+
+                style:{
+                    textAlign:"center"
+                }
+
+            },
+
+            {
+                Header: "End Time",
+                accessor:"",
+                width:"150",
+                filterable:'',
+                
+
+                style:{
+                    textAlign:"center"
+                }
+
+            },
+            {
+                Header: "Duration",
+                accessor:"",
+                width:"150",
+                filterable:'',
+                
+
+                style:{
+                    textAlign:"center"
+                }
+
+            },
+           
+           
+                
+        ]
         return (
             <div>
                 <div id="page-wrapper" style={{}}>
                     <div className="row">
                         <div className="col-lg-12">
-                            <h2>Available Slots Details</h2> <hr></hr>
-                            <table className="table table-striped table-condensed table-bordered">
-                                <tbody><tr>
-                                    <th>
-                                        S.No
-              </th>
-                                    <th>
-                                        Date
-              </th>
-                                    <th>
-                                        StartTime
-              </th>
-              <th>
-                                        EndTime
-              </th>
-              <th>
-                                        Duration
-              </th>
-              
-                                    <th />
-                                </tr>
-                                    <tr>
-                                        <td>
-                                            1
-              </td>
-                                        <td>
-                                            20-08-2020
-              </td>
-                                        <td>
-                                            9:00 AM 
-              </td>
-              <td>
-                                            10:00 AM 
-              </td>
-              <td>
-                                            1 hour
-              </td>
-                                        
-                                        <td>
-                                        
-                <a href="/HOC/DeleteCourse">Edit</a>
-                                        </td>
-                                    </tr>
+                            <br></br>
+                            <h2>Available Slot Details</h2>
+                            
+                            <hr></hr>
+                            <ReactTable
+                              columns = {columns} 
+                              data = {this.state.data}
+                              filterable
+                              noDataText={"Please Wait..."}
+                              defaultPageSize={5}>
+                            </ReactTable>      
 
-                                </tbody></table>
-                            <div id="spinner" className="spinner" style={{ display: 'none' }}>
-                                <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', margin: '0 auto', backgroundColor: '#000', opacity: '.4', zIndex: 999999 }}>
-                                    <img id="img-spinner" src={`${process.env.PUBLIC_URL}/Assets/spinner.gif`} alt="Loading" style={{ position: 'absolute', height: 'auto!important', width: 'auto!important', left: '47%', top: '47%' }} /><br />
-                                    <p style={{ position: 'absolute', height: 'auto !important', width: 'auto !important', left: '51%', top: '51%', fontSize: 20, color: 'white' }}>Please Wait</p>
-                                </div>
-                            </div>
+                        
+
+
                         </div>
                         {/* /.col-lg-12 */}
                     </div>

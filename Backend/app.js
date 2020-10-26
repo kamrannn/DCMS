@@ -7,6 +7,20 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var login = require('./routes/login');
+var ViewComittees= require('./routes/HOC/viewComittee');
+var Milestones = require('./routes/HOC/SetMilestone');
+var ViewMilestone= require('./routes/HOC/ViewMilestone');
+var AssignTask= require('./routes/HOC/Assigntask');
+var AllassignTask= require('./routes/HOC/AllassignedTask');
+var SubmittedTask = require('./routes/HOC/SubmittedTask');
+var RejectedTask = require('./routes/HOC/RejectedTask');
+var CallMeeting = require('./routes/HOC/CallMeeting');
+var MeetingRecord = require('./routes/HOC/MeetingRecord');
+var Availableslot = require('./routes/HOC/Availableslot');
+var CommitteeReport = require('./routes/HOC/CommitteeReport');
+var ReportCommitteeMem = require('./routes/HOC/ReportCommitteeMem');
+
+
 
 var app = express();
 
@@ -30,6 +44,21 @@ app.use(function(req, res, next){
 // app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', login);
+
+app.use('/Committees',ViewComittees);
+app.use('/Milestone',Milestones);
+app.use('/ViewMilestones',ViewMilestone);
+app.use('/AssignTasks',AssignTask);
+app.use('/AllassignTasks',AllassignTask);
+app.use('/SubmittedTasks',SubmittedTask);
+app.use('/RejectedTasks',RejectedTask);
+app.use('/CallMeetings',CallMeeting);
+app.use('/MeetingRecords',MeetingRecord);
+app.use('/Availableslots',Availableslot);
+app.use('/CommitteeReports',CommitteeReport);
+app.use('/ReportCommitteeMems',ReportCommitteeMem);
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

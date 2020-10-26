@@ -1,26 +1,141 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios';
+import ReactTable from "react-table-6";
+import "react-table-6/react-table.css";
 
 export default class ViewCommittees extends Component {
+
+    constructor(props){
+    super(props);
+
+    this.state = {
+        data : []
+    } 
+}
+async componentDidMount() {
+    await axios.get('http://localhost:3307/Committees').then(
+        res => {
+            this.setState({
+                data: res.data.sessionsData
+            })
+            console.log(this.state.data);
+        },
+        err => {
+            console.log(err);
+        }
+    )
+}
     render() {
+        const columns = [
+        {
+            Header:"Committee ID",
+            accessor:"idCommittee",
+            style:{
+                textAlign:"center"
+            }
+
+        },
+        {
+            Header:"Committee Name",
+            accessor:"CommitteeName",
+            style:{
+                textAlign:"center"
+            }
+
+        },
+        {
+            Header:"Committee Goal",
+            accessor:"goal",
+            filterable:'',
+            style:{
+                textAlign:"center"
+            }
+        },
+        // {
+        //     Header:" Head ",
+        //     accessor:"idCommittee "
+        // },
+        {
+            Header:"Creation Date",
+            accessor:"committeeCreationDate",
+            filterable:'',
+
+            style:{
+                textAlign:"center"
+            }
+        },
+        {
+            Header:"Desolving Date",
+            accessor:"committeeDesolveDate",
+            filterable:'',
+
+            style:{
+                textAlign:"center"
+            }
+        },
+        {
+            Header:"Description",
+            accessor:"Description",
+            filterable:'',
+
+            style:{
+                textAlign:"center"
+            }
+        },
+        {
+            Header: "Actions",
+            Cell: props => {
+                return (
+                    
+                    <button href="/HOC/SetMilestone" className="btn btn-primary"> Assign </button>
+                    
+                )
+                
+            }
+        }
+]
         return (
+        
+        
+
             <div>
                 <div id="page-wrapper" style={{}}>
                     <div className="row">
                         <div className="col-lg-12">
                             <link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
-                            <h2>Committees in CS Department</h2>
+                                    <h2>Committees in CS Department</h2>
                             <hr></hr>
-                            <form action="/HOC/ViewCommittees" method="get" onsubmit="return check(this) && false;">    <div style={{ display: 'flex' }}>
-                                <p style={{ paddingTop: 7, marginLeft: 20 }}> <b>Search:</b></p> <select className="form-control" id="ListItems" name="ListItems" style={{ marginLeft: 5 }}><option selected="selected" value>Select Search Criteria</option>
+                            <ReactTable
+                              columns = {columns} 
+                              data = {this.state.data}
+                              filterable
+                              defaultPageSize={10}>
+                            </ReactTable>      
+
+                    
+                         </div>
+                <hr />            
+                    </div> 
+                </div> 
+           </div>
+           
+           );
+                }
+            }
+
+                            {/* <form action="/HOC/ViewCommittees" method="get" onsubmit="return check(this) && false;">    <div style={{ display: 'flex' }}>
+                                <p style={{ paddingTop: 7, marginLeft: 20 }}> <b>Search:</b></p> <select className="form-control" id="ListItems" 
+                                  name="ListItems" style={{ marginLeft: 5 }}><option selected="selected" value>Select Search Criteria</option>
                                     <option value="Name">Search by Name</option>
                                     <option value="email">Search by Email</option>
                                 </select>
                                 <p style={{ paddingTop: 7 }} /> <input className="form-control" id="SearchString" name="SearchString" style={{ marginLeft: 5 }} type="text" defaultValue />
                                 <input type="submit" defaultValue="Search" className="btn btn-primary" style={{ marginLeft: 5 }} />
                             </div>
-                            </form><br />
-                            <table class="table table-bordered">
+                            </form><br /> */}
+        
+                            {/* <table class="table table-bordered">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
@@ -31,7 +146,7 @@ export default class ViewCommittees extends Component {
                                         <th scope="col">Desolving Date</th>
                                         <th scope="col">Total Members</th>
                                         <th scope="col">Description</th>
-                                        {/* <th scope="col">Assign</th> */}
+                                       
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -45,11 +160,11 @@ export default class ViewCommittees extends Component {
                                         <td>30-08-2020</td>
                                         <td>20</td>
                                         <td>Description of Committee Goes here</td>
-                                        {/* <td><Link to="/Admin/DeleteAlumni" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
+                                        <td><Link to="/Admin/DeleteAlumni" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
                                         <td><Link to="/Admin/EditAlumni" onClick={() => (window.confirm('Edit the item?'))}><button className="btn btn-primary">Edit</button></Link></td>
-                                        <td><Link to="/Admin/DetailsAlumni" onClick={() => (window.confirm('Details the item?'))}><button className="btn btn-primary">Details</button></Link></td> */}
+<td><Link to="/Admin/DetailsAlumni" onClick={() => (window.confirm('Details the item?'))}><button className="btn btn-primary">Details</button></Link></td>
                                     
-                                            </tr>
+                                              </tr>
                                     <tr>
                                         <th scope="row">2</th>
                                         <td>Exams Committee</td>
@@ -59,9 +174,9 @@ export default class ViewCommittees extends Component {
                                         <td>10-08-2020</td>
                                         <td>10</td>
                                         <td>Description of Committee Goes here</td>
-                                        {/* <td><Link to="/Admin/DeleteAlumni" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
+                                        <td><Link to="/Admin/DeleteAlumni" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
                                         <td><Link to="/Admin/EditAlumni" onClick={() => (window.confirm('Edit the item?'))}><button className="btn btn-primary">Edit</button></Link></td>
-                                        <td><Link to="/Admin/DetailsAlumni" onClick={() => (window.confirm('Details the item?'))}><button className="btn btn-primary">Details</button></Link></td> */}
+                                        <td><Link to="/Admin/DetailsAlumni" onClick={() => (window.confirm('Details the item?'))}><button className="btn btn-primary">Details</button></Link></td>
                                     </tr>
                                     <tr>
                                         <th scope="row">3</th>
@@ -72,20 +187,12 @@ export default class ViewCommittees extends Component {
                                         <td>30-12-2020</td>
                                         <td>5</td>
                                         <td>Description of Committee Goes here</td>
-                                        {/* <td><Link to="/Admin/DeleteAlumni" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
+                                        <td><Link to="/Admin/DeleteAlumni" onClick={() => (window.confirm('Delete the item?'))}><button className="btn btn-primary">Delete</button></Link></td>
                                         <td><Link to="/Admin/EditAlumni" onClick={() => (window.confirm('Edit the item?'))}><button className="btn btn-primary">Edit</button></Link></td>
-                                        <td><Link to="/Admin/DetailsAlumni" onClick={() => (window.confirm('Details the item?'))}><button className="btn btn-primary">Details</button></Link></td>                                     */}
+<td><Link to="/Admin/DetailsAlumni" onClick={() => (window.confirm('Details the item?'))}><button className="btn btn-primary">Details</button></Link></td>                                    
                                     </tr>
                                 </tbody>
-                            </table>
-                        </div>
-                        {/* /.col-lg-12 */}
-                    </div>
-                    {/* /.row */}
-                </div>
-                <hr />
-            </div>
-
-        )
-    }
-}
+                            </table> */}
+                        {/* /.col-lg-12 */}                    {/* /.row */}
+                             
+               
