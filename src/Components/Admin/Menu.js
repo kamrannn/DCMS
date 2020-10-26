@@ -46,14 +46,14 @@ export default class Menu extends Component {
                                 <li>
                                     <a href=""> Meeting<span className="fa fa-chevron-right" style={{ float: 'right' }} /></a>
                                     <ul className="nav nav-second-level">
-                                        <li>
+                                        {/* <li>
                                             <Link to="/Admin/UpcomingMeetings"> View Upcoming Meetings<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
-                                        </li>
+                                        </li> */}
                                         <li>
                                             <Link to="/Admin/CreateMeeting"> Create Meeting<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
                                         </li>
                                         <li>
-                                            <Link to="/Admin/RecentMeetings"> View Recent Meetings<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
+                                            <Link to="/Admin/RecentMeetings"> View Meeting Records<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
                                         </li>
                                     </ul>
                                     {/* /.nav-second-level */}
