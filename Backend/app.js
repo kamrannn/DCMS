@@ -10,7 +10,7 @@ var login = require('./routes/login');
 
 //var of committee
 var viewCommittees = require('./routes/Admin/Committee/viewCommittees');
-var createCommittee = require('./routes/Admin/Committee/createCommittee');
+var ADMINcreateCommittee = require('./routes/Admin/Committee/createCommittee');
 
 //var Tasks
 var viewAssignedTasks= require('./routes/Admin/Tasks/viewAssignedTasks');
@@ -42,9 +42,13 @@ app.use('/login', login);
 
 /////////////////committee Routers/////////////////////////////////
 app.use('/viewCommittees',viewCommittees);
-app.use('/createCommittee',createCommittee);
 
+app.use('/ADMINcreateCommittee',ADMINcreateCommittee);
+
+/////////////////Task Routers/////////////////////////////////
 app.use('/viewAssignedTasks',viewAssignedTasks);
+
+/////////////////Meeting Routers/////////////////////////////////
 
 app.use('/viewRecentMeetings',viewRecentMeetings);
 
