@@ -10,7 +10,13 @@ var login = require('./routes/login');
 
 //var of committee
 var viewCommittees = require('./routes/Admin/Committee/viewCommittees');
+var createCommittee = require('./routes/Admin/Committee/createCommittee');
 
+//var Tasks
+var viewAssignedTasks= require('./routes/Admin/Tasks/viewAssignedTasks');
+
+//var Meetings
+var viewRecentMeetings= require('./routes/Admin/Meetings/viewRecentMeetings')
 var app = express();
 
 // view engine setup
@@ -35,7 +41,12 @@ app.use('/users', usersRouter);
 app.use('/login', login);
 
 /////////////////committee Routers/////////////////////////////////
-app.use('/viewCommittee',viewCommittees);
+app.use('/viewCommittees',viewCommittees);
+app.use('/createCommittee',createCommittee);
+
+app.use('/viewAssignedTasks',viewAssignedTasks);
+
+app.use('/viewRecentMeetings',viewRecentMeetings);
 
 
 ///////////////////////////////////////////////////////////////////////

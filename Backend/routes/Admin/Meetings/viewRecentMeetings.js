@@ -4,7 +4,7 @@ var db= require('../../../database/connectionDB');
 
 
 Router.get('/', function (req, res, next) {
-    db.query('SELECT * FROM `committee`', (err, data)=>{
+    db.query('SELECT idMeeting,Date,Time,Duration,MeetingMinutes,Agenda,Venue,ParticipantInvited, committee.CommitteeName FROM meeting, committee WHERE meeting.Committee_idCommittee= committee.idCommittee', (err, data)=>{
         if (err) {
             res.json({
                 success: false,
