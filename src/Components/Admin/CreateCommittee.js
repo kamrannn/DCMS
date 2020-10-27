@@ -39,7 +39,7 @@ export default class CreateCommittee extends Component
     
     handleMultipleMembersChange(e){
         this.setState({Members: e})
-        console.log(e)
+        // console.log(e)
        }
 
     handleCommitteeNameChange = (event) => {
@@ -145,7 +145,6 @@ CreateCommittee = async () => {
     }
 }
 
-
     render() {
         // console.log(this.state.selectOptions)
         return (
@@ -160,7 +159,7 @@ CreateCommittee = async () => {
                                     Committee Name
                                 </label>
                                 <div className="col-md-10">
-                                    <input onChange={this.handleCommitteeNameChange} type="input" className="form-control text-box single-line" required></input>
+                                    <input onChange={this.handleCommitteeNameChange} type="input" className="form-control text-box single-line" ></input>
                                 </div>
                             </div>
                         </div>
@@ -173,7 +172,7 @@ CreateCommittee = async () => {
                                     Committee Goal
                                 </label>
                                 <div className="col-md-10">
-                                    <input onChange={this.handleCommitteeGoalchange} type="text" className="form-control text-box single-line" required></input>
+                                    <input onChange={this.handleCommitteeGoalchange} type="text" className="form-control text-box single-line" ></input>
                                 </div>
                             </div>
                         </div>
@@ -187,7 +186,7 @@ CreateCommittee = async () => {
                                 </label>
                                 <div className="col-md-10">
                                     {/* <input onChange={this.handleCommitteeCreationDatechange} type="date" className="form-control text-box single-line" defaultValue="2020-10-27"></input> */}
-                                    <input onChange={this.handleCommitteeCreationDatechange} type="date" className="form-control text-box single-line"  placeholder="YYYY-MM-DD" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required/>
+                                    <input onChange={this.handleCommitteeCreationDatechange} type="date" className="form-control text-box single-line"  placeholder="YYYY-MM-DD" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" />
 
                                 </div>
                             </div>
@@ -201,7 +200,7 @@ CreateCommittee = async () => {
                                     Committee Desolving Date
                                 </label>
                                 <div className="col-md-10">
-                                    <input onChange={this.handleCommitteeDesolvingDatechange} type="date" className="form-control text-box single-line"  placeholder="YYYY-MM-DD" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" required></input>
+                                    <input onChange={this.handleCommitteeDesolvingDatechange} type="date" className="form-control text-box single-line"  placeholder="YYYY-MM-DD" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" ></input>
                                 </div>
                             </div>
                         </div>
@@ -215,7 +214,7 @@ CreateCommittee = async () => {
                                 </label>
                                 <div className="col-md-10">
                                     {/* <input type="text" className="form-control text-box single-line"></input> */}
-                                    <textarea onChange={this.handleCommitteeDescriptionchange} required></textarea>
+                                    <textarea onChange={this.handleCommitteeDescriptionchange} ></textarea>
                                 </div>
                             </div>
                         </div>
@@ -228,7 +227,7 @@ CreateCommittee = async () => {
                                     Select Head
                                 </label>
                                 <div className="col-md-10">
-                                    <Select options={this.state.selectOptions} onChange={this.handleChange.bind(this)} required />
+                                    <Select options={this.state.selectOptions} onChange={this.handleChange.bind(this)}  />
                                 </div>
                             </div>
                         </div>

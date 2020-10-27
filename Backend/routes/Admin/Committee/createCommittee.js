@@ -19,7 +19,6 @@ Router.get('/', function (req, res) {
     });
 });
 
-
 Router.post('/', function (req, res) {
     let CommitteeName = req.body.CommitteeName;
     let CommitteeGoal = req.body.CommitteeGoal;
@@ -28,10 +27,14 @@ Router.post('/', function (req, res) {
     let CommitteeDescription = req.body.CommitteeDescription;
     let headID = req.body.headID;
     let Members = req.body.Members;
+    // MembersId:[];
 
     // for (var e in Members) {
-    //     console.log('Employer ID: ', Members[e].value);
+    //     // console.log('Employer ID: ', Members[e].value);
+    //     // MembersId=Members[e].value;
     // }
+    // console.log(MembersId)
+
 
     var values = [CommitteeName, CommitteeGoal,CommitteeCreationDate,CommitteeDesolvingDate,CommitteeDescription];
     db.query('INSERT INTO `committee`(`CommitteeName`, `goal`, `committeeCreationDate`, `committeeDesolveDate`, `Description`) VALUES (?)', [values], function (err, result) 
@@ -42,11 +45,59 @@ Router.post('/', function (req, res) {
                 err: 'Can not interted right know. Try again!'
             })
         }
-        console.log("1 record inserted");
-        res.json({
-            success: true
-        })
+        
+        if(result){
+            var committeeID= result.insertId;
+            var values1= [headID, '2', committeeID];
+            db.query('INSERT INTO `user_roles`(`Users_idUser`, `roles_roles_id`, `Committee_idCommittee`) VALUES (?)', [values1], function (err1, result1)
+            {
+                if (err1) 
+                {
+                    res.json({
+                        success: false,
+                        err: 'Can not interted right know. Try again!'
+                    })
+                }
+                if(result1)
+                {
+                    for (var e in Members) 
+                    {
+                        MembersId=Members[e].value;
+                        var values3= [committeeID,MembersId];
+                        // console.log(values3);
+                        db.query('INSERT INTO `committeemembers`(`Committee_idCommittee`, `Users_idUser`) VALUES (?)', [values3], function (err2, result2)
+                        {
+                            // if (err2) 
+                            //     {
+                            //         res.json({
+                            //             success: false,
+                            //             err2: 'Can not interted right know. Try again!'
+                            //         });
+                            //         return;
+                            //         // console.log(err2);
+                            //     };
+                            // if(result2){
+                            //     res.json({
+                            //         success:true
+                            //     })
+                            //     // console.log(result2)
+                            // }
+                        });
+                    }
+
+                }
+            } 
+        )};
+
+    // console.log(committeeID) 
+        // console.log("1 record inserted");
+
+        // res.json({
+        //     success: true, 
+        // })
     });
+
+
 });
 
 

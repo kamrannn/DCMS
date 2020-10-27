@@ -14,6 +14,7 @@ var ADMINcreateCommittee = require('./routes/Admin/Committee/createCommittee');
 
 //var Tasks
 var viewAssignedTasks= require('./routes/Admin/Tasks/viewAssignedTasks');
+var assignTaskADMIN= require ('./routes/Admin/Tasks/assignTask');
 
 //var Meetings
 var viewRecentMeetings= require('./routes/Admin/Meetings/viewRecentMeetings')
@@ -47,11 +48,10 @@ app.use('/ADMINcreateCommittee',ADMINcreateCommittee);
 
 /////////////////Task Routers/////////////////////////////////
 app.use('/viewAssignedTasks',viewAssignedTasks);
+app.use('/assignTaskADMIN',assignTaskADMIN);
 
 /////////////////Meeting Routers/////////////////////////////////
-
 app.use('/viewRecentMeetings',viewRecentMeetings);
-
 
 ///////////////////////////////////////////////////////////////////////
 
