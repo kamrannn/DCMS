@@ -33,6 +33,7 @@ export const Login=()=> {
             if(result){
                 localStorage.setItem('token', result.Token);
                 localStorage.setItem('role', result.role);
+                console.log(result.role);
 
                 if(result.role=='Admin'){
                     history.push(result.role);

@@ -13,7 +13,7 @@ export default class AssignedTask extends Component {
     }
 
 componentDidMount(){
-    const url="http://localhost:3306/viewAssignedTasks";
+    const url="http://localhost:3306/viewAssignedTasksADMIN";
     
     fetch(url,{
         method: "GET"
@@ -33,6 +33,7 @@ componentDidMount(){
             { 
                 Header: "Task ID",
                 accessor:"idTask",
+                headerStyle: { fontWeight: 'bold' },
                 style:{
                     textAlign:"center"
                 }
@@ -40,6 +41,7 @@ componentDidMount(){
             {
                 Header: "Task Description",
                 accessor:"Description",
+                headerStyle: { fontWeight: 'bold' },
                 filterable:'',
                 style:{
                     textAlign:"center"
@@ -49,7 +51,8 @@ componentDidMount(){
             {
                 Header: "Status",
                 accessor:"Status",
-                filterable:'',
+                headerStyle: { fontWeight: 'bold' },
+                // filterable:'',
                 style:{
                     textAlign:"center"
                 }
@@ -58,6 +61,7 @@ componentDidMount(){
             {
                 Header: "Assigned Date",
                 accessor: "AssignDate",
+                headerStyle: { fontWeight: 'bold' },
                 filterable:'',
                 style:{
                     textAlign:"center"
@@ -67,6 +71,7 @@ componentDidMount(){
             {
                 Header: "Deadline",
                 accessor: "Deadline",
+                headerStyle: { fontWeight: 'bold' },
                 style:{
                     textAlign:"center"
                 }
@@ -76,6 +81,7 @@ componentDidMount(){
             {
                 Header:"File uploaded",
                 accessor:"uploadFile",
+                headerStyle: { fontWeight: 'bold' },
                 filterable:'',
                 style:{
                     textAlign:"center"
@@ -85,6 +91,7 @@ componentDidMount(){
             {
                 Header:"Comment",
                 accessor:"Comment",
+                headerStyle: { fontWeight: 'bold' },
                 filterable:'',
                 style:{
                     textAlign:"center"
@@ -94,6 +101,8 @@ componentDidMount(){
             {
                 Header:"Name",
                 accessor:"Name",
+                headerStyle: { fontWeight: 'bold' },
+
                 filterable:'',
                 style:{
                     textAlign:"center"
@@ -111,7 +120,7 @@ componentDidMount(){
                             <h2>Tasks Record</h2>
                             
                             <hr></hr>
-                            <ReactTables
+                            <ReactTables className="-striped -highlight"
                               columns = {columns}
                               data = {this.state.data}
                               filterable

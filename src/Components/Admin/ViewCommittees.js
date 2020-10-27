@@ -13,7 +13,7 @@ export default class ViewCommittees extends Component {
     }
 
 componentDidMount(){
-    const url="http://localhost:3306/viewCommittees";
+    const url="http://localhost:3306/viewCommitteesADMIN";
     
     fetch(url,{
         method: "GET"
@@ -112,13 +112,14 @@ componentDidMount(){
                         <div className="col-lg-12">
                             <br />
                             <h3>List of Committees</h3>
+                            <hr></hr><br></br>
 
                             <ReactTables
                                 className="-striped -highlight"
                                 columns={column}
                                 data={this.state.data}
                                 filterable
-                                defaultPageSize={5}
+                                defaultPageSize={10}
                             />
                         </div>
                     </div>

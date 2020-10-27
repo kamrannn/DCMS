@@ -14,12 +14,12 @@ export default class RecentMeetings extends Component {
     }
 
 componentDidMount(){
-    const url="http://localhost:3306/viewRecentMeetings";
+    const url="http://localhost:3306/viewRecentMeetingsADMIN";
     
     fetch(url,{
         method: "GET"
     }).then(response=> response.json()).then(data=>{
-        console.log("Committees",data)
+        // console.log("Committees",data)
         this.setState({data:data})
     })
 }
@@ -33,6 +33,7 @@ componentDidMount(){
             { 
                 Header: "Meeting ID",
                 accessor:"idMeeting",
+                headerStyle: { fontWeight: 'bold' },
                 style:{
                     textAlign:"center"
                 }
@@ -41,6 +42,7 @@ componentDidMount(){
                 Header: "Meeting Date",
                 accessor:"Date",
                 filterable:'',
+                headerStyle: { fontWeight: 'bold' },
                 style:{
                     textAlign:"center"
                 }
@@ -49,6 +51,7 @@ componentDidMount(){
             {
                 Header: "Meeting Time",
                 accessor:"Time",
+                headerStyle: { fontWeight: 'bold' },
                 filterable:'',
                 style:{
                     textAlign:"center"
@@ -58,6 +61,7 @@ componentDidMount(){
             {
                 Header: "Duration",
                 accessor: "Duration",
+                headerStyle: { fontWeight: 'bold' },
                 filterable:'',
                 style:{
                     textAlign:"center"
@@ -67,6 +71,7 @@ componentDidMount(){
             {
                 Header: "MeetingMinutes",
                 accessor: "MeetingMinutes",
+                headerStyle: { fontWeight: 'bold' },
                 style:{
                     textAlign:"center"
                 }
@@ -76,6 +81,7 @@ componentDidMount(){
             {
                 Header:"Agenda",
                 accessor:"Agenda",
+                headerStyle: { fontWeight: 'bold' },
                 filterable:'',
                 style:{
                     textAlign:"center"
@@ -85,6 +91,7 @@ componentDidMount(){
             {
                 Header:"Venue",
                 accessor:"Venue",
+                headerStyle: { fontWeight: 'bold' },
                 filterable:'',
                 style:{
                     textAlign:"center"
@@ -94,6 +101,7 @@ componentDidMount(){
             {
                 Header:"ParticipantInvited",
                 accessor:"ParticipantInvited",
+                headerStyle: { fontWeight: 'bold' },
                 filterable:'',
                 style:{
                     textAlign:"center"
@@ -103,6 +111,7 @@ componentDidMount(){
             {
                 Header:"CommitteeName",
                 accessor:"CommitteeName",
+                headerStyle: { fontWeight: 'bold' },
                 filterable:'',
                 style:{
                     textAlign:"center"
@@ -119,14 +128,13 @@ componentDidMount(){
                             <h2>Meeting Records</h2>
                             
                             <hr></hr>
-                            <ReactTables
-                              columns = {columns}
-                              data = {this.state.data}
-                              filterable
-                              defaultPageSize={10}>
+                            <ReactTables className="-striped -highlight"
+                                columns = {columns}
+                                data = {this.state.data}
+                                filterable
+                                defaultPageSize={10}>
                             </ReactTables>      
                         </div>
-                       
                     </div>
                 </div>
                 <hr />
