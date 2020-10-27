@@ -48,7 +48,7 @@ Router.post('/', function (req, res) {
         
         if(result){
             var committeeID= result.insertId;
-            var values1= [headID, '2', committeeID];
+            var values1= [headID, '3', committeeID];
             db.query('INSERT INTO `user_roles`(`Users_idUser`, `roles_roles_id`, `Committee_idCommittee`) VALUES (?)', [values1], function (err1, result1)
             {
                 if (err1) 

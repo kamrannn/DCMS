@@ -9,15 +9,15 @@ var usersRouter = require('./routes/users');
 var login = require('./routes/login');
 
 //var of committee
-var viewCommittees = require('./routes/Admin/Committee/viewCommittees');
+var viewCommitteesADMIN = require('./routes/Admin/Committee/viewCommittees');
 var ADMINcreateCommittee = require('./routes/Admin/Committee/createCommittee');
 
 //var Tasks
-var viewAssignedTasks= require('./routes/Admin/Tasks/viewAssignedTasks');
+var viewAssignedTasksADMIN= require('./routes/Admin/Tasks/viewAssignedTasks');
 var assignTaskADMIN= require ('./routes/Admin/Tasks/assignTask');
 
 //var Meetings
-var viewRecentMeetings= require('./routes/Admin/Meetings/viewRecentMeetings')
+var viewRecentMeetingsADMIN= require('./routes/Admin/Meetings/viewRecentMeetings')
 var app = express();
 
 // view engine setup
@@ -42,16 +42,16 @@ app.use('/users', usersRouter);
 app.use('/login', login);
 
 /////////////////committee Routers/////////////////////////////////
-app.use('/viewCommittees',viewCommittees);
+app.use('/viewCommitteesADMIN',viewCommitteesADMIN);
 
 app.use('/ADMINcreateCommittee',ADMINcreateCommittee);
 
 /////////////////Task Routers/////////////////////////////////
-app.use('/viewAssignedTasks',viewAssignedTasks);
+app.use('/viewAssignedTasksADMIN',viewAssignedTasksADMIN);
 app.use('/assignTaskADMIN',assignTaskADMIN);
 
 /////////////////Meeting Routers/////////////////////////////////
-app.use('/viewRecentMeetings',viewRecentMeetings);
+app.use('/viewRecentMeetingsADMIN',viewRecentMeetingsADMIN);
 
 ///////////////////////////////////////////////////////////////////////
 
