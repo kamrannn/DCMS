@@ -17,7 +17,7 @@ Router.get('/', function (req, res) {
             res.json(data);
         }
     });
-})
+});
 
 
 Router.post('/', function (req, res) {
@@ -29,9 +29,9 @@ Router.post('/', function (req, res) {
     let headID = req.body.headID;
     let Members = req.body.Members;
 
-    for (var e in Members) {
-        console.log('Employer ID: ', Members[e].value);
-    }
+    // for (var e in Members) {
+    //     console.log('Employer ID: ', Members[e].value);
+    // }
 
     var values = [CommitteeName, CommitteeGoal,CommitteeCreationDate,CommitteeDesolvingDate,CommitteeDescription];
     db.query('INSERT INTO `committee`(`CommitteeName`, `goal`, `committeeCreationDate`, `committeeDesolveDate`, `Description`) VALUES (?)', [values], function (err, result) 
@@ -47,8 +47,8 @@ Router.post('/', function (req, res) {
             success: true
         })
     });
-
-    
 });
+
+
 
 module.exports = Router;
