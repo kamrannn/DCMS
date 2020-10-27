@@ -32,6 +32,7 @@ componentDidMount(){
                 maxWidth: 100,
                 headerStyle: { fontWeight: 'bold' },
                 // filterable: false,
+                sortable: true,
                 Cell: (row) => {
                     return <div>{row.index + 1}</div>;
                 },

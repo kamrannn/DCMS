@@ -17,7 +17,8 @@ var viewAssignedTasksADMIN= require('./routes/Admin/Tasks/viewAssignedTasks');
 var assignTaskADMIN= require ('./routes/Admin/Tasks/assignTask');
 
 //var Meetings
-var viewRecentMeetingsADMIN= require('./routes/Admin/Meetings/viewRecentMeetings')
+var viewRecentMeetingsADMIN= require('./routes/Admin/Meetings/viewRecentMeetings');
+var createMeetingADMIN = require('./routes/Admin/Meetings/createMeeting');
 var app = express();
 
 // view engine setup
@@ -52,6 +53,7 @@ app.use('/assignTaskADMIN',assignTaskADMIN);
 
 /////////////////Meeting Routers/////////////////////////////////
 app.use('/viewRecentMeetingsADMIN',viewRecentMeetingsADMIN);
+app.use('/createMeetingADMIN',createMeetingADMIN);
 
 ///////////////////////////////////////////////////////////////////////
 
