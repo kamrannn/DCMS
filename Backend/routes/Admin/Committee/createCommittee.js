@@ -19,4 +19,29 @@ Router.get('/', function (req, res) {
     });
 })
 
+
+Router.post('/', function (req, res) {
+    let CommitteeName = req.body.CommitteeName;
+    let CommitteeGoal = req.body.CommitteeGoal;
+    let CommitteeCreationDate = req.body.CommitteeCreationDate;
+    let CommitteeDesolvingDate = req.body.CommitteeDesolvingDate;
+    let CommitteeDescription = req.body.CommitteeDescription;
+    let headID = req.body.headID;
+    let Members = req.body.Members;
+
+    var values = [CommitteeName, CommitteeGoal,CommitteeCreationDate,CommitteeDesolvingDate,CommitteeDescription];
+    db.query('INSERT INTO `committee`(`CommitteeName`, `goal`, `committeeCreationDate`, `committeeDesolveDate`, `Description`) VALUES (?)', [values], function (err, result) {
+        if (err) {
+            res.json({
+                success: false,
+                err: 'Can not interted right know. Try again!'
+            })
+        }
+        console.log("1 record inserted");
+        res.json({
+            success: true
+        })
+    });
+});
+
 module.exports = Router;
