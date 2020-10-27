@@ -128,9 +128,9 @@ export default class SetMilestones extends Component {
 
 
                                 <div className="form-group">
-                                    <label className="control-label col-md-2" htmlFor="Name">Name</label>
+                                    <label className="control-label col-md-2" htmlFor="Name">Milestone</label>
                                     <div className="col-md-10">
-                                        <input value={this.state.Name} onChange={this.handleNameChange} className="form-control text-box single-line" data-val="true" data-val-required="The Name field is required." id="Name" name="Name" type="text" defaultValue />
+                                        <textarea value={this.state.Name} onChange={this.handleNameChange} className="form-control text-box single-line" data-val="true" data-val-required="The Name field is required." id="Name" name="Name" type="text" defaultValue />
                                         <span className="field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true" />
                                     </div>
                                 </div>
@@ -178,8 +178,8 @@ export default class SetMilestones extends Component {
                                
                                 <div className="form-group">
                                     <div className="col-md-offset-2 col-md-10">
-                                        <input type="submit" onClick={() => this.Addmilestone()} defaultValue="Add" className="btn btn-primary"></input> 
-                                         <Link to="/HOC/ViewMilestoneHoc"> </Link> 
+                                         <Link to="/HOC/ViewMilestone"><input type="submit" onClick={() => this.Addmilestone()} defaultValue="Add" className="btn btn-primary"></input> 
+ </Link> 
                                     </div>
                                 </div>
 
@@ -191,7 +191,7 @@ export default class SetMilestones extends Component {
                             {/* </form> */}
 
                             <div>
-                                <Link to="/HOC/ViewMilestoneHoc">Back to List</Link>
+                                <Link to="/HOC/ViewMilestone">Back to List</Link>
                             </div>
 
                         </div>

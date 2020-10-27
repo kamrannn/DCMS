@@ -28,15 +28,15 @@ async componentDidMount() {
 }
     render() {
         const columns = [
-        {
-            Header:"Committee ID",
-            accessor:"idCommittee",
-            headerStyle: { fontWeight: 'bold' },
-            style:{
-                textAlign:"center"
-            }
+        // // {
+        // //     Header:"Committee ID",
+        // //     accessor:"idCommittee",
+        // //     headerStyle: { fontWeight: 'bold' },
+        // //     style:{
+        // //         textAlign:"center"
+        // //     }
 
-        },
+        // },
         {
             Header:"Committee Name",
             accessor:"CommitteeName",

@@ -6,7 +6,7 @@ var logger = require('morgan');
  
 var indexRouterHoc = require('./routes/index');
 var usersRouterHoc = require('./routes/users');
-var loginHoc = require('./routes/login');
+var login = require('./routes/login');
 var ViewComitteesHoc= require('./routes/HOC/Committee/viewComittee');
 var MilestonesHoc = require('./routes/HOC/Committee/SetMilestone');
 var ViewMilestoneHoc= require('./routes/HOC/Committee/ViewMilestone');
@@ -43,7 +43,7 @@ app.use(function(req, res, next){
 
 // app.use('/', indexRouter);
 app.use('/usersHoc', usersRouterHoc);
-app.use('/loginHoc', loginHoc);
+app.use('/login', login);
 
 app.use('/CommitteesHoc',ViewComitteesHoc);
 app.use('/MilestoneHoc',MilestonesHoc);

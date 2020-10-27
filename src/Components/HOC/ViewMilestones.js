@@ -38,7 +38,7 @@ export default class ViewMilestones extends Component {
                 
             // },
                { 
-                Header: "Name",
+                Header: "Milestone",
                 accessor:"Name",
                 headerStyle: { fontWeight: 'bold' },
                 style:{
