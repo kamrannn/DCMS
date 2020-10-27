@@ -80,7 +80,7 @@ export default class SetMilestones extends Component {
 
             var res = await axios({
                 method: 'post',
-                url: 'http://localhost:3307/Milestone',
+                url: 'http://localhost:3306/MilestoneHoc',
                 data: {
                    // id:ids,
                     name: names,
@@ -179,7 +179,7 @@ export default class SetMilestones extends Component {
                                 <div className="form-group">
                                     <div className="col-md-offset-2 col-md-10">
                                         <input type="submit" onClick={() => this.Addmilestone()} defaultValue="Add" className="btn btn-primary"></input> 
-                                         <Link to="/HOC/ViewMilestone"> </Link> 
+                                         <Link to="/HOC/ViewMilestoneHoc"> </Link> 
                                     </div>
                                 </div>
 
@@ -191,7 +191,7 @@ export default class SetMilestones extends Component {
                             {/* </form> */}
 
                             <div>
-                                <Link to="/HOC/ViewMilestone">Back to List</Link>
+                                <Link to="/HOC/ViewMilestoneHoc">Back to List</Link>
                             </div>
 
                         </div>

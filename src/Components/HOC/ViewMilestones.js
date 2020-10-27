@@ -16,7 +16,7 @@ export default class ViewMilestones extends Component {
     }
 
     async componentDidMount() {
-        await axios.get('http://localhost:3307/ViewMilestones').then(
+        await axios.get('http://localhost:3306/ViewMilestonesHoc').then(
             res => {
                 this.setState({
                     data: res.data.sessionsData
@@ -40,6 +40,7 @@ export default class ViewMilestones extends Component {
                { 
                 Header: "Name",
                 accessor:"Name",
+                headerStyle: { fontWeight: 'bold' },
                 style:{
                     textAlign:"center"
                 }
@@ -47,6 +48,7 @@ export default class ViewMilestones extends Component {
             {
                 Header: "Create Date",
                 accessor:"CreateDate",
+                headerStyle: { fontWeight: 'bold' },
                 filterable:'',
                 style:{
                     textAlign:"center"
@@ -56,6 +58,7 @@ export default class ViewMilestones extends Component {
             {
                 Header: "Completion Date",
                 accessor:"CompleteOn",
+                headerStyle: { fontWeight: 'bold' },
                 filterable:'',
                 style:{
                     textAlign:"center"
@@ -65,6 +68,7 @@ export default class ViewMilestones extends Component {
             {
                 Header: "Total Task",
                 accessor: "TotalTask",
+                headerStyle: { fontWeight: 'bold' },
                 filterable:'',
                 style:{
                     textAlign:"center"
@@ -74,6 +78,7 @@ export default class ViewMilestones extends Component {
             {
                 Header: "Status",
                 accessor: "Status",
+                headerStyle: { fontWeight: 'bold' },
                 style:{
                     textAlign:"center"
                 }
@@ -83,6 +88,7 @@ export default class ViewMilestones extends Component {
             {
                 Header:"Committee",
                 accessor:"CommitteeName",
+                headerStyle: { fontWeight: 'bold' },
                 filterable:'',
                 style:{
                     textAlign:"center"
@@ -99,7 +105,7 @@ export default class ViewMilestones extends Component {
                             <h2>Milestone</h2>
                             
                             <hr></hr>
-                            <ReactTable
+                            <ReactTable className="-striped -highlight"
                               columns = {columns} 
                               data = {this.state.data}
                               filterable

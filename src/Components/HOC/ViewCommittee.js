@@ -14,7 +14,7 @@ export default class ViewCommittees extends Component {
     } 
 }
 async componentDidMount() {
-    await axios.get('http://localhost:3307/Committees').then(
+    await axios.get('http://localhost:3306/CommitteesHoc').then(
         res => {
             this.setState({
                 data: res.data.sessionsData
@@ -31,6 +31,7 @@ async componentDidMount() {
         {
             Header:"Committee ID",
             accessor:"idCommittee",
+            headerStyle: { fontWeight: 'bold' },
             style:{
                 textAlign:"center"
             }
@@ -39,6 +40,7 @@ async componentDidMount() {
         {
             Header:"Committee Name",
             accessor:"CommitteeName",
+            headerStyle: { fontWeight: 'bold' },
             style:{
                 textAlign:"center"
             }
@@ -47,6 +49,7 @@ async componentDidMount() {
         {
             Header:"Committee Goal",
             accessor:"goal",
+            headerStyle: { fontWeight: 'bold' },
             filterable:'',
             style:{
                 textAlign:"center"
@@ -59,6 +62,7 @@ async componentDidMount() {
         {
             Header:"Creation Date",
             accessor:"committeeCreationDate",
+            headerStyle: { fontWeight: 'bold' },
             filterable:'',
 
             style:{
@@ -68,6 +72,7 @@ async componentDidMount() {
         {
             Header:"Desolving Date",
             accessor:"committeeDesolveDate",
+            headerStyle: { fontWeight: 'bold' },
             filterable:'',
 
             style:{
@@ -77,6 +82,7 @@ async componentDidMount() {
         {
             Header:"Description",
             accessor:"Description",
+            headerStyle: { fontWeight: 'bold' },
             filterable:'',
 
             style:{
@@ -88,7 +94,7 @@ async componentDidMount() {
             Cell: props => {
                 return (
                     
-                    <button href="/HOC/SetMilestone" className="btn btn-primary"> Assign </button>
+                    <button href="/HOC/SetMilestoneHoc" className="btn btn-primary"> Assign </button>
                     
                 )
                 
@@ -106,7 +112,7 @@ async componentDidMount() {
                             <link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
                                     <h2>Committees in CS Department</h2>
                             <hr></hr>
-                            <ReactTable
+                            <ReactTable className="-striped -highlight"
                               columns = {columns} 
                               data = {this.state.data}
                               filterable

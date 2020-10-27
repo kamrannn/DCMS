@@ -36,12 +36,12 @@ export default class Menu extends Component {
                                         <li>
                                             <Link to="/HOC/AssignedTask"> All Assigned Tasks<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
                                         </li>
-                                        <li>
+                                        {/* <li>
                                             <Link to="/HOC/SubmittedTask"> Submitted Tasks<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
                                         </li>
                                         <li>
                                             <Link to="/HOC/RejectedTask"> Rejected Tasks<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
-                                        </li>
+                                        </li> */}
                                     </ul>
                                 </li>
                                 

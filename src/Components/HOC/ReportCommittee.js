@@ -14,7 +14,7 @@ export default class SubmittedTask extends Component {
     }
 
     async componentDidMount() {
-        await axios.get('http://localhost:3307/CommitteeReports').then(
+        await axios.get('http://localhost:3306/CommitteeReportsHoc').then(
             res => {
                 this.setState({
                     data: res.data.sessionsData
@@ -68,6 +68,7 @@ export default class SubmittedTask extends Component {
             {
                 Header: "Action",
                 accessor:"",
+
                 width:"150",
                 filterable:'',
                 
@@ -90,7 +91,7 @@ export default class SubmittedTask extends Component {
                             <h2>Generate Report of Committee</h2>
                             
                             <hr></hr>
-                            <ReactTable
+                            <ReactTable className="-striped -highlight"
                               columns = {columns} 
                               data = {this.state.data}
                               filterable

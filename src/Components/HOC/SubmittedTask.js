@@ -14,7 +14,7 @@ export default class SubmittedTask extends Component {
     }
 
     async componentDidMount() {
-        await axios.get('http://localhost:3307/SubmittedTasks').then(
+        await axios.get('http://localhost:3306/SubmittedTasksHoc').then(
             res => {
                 this.setState({
                     data: res.data.sessionsData
@@ -80,6 +80,7 @@ export default class SubmittedTask extends Component {
             {
                 Header: "Task Deadline",
                 accessor:"",
+                headerStyle: { fontWeight: 'bold' },
                 width:"150",
                 filterable:'',
                 
@@ -100,7 +101,7 @@ export default class SubmittedTask extends Component {
                             <h2>List of Submitted Tasks</h2>
                             
                             <hr></hr>
-                            <ReactTable
+                            <ReactTable className="-striped -highlight"
                               columns = {columns} 
                               data = {this.state.data}
                               filterable

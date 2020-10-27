@@ -6,7 +6,7 @@ import "react-table-6/react-table.css";
 
 export default class AssignedTask extends Component {
 
-       
+ 
     constructor (props) {
         super(props);
         this.state = {
@@ -14,149 +14,126 @@ export default class AssignedTask extends Component {
         }
     }
 
-    async componentDidMount() {
-        await axios.get('http://localhost:3307/AllassignTasks').then(
-            res => {
-                this.setState({
-                    data: res.data.sessionsData
-                })
-            },
-            err => {
-                console.log(err);
-            }
-        )
-    }
-
+componentDidMount(){
+    const url="http://localhost:3306/AllassignTasksHoc";
+    
+    fetch(url,{
+        method: "GET"
+    }).then(response=> response.json()).then(data=>{
+         //console.log("Committees",data)
+        this.setState({data:data})
+    })
+}
     render() {
-            
-        {
+        
             const columns = [
-           
-               { 
-                Header: "ID",
-                accessor:"",
-                width:"30",
-                filterable:'',
+            //     {
+            //     Header: "ID",
+            //     accessor:"idMilestone"
+                
+            // },
+            { 
+                Header: "Task ID",
+                accessor:"idTask",
+                headerStyle: { fontWeight: 'bold' },
                 style:{
                     textAlign:"center"
                 }
             },
             {
-                Header: "First Name",
-                accessor:"",
-                width:"150",
-
+                Header: "Task Description",
+                accessor:"Description",
+                headerStyle: { fontWeight: 'bold' },
+                filterable:'',
                 style:{
                     textAlign:"center"
                 }
 
             }, 
             {
-                Header: "Last Name",
-                accessor:"",
-                width:"150",
-
+                Header: "Status",
+                accessor:"Status",
+                headerStyle: { fontWeight: 'bold' },
                 filterable:'',
-
                 style:{
                     textAlign:"center"
                 }
 
             },
             {
-                Header: "Major Role",
-                accessor:"",
-                width:"150",
+                Header: "Assigned Date",
+                accessor: "AssignDate",
+                headerStyle: { fontWeight: 'bold' },
                 filterable:'',
-                
-
                 style:{
                     textAlign:"center"
                 }
+
+            },       
+            {
+                Header: "Deadline",
+                accessor: "Deadline",
+                headerStyle: { fontWeight: 'bold' },
+                style:{
+                    textAlign:"center"
+                }
+    
 
             },
             {
-                Header: "Assigning Date",
-                accessor:"",
-                width:"150",
+                Header:"File uploaded",
+                accessor:"uploadFile",
+                headerStyle: { fontWeight: 'bold' },
                 filterable:'',
-                
-
                 style:{
                     textAlign:"center"
                 }
 
             },
+            // {
+            //     Header:"Comment",
+            //     accessor:"Comment",
+            //     filterable:'',
+            //     style:{
+            //         textAlign:"center"
+            //     }
+
+            // },
             {
-                Header: "Task Deadine",
-                accessor:"",
-                width:"150",
+                Header:"Name",
+                accessor:"Name",
+                headerStyle: { fontWeight: 'bold' },
                 filterable:'',
-                
-
                 style:{
                     textAlign:"center"
                 }
 
-            },
-            {
-                Header: "Task Description",
-                accessor:"",
-                width:"150",
-                filterable:'',
-                
-
-                style:{
-                    textAlign:"center"
-                }
-
-            },
-            {
-                Header: "Action",
-                accessor:"",
-                width:"150",
-                filterable:'',
-                
-
-                style:{
-                    textAlign:"center"
-                }
-
-            },
-
-            
-            
-        
+            }
 ]
+        
         return (
             <div>
                 <div id="page-wrapper" style={{}}>
                     <div className="row">
                         <div className="col-lg-12">
                             <br></br>
-                            <h2>Lists of Assigned Tasks</h2>
+                            <h2>Tasks Record</h2>
                             
                             <hr></hr>
-                            <ReactTable
-                              columns = {columns} 
+                            <ReactTable className="-striped -highlight"
+                              columns = {columns}
                               data = {this.state.data}
                               filterable
-                              noDataText={"Please Wait..."}
                               defaultPageSize={10}>
                             </ReactTable>      
-
-                        
-
-
-                       
                         </div>
                        
                     </div>
                 </div>
+                <hr />
             </div>
 
 
         )
     }
-}
 }

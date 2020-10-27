@@ -14,7 +14,7 @@ export default class SubmittedTask extends Component {
     }
 
     async componentDidMount() {
-        await axios.get('http://localhost:3307/ReportCommitteeMems').then(
+        await axios.get('http://localhost:3306/ReportCommitteeMemsHoc').then(
             res => {
                 this.setState({
                     data: res.data.sessionsData
@@ -32,6 +32,7 @@ export default class SubmittedTask extends Component {
                { 
                 Header: "S.No",
                 accessor:"",
+                headerStyle: { fontWeight: 'bold' },
                 width:"100",
                 filterable:'',
                 style:{
@@ -41,6 +42,7 @@ export default class SubmittedTask extends Component {
             {
                 Header: "First Name",
                 accessor:"",
+                headerStyle: { fontWeight: 'bold' },
                 width:"150",
                 filterable:'',
                 style:{
@@ -51,6 +53,7 @@ export default class SubmittedTask extends Component {
             {
                 Header: "Last name",
                 accessor:"",
+                headerStyle: { fontWeight: 'bold' },
                 width:"150",
                 filterable:'',
                 
@@ -64,6 +67,7 @@ export default class SubmittedTask extends Component {
             {
                 Header: "Major Role",
                 accessor:"",
+                headerStyle: { fontWeight: 'bold' },
                 width:"150",
                 filterable:'',
                 
@@ -76,6 +80,7 @@ export default class SubmittedTask extends Component {
             {
                 Header: "Commiittee Name",
                 accessor:"",
+                headerStyle: { fontWeight: 'bold' },
                 width:"150",
                 filterable:'',
                 
@@ -88,6 +93,7 @@ export default class SubmittedTask extends Component {
             {
                 Header: "Action",
                 accessor:"",
+                headerStyle: { fontWeight: 'bold' },
                 width:"150",
                 filterable:'',
                 
@@ -109,7 +115,7 @@ export default class SubmittedTask extends Component {
                             <h2>Committee Member Report</h2>
                             
                             <hr></hr>
-                            <ReactTable
+                            <ReactTable className="-striped -highlight"
                               columns = {columns} 
                               data = {this.state.data}
                               filterable

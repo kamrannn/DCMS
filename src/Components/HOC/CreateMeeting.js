@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import axios from 'axios';
+import Select from 'react-select';
+import { Link, Redirect } from 'react-router-dom';
 import ReactTable from "react-table-6";
 import "react-table-6/react-table.css";
 
@@ -11,6 +12,8 @@ export default class CreateMeeting extends Component {
         super(props)
         this.state = {
             //ID:'',
+            selectOptions : [],
+            userID:"",
             Date: '',
             Time:'',
             Duration: '',
@@ -22,12 +25,29 @@ export default class CreateMeeting extends Component {
             
         };
     }
+    async getOptions(){
+        const res = await axios.get('http://localhost:3306/CallMeetingsHoc')
+        const data = res.data
+    
+        const options = data.map(d => ({
+            "value" : d.idUser,
+            "label" : d.Name
+        }))
+
+        // console.log(options);
+    
+        this.setState({selectOptions: options})
+    }
     // handleIDChange = (event) => {
     //     this.setState({
     //         ID: event.target.value
     //     })
 
     // }
+    handleChange(e){
+        this.setState({userID:e.value})
+        console.log(e.value)
+    }
     handleDateChange = (event) => {
         this.setState({
             Date: event.target.value
@@ -71,7 +91,15 @@ export default class CreateMeeting extends Component {
             Committee: event.target.value
         });
     }
-
+    state = {
+        redirect: false
+    }
+    
+    setRedirect = () => {
+        this.setState({
+        redirect: true
+        })
+    }
 
     // resetForm() {
     //     this.setState({
@@ -86,6 +114,7 @@ export default class CreateMeeting extends Component {
     CreateMeeting = async () => {
 
         try {
+            var userID  = this.state.userID;
             var Dates = this.state.Date;
             var Times = this.state.Time;
             var Durations = this.state.Duration;
@@ -97,8 +126,9 @@ export default class CreateMeeting extends Component {
 
             var res = await axios({
                 method: 'post',
-                url: 'http://localhost:3307/CallMeetings',
+                url: 'http://localhost:3306/CallMeetingsHoc',
                 data: {
+                    userID:userID,
                     date: Dates,
                     time: Times,
                     duration: Durations,
@@ -191,6 +221,10 @@ export default class CreateMeeting extends Component {
                                 <div className="form-group">
                                 <label className="control-label col-md-2" htmlFor="SectionNo">Participant Invited</label>
                                 <div className="col-md-2">
+                                {/* <Select options={this.state.selectOptions} onChange={this.handleChange.bind(this)}/> */}
+
+
+
                                         <select onClick={this.handleParticipantInvitedChange} className="form-control" id="Year" name="Year">
                                             <option value={'Select '}>Select</option>
                                             <option value={1}>1</option>
@@ -224,7 +258,7 @@ export default class CreateMeeting extends Component {
                                     <div className="col-md-4">
                                     <select onClick={this.handleCommitteeChange} className="form-control" id="Year" name="Year">
                                             <option value={'Select '}>Select</option>
-                                            <option value={1}>1-Exams Committee   </option>
+                                            <option value={1}>1-Exams Committee   </option> 
                                             <option value={2}>2-Evaluation Committee   </option>
                                     </select>
                                     </div>
@@ -233,15 +267,15 @@ export default class CreateMeeting extends Component {
                                 
                                 <div className="form-group">
                                     <div className="col-md-offset-2 col-md-10">
-                                        <input type="submit" onClick={() => this.CreateMeeting()} className="btn btn-default" />
-                                        <Link to="/HOC/MeetingRecords"> </Link>
+                                        
+                                        <Link to="/HOC/MeetingRecords"><input type="submit" onClick={() => this.CreateMeeting()} className="btn btn-default" /> </Link>
                                     </div>
                                 </div>
 
 
                             </div>
                             <div>
-                                <Link to="/HOC/MeetingRecords">Back to List</Link>
+                                <Link to="/HOC/MeetingRecordsHoc">Back to List</Link>
                             </div>
                         </div>
                     </div>

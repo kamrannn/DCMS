@@ -15,15 +15,18 @@ export default class MeetingRecords extends Component {
         }
     }
 
-componentDidMount(){
-    const url="http://localhost:3307/CallMeetings";
-    
-    fetch(url,{
-        method: "GET"
-    }).then(response=> response.json()).then(data=>{
-        console.log("Committees",data)
-        this.setState({data:data})
-    })
+async componentDidMount() {
+    await axios.get('http://localhost:3306/MeetingRecordsHoc').then(
+        res => {
+            this.setState({
+                data: res.data.sessionsData
+            })
+            console.log(res.data.sessionsData)
+        },
+        err => {
+            console.log(err);
+        }
+    )
 }
     render() {
         const columns = [
@@ -32,16 +35,17 @@ componentDidMount(){
             //     accessor:"idMilestone"
                 
             // },
-            { 
-                Header: "Meeting ID",
-                accessor:"idMeeting",
-                style:{
-                    textAlign:"center"
-                }
-            },
+            // { 
+            //     Header: "Meeting ID",
+            //     accessor:"idMeeting",
+            //     style:{
+            //         textAlign:"center"
+            //     }
+            // },
             {
                 Header: "Meeting Date",
                 accessor:"Date",
+                headerStyle: { fontWeight: 'bold' },
                 filterable:'',
                 style:{
                     textAlign:"center"
@@ -51,6 +55,7 @@ componentDidMount(){
             {
                 Header: "Meeting Time",
                 accessor:"Time",
+                headerStyle: { fontWeight: 'bold' },
                 filterable:'',
                 style:{
                     textAlign:"center"
@@ -60,6 +65,7 @@ componentDidMount(){
             {
                 Header: "Duration",
                 accessor: "Duration",
+                headerStyle: { fontWeight: 'bold' },
                 filterable:'',
                 style:{
                     textAlign:"center"
@@ -69,6 +75,7 @@ componentDidMount(){
             {
                 Header: "MeetingMinutes",
                 accessor: "MeetingMinutes",
+                headerStyle: { fontWeight: 'bold' },
                 style:{
                     textAlign:"center"
                 }
@@ -78,6 +85,7 @@ componentDidMount(){
             {
                 Header:"Agenda",
                 accessor:"Agenda",
+                headerStyle: { fontWeight: 'bold' },
                 filterable:'',
                 style:{
                     textAlign:"center"
@@ -87,6 +95,7 @@ componentDidMount(){
             {
                 Header:"Venue",
                 accessor:"Venue",
+                headerStyle: { fontWeight: 'bold' },
                 filterable:'',
                 style:{
                     textAlign:"center"
@@ -96,6 +105,7 @@ componentDidMount(){
             {
                 Header:"ParticipantInvited",
                 accessor:"ParticipantInvited",
+                headerStyle: { fontWeight: 'bold' },
                 filterable:'',
                 style:{
                     textAlign:"center"
@@ -105,6 +115,7 @@ componentDidMount(){
             {
                 Header:"CommitteeName",
                 accessor:"CommitteeName",
+                headerStyle: { fontWeight: 'bold' },
                 filterable:'',
                 style:{
                     textAlign:"center"
@@ -121,7 +132,7 @@ componentDidMount(){
                             <h2>Meeting Records</h2>
                             
                             <hr></hr>
-                            <ReactTable
+                            <ReactTable className="-striped -highlight"
                               columns = {columns}
                               data = {this.state.data}
                               filterable

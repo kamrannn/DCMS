@@ -12,8 +12,11 @@
     "react-google-charts": "^3.0.15",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
+    "react-select": "^3.1.0",
     "react-table": "^7.5.1",
-    "react-table-6": "^6.11.0"
+    "react-table-6": "^6.11.0",
+    "redirect": "^0.2.0",
+    "select": "^1.1.2"
   },
   "scripts": {
     "start": "react-scripts start",

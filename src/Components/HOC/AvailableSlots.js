@@ -14,7 +14,7 @@ export default class SubmittedTask extends Component {
     }
 
     async componentDidMount() {
-        await axios.get('http://localhost:3307/Availableslots').then(
+        await axios.get('http://localhost:3306/AvailableslotsHoc').then(
             res => {
                 this.setState({
                     data: res.data.sessionsData
@@ -36,6 +36,7 @@ export default class SubmittedTask extends Component {
                { 
                 Header: "S.No",
                 accessor:"",
+                headerStyle: { fontWeight: 'bold' },
                 width:"100",
                 filterable:'',
                 style:{
@@ -45,6 +46,7 @@ export default class SubmittedTask extends Component {
             {
                 Header: "Date",
                 accessor:"",
+                headerStyle: { fontWeight: 'bold' },
                 width:"150",
                 filterable:'',
                 style:{
@@ -55,6 +57,7 @@ export default class SubmittedTask extends Component {
             {
                 Header: "Start Time",
                 accessor:"",
+                headerStyle: { fontWeight: 'bold' },
                 width:"150",
                 filterable:'',
                 
@@ -68,6 +71,7 @@ export default class SubmittedTask extends Component {
             {
                 Header: "End Time",
                 accessor:"",
+                headerStyle: { fontWeight: 'bold' },
                 width:"150",
                 filterable:'',
                 
@@ -80,6 +84,7 @@ export default class SubmittedTask extends Component {
             {
                 Header: "Duration",
                 accessor:"",
+                headerStyle: { fontWeight: 'bold' },
                 width:"150",
                 filterable:'',
                 
@@ -102,7 +107,7 @@ export default class SubmittedTask extends Component {
                             <h2>Available Slot Details</h2>
                             
                             <hr></hr>
-                            <ReactTable
+                            <ReactTable className="-striped -highlight"
                               columns = {columns} 
                               data = {this.state.data}
                               filterable
