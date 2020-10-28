@@ -10,6 +10,7 @@ Router.get('/', (req, res) =>{
         res.json({
             result: data
         })
+        console.log(result);
     })
 });
 
@@ -19,7 +20,7 @@ Router.post('/',function(req, res){
 
     // db.query('SELECT * FROM `users` WHERE users.Email=? AND users.Password = ?  LIMIT 1',[email,password],function (err,data) {
 
-        db.query('SELECT users.Name,users.Email,roles.role_name FROM user_roles,users,roles WHERE user_roles.Users_idUser=users.idUser AND user_roles.roles_roles_id= roles.roles_id AND users.Email=? AND users.Password=?',[email,password],function (err,data) {
+        db.query('SELECT users.Name,users.Email,roles.role_name FROM user_roles,users,roles WHERE user_roles.Users_idUser=users.idUser AND user_roles.roles_roles_id= roles.roles_id AND users.Email=? AND users.Password=? LIMIT 1',[email,password],function (err,data) {
 
         if(err){
             res.json({

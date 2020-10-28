@@ -14,7 +14,7 @@ export default class AddMeeting extends Component {
     }
 
     componentDidMount() {
-        const url = "http://localhost:3307/viewUpcommingMeeting";
+        const url = "http://localhost:3306/viewUpcommingMeetingMOC";
         fetch(url, {
             method: "GET"
         }).then(response => response.json()).then(post => {
@@ -24,46 +24,64 @@ export default class AddMeeting extends Component {
     render() {
         const columns = [ 
             {
-                Header: "MeetingID",
-                accessor: "idMeeting",
+                Header: "Date",
+                accessor: "Date",
                 style: {
                     textAlign: "center"
                 },
-                width: 100,
-                maxWidth: 100,
-                minWidth: 100
-            },
-            {
-                Header: "Date",
-                accessor: "Date",
+                headerStyle: { fontWeight: 'bold' },
                 sortable: false
             },
             {
                 Header: "Time",
                 accessor: "Time",
+                style: {
+                    textAlign: "center"
+                },
+                headerStyle: { fontWeight: 'bold' },
                 sortable: false,
                 filterable: false
             },
             {
                 Header: "Duration",
                 accessor: "Duration",
+                style: {
+                    textAlign: "center"
+                },
+                headerStyle: { fontWeight: 'bold' },
                 sortable: false
             },
             {
                 Header: "Agenda",
-                accessor: "Agenda"
+                accessor: "Agenda",
+                style: {
+                    textAlign: "center"
+                },
+                headerStyle: { fontWeight: 'bold' }
             },
             {
                 Header: "Venue",
-                accessor: "Venue"
+                accessor: "Venue",
+                style: {
+                    textAlign: "center"
+                },
+                headerStyle: { fontWeight: 'bold' }
             },
             {
                 Header: "Participants Invited",
-                accessor: "ParticipantInvited"
+                accessor: "ParticipantInvited",
+                style: {
+                    textAlign: "center"
+                },
+                headerStyle: { fontWeight: 'bold' }
             },
             {
                 Header: "Head of Committee",
                 accessor: "Name",
+                style: {
+                    textAlign: "center"
+                },
+                headerStyle: { fontWeight: 'bold' },
                 sortable: false
             }
         ]
@@ -74,7 +92,7 @@ export default class AddMeeting extends Component {
                         <div className="col-lg-12">
                             <h2>Upcoming Meeting Details</h2>
                             <hr></hr>
-                            <ReactTable
+                            <ReactTable className = "-striped -highlight"
                                 columns = {columns}
                                 data = {
                                     this.state.posts

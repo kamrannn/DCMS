@@ -4,14 +4,13 @@ var db= require('../../database/connectionDB');
 require('dotenv').config;
 
 Router.get('/', (req, res) =>{
-    db.query('SELECT * FROM users, committee, user_roles WHERE users.idUser = user_roles.Users_idUser AND committee.idCommittee = user_roles.Committee_idCommittee', (err, data)=>{
+    db.query('SELECT milestone.Name, milestone.CreateDate, milestone.CompleteOn,milestone.TotalTask, milestone.Status,committee.CommitteeName  FROM milestone,committee WHERE milestone.Committee_idCommittee=committee.idCommittee', (err, data)=>{
         res.json({
             result: data
         })
     })
 });
 
-// user_roles.roles_roles_id = 3
 // Router.delete('/delCommittee/:id', (req, res) =>{
 //     const idCommittee = req.params.id;
 //     console.log(idCommittee); 

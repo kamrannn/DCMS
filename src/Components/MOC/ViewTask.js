@@ -1,67 +1,95 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import ReactTable from "react-table-6";
+import "react-table-6/react-table.css"
 
 export default class ViewTask extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            posts: []
+        }
+    }
+    componentDidMount() {
+        const url = "http://localhost:3306/viewTaskMOC";
+        fetch(url, {
+            method: "GET"
+        }).then(response => response.json()).then(post => {
+            this.setState({posts: post.result})
+        })
+    }
+    submitRow(id){
+
+    }
     render() {
+        const columns = [
+            { 
+                Header: "Assigned Date",
+                accessor:"AssignDate",
+                headerStyle: { fontWeight: 'bold' },
+                style:{
+                    textAlign:"center"
+                }
+            },
+            {
+                Header: "Assigned to",
+                accessor:"Name",
+                headerStyle: { fontWeight: 'bold' },
+                filterable:'',
+                style:{
+                    textAlign:"center"
+                }
+            }, 
+            {
+                Header: "Due Date",
+                accessor:"Deadline",
+                headerStyle: { fontWeight: 'bold' },
+                filterable:'',
+                style:{
+                    textAlign:"center"
+                }
+            },
+            {
+                Header: "Status",
+                accessor: "Status",
+                headerStyle: { fontWeight: 'bold' },
+                style:{
+                    textAlign:"center"
+                }
+            },
+            {
+                Header: "Actions",
+                headerStyle: { fontWeight: 'bold' },
+                Cell: props => {
+                    return(
+                        // <a href="" className="btn btn-sm btn-danger"> Delete</a> 
+                        <Link to="" onClick={() => { if(window.confirm('Delete the item?')){ this.submitRow(props.row.idTask)}}}><button className="btn btn-primary">Submit</button></Link>
+                    )
+                },
+                sortable: false,
+                filterable: false,
+                width: 100,
+                maxWidth: 100,
+                minWidth: 100
+            }
+        ]
         return (
-            <div>
-                <div id="page-wrapper" style={{}}>
-                    <div className="row">
-                        <div className="col-lg-12">
-                            <h2>Tasks</h2><hr></hr>
-                            <table className="table table-striped table-condensed table-bordered">
-                                <tbody>
-                                <tr>
-                                    <th>
-                                        Task id
-                                    </th>
-                                    <th>
-                                        Assigned by
-                                    </th>
-                                    <th>
-                                        Status
-                                    </th>
-                                    <th>
-                                        Due Date
-                                    </th>
-                                    {/* <th>
-                                        
-                                    </th> */}
-                                    
-                                    <th />
-                                </tr>
-                                    <tr>
-                                        <td>
-                                            1
-                                        </td>
-                                        <td>
-                                            ROHAN AWAN
-                                        </td>
-                                        <td>
-                                            Active
-                                        </td>
-                                        <td>
-                                            28 Aug,2020
-                                        </td>
-                                        <td>
-                                            <Link to="/HOC/ViewTask">Submit</Link>
-                                        </td>
-                                        {/* <td>
-                                            <Link to="/MOC/TaskDetails">Details</Link> |
-                                            <Link to="/HOC/DeleteSection">Delete</Link>
-                                        </td> */}
-                                    </tr>
-                                </tbody></table>
-        Page 1 of 1
-                        <div className="pagination-container"><ul className="pagination"><li className="active"><a>1</a></li></ul></div>
-                            <div id="spinner" className="spinner" style={{ display: 'none' }}>
-                                <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', height: '100%', margin: '0 auto', backgroundColor: '#000', opacity: '.4', zIndex: 999999 }}>
-                                    <img id="img-spinner" src={`${process.env.PUBLIC_URL}/Assets/spinner.gif`} alt="Loading" style={{ position: 'absolute', height: 'auto!important', width: 'auto!important', left: '47%', top: '47%' }} /><br />
-                                    <p style={{ position: 'absolute', height: 'auto !important', width: 'auto !important', left: '51%', top: '51%', fontSize: 20, color: 'white' }}>Please Wait</p>
-                                </div>
-                            </div>
-                        </div>
-                        {/* /.col-lg-12 */}
+            <div id="page-wrapper" style={{}}>
+                <div className="row">
+                    <div className="col-lg-12">
+                        <h2>Tasks</h2><hr></hr>
+                        <ReactTable className = "-striped -highlight"
+                            columns = {columns}
+                            data = {
+                                this.state.posts
+                            }
+                            filterable
+                            defaultPageSize = {10}
+                            noDataText = {"Please Wait.."}
+                            pageSizeOptions = {[2,4,6]}
+                            >
+                        </ReactTable>
                     </div>
                     {/* /.row */}
                 </div>
