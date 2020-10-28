@@ -19,6 +19,24 @@ var assignTaskADMIN= require ('./routes/Admin/Tasks/assignTask');
 //var Meetings
 var viewRecentMeetingsADMIN= require('./routes/Admin/Meetings/viewRecentMeetings');
 var createMeetingADMIN = require('./routes/Admin/Meetings/createMeeting');
+
+//var dataCM
+var viewCMADMIN= require('./routes/Admin/dataCM/viewCM');
+
+//var dataFaculty
+var viewFacultyADMIN= require('./routes/Admin/dataFaculty/viewFaculty');
+
+//var dataHOD
+var viewHODADMIN= require('./routes/Admin/dataHOD/viewHOD');
+
+//var dataHOC
+var viewHOCADMIN= require('./routes/Admin/dataHOC/viewHOC');
+
+//var dataStudent
+var viewStudentADMIN= require('./routes/admin/dataStudent/viewStudent');
+
+
+
 var app = express();
 
 // view engine setup
@@ -54,6 +72,22 @@ app.use('/assignTaskADMIN',assignTaskADMIN);
 /////////////////Meeting Routers/////////////////////////////////
 app.use('/viewRecentMeetingsADMIN',viewRecentMeetingsADMIN);
 app.use('/createMeetingADMIN',createMeetingADMIN);
+
+//dataCommitteeMember
+app.use('/viewCMADMIN',viewCMADMIN);
+
+//dataFaculty
+app.use('/viewFacultyADMIN',viewFacultyADMIN);
+
+//dataHOD
+app.use('/viewHODADMIN',viewHODADMIN);
+
+//dataHOC
+app.use('/viewHOCADMIN',viewHOCADMIN);
+
+//dataStudent
+app.use('/viewStudentADMIN',viewStudentADMIN);
+
 
 ///////////////////////////////////////////////////////////////////////
 

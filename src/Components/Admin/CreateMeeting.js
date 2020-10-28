@@ -290,8 +290,6 @@ export default class CreateMeeting extends Component {
                             <div></div>
                                     </div>
                                 </div>
-
-
                             </div>
                             {/* <div>
                                 <Link to="/HOC/MeetingRecordsHoc">Back to List</Link>

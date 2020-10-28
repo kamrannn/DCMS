@@ -13,7 +13,7 @@ export default class ViewCommitteeMembers extends Component {
     }
     
     componentDidMount() {
-        const url = "http://localhost:3306/viewCommitteeMembersADMIN";
+        const url = "http://localhost:3306/viewCMADMIN";
         fetch(url, {
             method: "GET"
         }).then(response => response.json()).then(post => {

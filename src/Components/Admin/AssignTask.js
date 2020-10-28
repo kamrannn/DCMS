@@ -259,7 +259,6 @@ AssignTask = async () => {
                             <div className="container-fluid" style={mystyle}><Link to="/Admin/ViewCommittees">
                                     <input style={mystyle} type="submit" defaultValue="Create" onClick={() => this.AssignTask()} className="btn btn-primary" /></Link>
                                 </div>
-
                             <div>
                                 {/* {this.renderRedirect()}
                                 <button onClick={this.setRedirect}><input type="submit" defaultValue="Create" onClick={() => this.CreateCommittee()} className="btn btn-primary" /></button> */}
