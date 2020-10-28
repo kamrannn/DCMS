@@ -36,6 +36,7 @@ Router.post('/',function(req, res){
                 email: data[0].Email,
                 role: data[0].role_name
             }
+            console.log(usersData);
 
         // if(data && data.length==1){
         //     const usersData= {

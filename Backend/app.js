@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var login = require('./routes/login');
 
+
 var viewCommitteeHOD = require('./routes/HOD/viewCommittee')
 var createCommitteeHOD = require('./routes/HOD/createCommittee')
 var viewUpcommingMeetingHOD = require('./routes/HOD/UpcommingMeeting')
@@ -30,6 +31,35 @@ var SetMilestoneMOC = require('./routes/MOC/SetMilestone')
 var viewTaskMOC = require('./routes/MOC/viewTask')
 var HOCReviews = require('./routes/MOC/HOCReviews')
 var HODReviews = require('./routes/MOC/HODReviews')
+
+//var of committee
+var viewCommitteesADMIN = require('./routes/Admin/Committee/viewCommittees');
+var ADMINcreateCommittee = require('./routes/Admin/Committee/createCommittee');
+
+//var Tasks
+var viewAssignedTasksADMIN= require('./routes/Admin/Tasks/viewAssignedTasks');
+var assignTaskADMIN= require ('./routes/Admin/Tasks/assignTask');
+
+//var Meetings
+var viewRecentMeetingsADMIN= require('./routes/Admin/Meetings/viewRecentMeetings');
+var createMeetingADMIN = require('./routes/Admin/Meetings/createMeeting');
+
+//var dataCM
+var viewCMADMIN= require('./routes/Admin/dataCM/viewCM');
+
+//var dataFaculty
+var viewFacultyADMIN= require('./routes/Admin/dataFaculty/viewFaculty');
+
+//var dataHOD
+var viewHODADMIN= require('./routes/Admin/dataHOD/viewHOD');
+
+//var dataHOC
+var viewHOCADMIN= require('./routes/Admin/dataHOC/viewHOC');
+
+//var dataStudent
+var viewStudentADMIN= require('./routes/admin/dataStudent/viewStudent');
+
+
 
 var app = express();
 
@@ -54,6 +84,7 @@ app.use(function(req, res, next){
 app.use('/users', usersRouter);
 app.use('/login', login);
 
+
 app.use('/viewCommitteeHOD/', viewCommitteeHOD)
 app.use('/createCommitteeHOD/', createCommitteeHOD)
 app.use('/viewUpcommingMeetingHOD/', viewUpcommingMeetingHOD)
@@ -76,6 +107,38 @@ app.use('/SetMilestoneMOC/', SetMilestoneMOC)
 app.use('/viewTaskMOC/', viewTaskMOC)
 app.use('/HOCReviews/', HOCReviews)
 app.use('/HODReviews/', HODReviews)
+
+/////////////////committee Routers/////////////////////////////////
+app.use('/viewCommitteesADMIN',viewCommitteesADMIN);
+
+app.use('/ADMINcreateCommittee',ADMINcreateCommittee);
+
+/////////////////Task Routers/////////////////////////////////
+app.use('/viewAssignedTasksADMIN',viewAssignedTasksADMIN);
+app.use('/assignTaskADMIN',assignTaskADMIN);
+
+/////////////////Meeting Routers/////////////////////////////////
+app.use('/viewRecentMeetingsADMIN',viewRecentMeetingsADMIN);
+app.use('/createMeetingADMIN',createMeetingADMIN);
+
+//dataCommitteeMember
+app.use('/viewCMADMIN',viewCMADMIN);
+
+//dataFaculty
+app.use('/viewFacultyADMIN',viewFacultyADMIN);
+
+//dataHOD
+app.use('/viewHODADMIN',viewHODADMIN);
+
+//dataHOC
+app.use('/viewHOCADMIN',viewHOCADMIN);
+
+//dataStudent
+app.use('/viewStudentADMIN',viewStudentADMIN);
+
+
+///////////////////////////////////////////////////////////////////////
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

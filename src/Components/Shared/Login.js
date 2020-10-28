@@ -33,6 +33,7 @@ export const Login=()=> {
             if(result){
                 localStorage.setItem('token', result.Token);
                 localStorage.setItem('role', result.role);
+                console.log(result.role);
 
                 if(result.role=='Admin'){
                     history.push(result.role);
@@ -52,7 +53,6 @@ export const Login=()=> {
                 if(result.role=='Student'){
                     history.push(result.role);
                 }
-
             }
             else{
                 console.log(result);
@@ -75,9 +75,8 @@ export const Login=()=> {
                             <div>
                                 <div>
                                     <section id="loginForm">
-                                        <div id="tabs" style={{ borderRadius: '10px' }} className="ui-tabs ui-widget ui-widget-content ui-corner-all">
-
-                                            <div id="tabs-1" style={{ marginLeft: '30px' }}>
+                                        <div id="tabs" style={{ borderRadius: '30px' }} className="ui-tabs ui-widget ui-widget-content ui-corner-all">
+                                            <div id="tabs-1" style={{ marginLeft: '30px', height:'150px' }}>
                                                 <br />
                                                 <section id="loginForm">
                                                     {/* <form className="form-horizontal" > */}
