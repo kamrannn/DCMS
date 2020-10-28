@@ -12,7 +12,7 @@ import ViewMilestones from './Components/HOC/ViewMilestones'
 import DetailsMilestones from './Components/HOC/DetailsMilestone'
 import EditMilestone from './Components/HOC/EditMilestone'
 import CreateMeeting from './Components/HOC/CreateMeeting'
-import UpcomingMeeting from './Components/HOC/UpcomingMeeting'
+import MeetingRecords from './Components/HOC/MeetingRecords'
 import AvailableSlot from './Components/HOC/AvailableSlots'
 import AssignedTask from './Components/HOC/AssignedTask'
 import AssignTask from './Components/HOC/AssignTask'
@@ -22,8 +22,6 @@ import ReportCM from './Components/HOC/ReportCM'
 import ReportCommittee from './Components/HOC/ReportCommittee'
 import ReportsSection from './Components/HOC/ReportsSection'
 import AssigningTask from './Components/HOC/AssigningTask'
-
-
 import FacultyIndex from './Components/Faculty/Index'
 
 export default class HOCRouting extends Component {
@@ -83,7 +81,8 @@ export default class HOCRouting extends Component {
           } />
           <Route path="/HOC/MeetingRecords" exact strict render={
             () => {
-              return (<UpcomingMeeting />)
+              return (<MeetingRecords />)
+              
             }
           } />
           <Route path="/HOC/AvailableSlot" exact strict render={

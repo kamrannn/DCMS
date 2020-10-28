@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import Route from 'react-router-dom/Route';
+//import axios from 'axios';
+//import ReactTables from "react-table-6";
+//import "react-table-6/react-table.css";
 import Footer from './Components/Shared/MainFooter'
 import MainHeader from './Components/Shared/MainHeader'
 import Login from './Components/Shared/Login'
@@ -12,6 +15,8 @@ import StudentRouting from './StudentRouting'
 import MOCRouting from './MOCRouting'
 import AboutUs from './Components/Shared/AboutUs'
 export default class App extends Component {
+
+
   render() {
     return (
       <Router>
