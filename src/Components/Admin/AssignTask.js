@@ -155,6 +155,14 @@ AssignTask = async () => {
 
     render() {
         // console.log(this.state.selectOptions)
+        const mystyle = {
+            color: "white",
+            padding: "20px",
+            fontFamily: "Arial",
+            textAlign: "center",
+            font: "900 40px",
+            width:"100%"
+        };
         return (
         <div>
             <div id="page-wrapper" style={{}}>
@@ -246,9 +254,11 @@ AssignTask = async () => {
                     <div className="row">
                         <div className="col-md-offset-2 col-md-10">
                             <div className="form-group">
-                            <input type="submit" defaultValue="Create" onClick={() => this.AssignTask()} className="btn btn-primary" />
-                            <Link to="/HOC/AssignTasksHoc"> </Link> 
-
+                            {/* <input type="submit" defaultValue="Create" onClick={() => this.AssignTask()} className="btn btn-primary" />
+                            <Link to="/HOC/AssignTasksHoc"> </Link>  */}
+                            <div className="container-fluid" style={mystyle}><Link to="/Admin/ViewCommittees">
+                                    <input style={mystyle} type="submit" defaultValue="Create" onClick={() => this.AssignTask()} className="btn btn-primary" /></Link>
+                                </div>
                             <div>
                                 {/* {this.renderRedirect()}
                                 <button onClick={this.setRedirect}><input type="submit" defaultValue="Create" onClick={() => this.CreateCommittee()} className="btn btn-primary" /></button> */}
