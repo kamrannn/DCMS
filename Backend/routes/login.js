@@ -10,6 +10,7 @@ Router.get('/', (req, res) =>{
         res.json({
             result: data
         })
+        console.log(result);
     })
 });
 
