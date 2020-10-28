@@ -158,6 +158,14 @@ export default class CreateMeeting extends Component {
 
 
     render() {
+        const mystyle = {
+            color: "white",
+            padding: "20px",
+            fontFamily: "Arial",
+            textAlign: "center",
+            font: "900 40px",
+            width:"100%"
+        };
         return (
             <div>
                 <div id="page-wrapper" style={{}}>
@@ -267,8 +275,19 @@ export default class CreateMeeting extends Component {
                                 
                                 <div className="form-group">
                                     <div className="col-md-offset-2 col-md-10">
+
                                         
+                                        
+                                        {/* <Link to="/Admin/RecentMeetings"><input type="submit" onClick={() => this.CreateMeeting()} className="btn btn-default" /> </Link> */}
+                                        
+                                        {/* <button variant="primary" size="lg" block>
                                         <Link to="/Admin/RecentMeetings"><input type="submit" onClick={() => this.CreateMeeting()} className="btn btn-default" /> </Link>
+                                        </button> */}
+
+                                        <div className="container-fluid" style={mystyle}><Link to="/Admin/ViewCommittees">
+                                    <input style={mystyle} type="submit" defaultValue="Create" onClick={() => this.CreateMeeting()} className="btn btn-primary" /></Link>
+                                </div>
+                            <div></div>
                                     </div>
                                 </div>
 
