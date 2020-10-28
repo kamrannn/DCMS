@@ -4,7 +4,7 @@ var db= require('../../database/connectionDB');
 require('dotenv').config;
 
 Router.get('/', (req, res) =>{
-    db.query('SELECT * FROM users, committee, user_roles WHERE users.idUser = user_roles.Users_idUser AND committee.idCommittee = user_roles.Committee_idCommittee', (err, data)=>{
+    db.query('SELECT * FROM committee', (err, data)=>{
         res.json({
             result: data
         })

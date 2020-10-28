@@ -46,7 +46,6 @@ async componentDidMount() {
                 Header: "Meeting Date",
                 accessor:"Date",
                 headerStyle: { fontWeight: 'bold' },
-                filterable:'',
                 style:{
                     textAlign:"center"
                 }
@@ -56,31 +55,26 @@ async componentDidMount() {
                 Header: "Meeting Time",
                 accessor:"Time",
                 headerStyle: { fontWeight: 'bold' },
-                filterable:'',
                 style:{
                     textAlign:"center"
                 }
-
             },
             {
                 Header: "Duration",
                 accessor: "Duration",
                 headerStyle: { fontWeight: 'bold' },
-                filterable:'',
                 style:{
                     textAlign:"center"
                 }
-
             },       
             {
                 Header: "MeetingMinutes",
                 accessor: "MeetingMinutes",
+                filterable:'',
                 headerStyle: { fontWeight: 'bold' },
                 style:{
                     textAlign:"center"
                 }
-    
-
             },
             {
                 Header:"Agenda",

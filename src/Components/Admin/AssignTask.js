@@ -256,7 +256,7 @@ AssignTask = async () => {
                             <div className="form-group">
                             {/* <input type="submit" defaultValue="Create" onClick={() => this.AssignTask()} className="btn btn-primary" />
                             <Link to="/HOC/AssignTasksHoc"> </Link>  */}
-                            <div className="container-fluid" style={mystyle}><Link to="/Admin/ViewCommittees">
+                            <div className="container-fluid" style={mystyle}><Link to="/Admin/AssignedTask">
                                     <input style={mystyle} type="submit" defaultValue="Create" onClick={() => this.AssignTask()} className="btn btn-primary" /></Link>
                                 </div>
                             <div>
@@ -268,7 +268,6 @@ AssignTask = async () => {
                     </div>
                     <br></br>
                 </div>
-        
         </div>
 
         )

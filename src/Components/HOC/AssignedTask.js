@@ -32,14 +32,7 @@ componentDidMount(){
             //     accessor:"idMilestone"
                 
             // },
-            { 
-                Header: "Task ID",
-                accessor:"idTask",
-                headerStyle: { fontWeight: 'bold' },
-                style:{
-                    textAlign:"center"
-                }
-            },
+            
             {
                 Header: "Task Description",
                 accessor:"Description",

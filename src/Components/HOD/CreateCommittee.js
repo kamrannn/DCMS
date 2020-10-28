@@ -147,6 +147,14 @@ CreateCommittee = async () => {
 
     render() {
         // console.log(this.state.selectOptions)
+        const mystyle = {
+            color: "white",
+            padding: "20px",
+            fontFamily: "Arial",
+            textAlign: "center",
+            font: "900 40px",
+            width:"100%"
+        };
         return (
         <div>
             <div id="page-wrapper" style={{}}>
@@ -249,11 +257,14 @@ CreateCommittee = async () => {
                     <div className="row">
                         <div className="col-lg-12">
                             <div className="form-group">
-                            <input type="submit" defaultValue="Create" onClick={() => this.CreateCommittee()} className="btn btn-primary" />
+                            {/* <input type="submit" defaultValue="Create" onClick={() => this.CreateCommittee()} className="btn btn-primary" /> */}
                             {/* <Link to="/Admin/ViewCommittees"><input type="submit" defaultValue="Create" onClick={() => this.CreateCommittee()} className="btn btn-primary" /></Link> */}
                             <div>
                                 {/* {this.renderRedirect()}
                                 <button onClick={this.setRedirect}><input type="submit" defaultValue="Create" onClick={() => this.CreateCommittee()} className="btn btn-primary" /></button> */}
+                            <div className="container-fluid" style={mystyle}><Link to="/HOD/ViewCommittees">
+                                    <input style={mystyle} type="submit" defaultValue="Create" onClick={() => this.CreateCommittee()} className="btn btn-primary" /></Link>
+                                </div>
                             </div>
                             </div>
                         </div>
