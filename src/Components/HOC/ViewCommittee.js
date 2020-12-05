@@ -10,21 +10,42 @@ export default class ViewCommittees extends Component {
     super(props);
 
     this.state = {
+        role: '',
+        name: '',
+        email: '',
+        id: '',
         data : []
     } 
 }
-async componentDidMount() {
-    await axios.get('http://localhost:3306/CommitteesHoc').then(
-        res => {
-            this.setState({
-                data: res.data.sessionsData
-            })
-            console.log(this.state.data);
-        },
-        err => {
-            console.log(err);
-        }
-    )
+
+componentDidMount() {
+    this.fetchData();
+}
+
+fetchData = async () => {
+    const loginToken = localStorage.getItem('token');
+    console.log(loginToken);
+
+    await axios.get('http://localhost:3306/login/verifyToken', { headers: {
+        'X-Custom-Header': loginToken
+    }}).then(res =>{
+        this.setState({
+            role: res.data.role,
+            name: res.data.name,
+            email: res.data.email,
+            id: res.data.userId
+        })
+        var userID = this.state.id
+        localStorage.setItem('userid', userID)
+        localStorage.setItem('name', this.state.email)
+
+        console.log(res.data);
+    }, err => { console.log(err)});
+
+
+    await axios.get('http://localhost:3306/CommitteesHoc',  { headers: {
+        'X-Custom-Header': localStorage.getItem('userid')
+    }}).then(res => {this.setState({data: res.data.sessionsData})});
 }
     render() {
         const columns = [

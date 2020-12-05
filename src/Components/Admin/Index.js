@@ -2,13 +2,13 @@ import React, { Component } from 'react'
 // import Menu from './Menu';
 
 export default class extends Component {
-
+    
     componentDidMount() {
         const script = document.createElement("script");
         script.src = 'js/Admin.js';
         script.async = 'true';
         document.body.appendChild(script);
-    }
+    }   
     render() {
         return (
             <div>
