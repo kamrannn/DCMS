@@ -45,7 +45,9 @@ Router.post('/',function(req, res){
             }
             console.log(usersData);
 
-            const accessToken = jwtToken.sign(usersData, ""+process.env.SECRET, { expiresIn:86400 });
+            const accessToken = generateAccessToken(usersData);
+            // res.cookie('jwt', 'dsa', { maxAge: 86400});
+            // res.setHeader('Set-cookie', 'newUser=true')
             
             res.json({
                 success:true,
@@ -57,5 +59,9 @@ Router.post('/',function(req, res){
     });
 
 }); 
+
+function generateAccessToken(user) {
+  return jwtToken.sign(user, ""+process.env.SECRET, { expiresIn:86400 });
+}
 
 module.exports = Router;
