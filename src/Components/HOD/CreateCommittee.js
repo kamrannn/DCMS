@@ -14,9 +14,9 @@ export default class CreateCommittee extends Component
         headID: "",
         CommitteeName:"",
         CommitteeGoal:"",
-        CommitteeCreationDate:"",
         CommitteeDesolvingDate:"",
         CommitteeDescription:"",
+        committeeStatus: 1
         }
     }
     async getOptions(){
@@ -52,13 +52,6 @@ export default class CreateCommittee extends Component
         this.setState({
             CommitteeGoal: event.target.value
         })
-    }
-    
-    handleCommitteeCreationDatechange = (event) => {
-        this.setState({
-            CommitteeCreationDate: event.target.value
-        })
-        // console.log(event.target.value)
     }
 
     handleCommitteeDesolvingDatechange = (event) => {
@@ -109,11 +102,11 @@ CreateCommittee = async () => {
     try {
         var CommitteeName = this.state.CommitteeName;
         var CommitteeGoal = this.state.CommitteeGoal;
-        var CommitteeCreationDate = this.state.CommitteeCreationDate;
         var CommitteeDesolvingDate = this.state.CommitteeDesolvingDate;
         var CommitteeDescription = this.state.CommitteeDescription;
         var headID =  this.state.headID;
         var Members = this.state.Members;
+        var status = this.state.committeeStatus;
 
         var res = await axios({
             method: 'post',
@@ -121,9 +114,9 @@ CreateCommittee = async () => {
             data: {
                 CommitteeName: CommitteeName,
                 CommitteeGoal: CommitteeGoal,
-                CommitteeCreationDate: CommitteeCreationDate,
                 CommitteeDesolvingDate: CommitteeDesolvingDate,
                 CommitteeDescription: CommitteeDescription,
+                status: status,
                 headID : headID,
                 Members: Members
             }
@@ -181,21 +174,6 @@ CreateCommittee = async () => {
                                 </label>
                                 <div className="col-md-10">
                                     <input onChange={this.handleCommitteeGoalchange} type="text" className="form-control text-box single-line" ></input>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br></br>
-                    <div className="row">
-                        <div className="col-lg-12">
-                            <div className="form-group">
-                                <label className="control-label col-md-2">
-                                    Committee Creation Date
-                                </label>
-                                <div className="col-md-10">
-                                    {/* <input onChange={this.handleCommitteeCreationDatechange} type="date" className="form-control text-box single-line" defaultValue="2020-10-27"></input> */}
-                                    <input onChange={this.handleCommitteeCreationDatechange} type="date" className="form-control text-box single-line"  placeholder="YYYY-MM-DD" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" />
-
                                 </div>
                             </div>
                         </div>
