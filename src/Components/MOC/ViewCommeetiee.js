@@ -2,19 +2,25 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import ReactTable from "react-table-6";
 import "react-table-6/react-table.css"
+import {Modalview} from './ViewCommittee/viewModal'
 import axios from 'axios';
 
 export default class ViewCommittees extends Component {
-
+    
     constructor(props) {
         super(props);
 
         this.state = {
+            posts: [],
+            committeeDetails: [],
+            headDetails:[],
+            memberDetails: [],
+            showView: false,
+            showUpdate: false,
             role : '',
             name : '',
             email : '',
-            id : '',
-            posts: []
+            id : ''
         }
     }
 
@@ -46,32 +52,39 @@ export default class ViewCommittees extends Component {
         await axios.get('http://localhost:3306/viewCommitteeMOC',  { headers: {
             'X-Custom-Header': localStorage.getItem('userid')
         }}).then(res => {this.setState({posts: res.data.result})});
-        
-        // await axios.all([decryptToken, viewCommitteeGet]).then(
-        //     axios.spread((...allData) => {
-        //         this.setState({
-        //             role: allData[0].data.role,
-        //             name: allData[0].data.name,
-        //             email: allData[0].data.email,
-        //             id: allData[0].data.userId
-        //         })
-        //         var userID = this.state.id
-        //         localStorage.setItem('userid', userID)
-        //         localStorage.setItem('name', this.state.email)
+    }    
 
-        //         console.log(allData[0].data);
-        //         // console.log(result2.data);
-        //     })
-        // )
+    handleCloseView = () => this.setState({showView: false});
+    handleShowView = () => this.setState({showView: true});
+
+    handleCloseUpdate = () => this.setState({showUpdate: false});
+    handleShowUpdate = () => this.setState({showUpdate: true});
+
+    async viewCommitteeDetails(idCommittee) {
+        await axios.get('http://localhost:3306/viewCommitteeMOC/details', { headers: {
+            'X-Custom-Header': idCommittee
+        }})
+        .then(res =>{
+            this.setState({memberDetails: res.data.resultMembers,committeeDetails: res.data.resultCommittee[0]})
+            if(res.data.resultHead.length == 0){
+                this.setState({headDetails: {idUser: 0,Name: 'Not Assigned Yet'}})
+            } else {
+                this.setState({headDetails: res.data.resultHead[0]})
+            }
+        }, err => { console.log(err)});
+        console.log(this.state.memberDetails);
+
+        this.handleShowView();
+        // $("#myModal").modal("show");
     }
-
+    
     render() {
         const columns = [ 
             {
                 Header: "Committee Name",
                 accessor: "CommitteeName",
-                style: {
-                    textAlign: "center"
+                style:{
+                    textAlign:"center"
                 },
                 headerStyle: { fontWeight: 'bold' },
                 sortable: false
@@ -79,37 +92,37 @@ export default class ViewCommittees extends Component {
             {
                 Header: "Goal",
                 accessor: "goal",
-                sortable: false,
-                style: {
-                    textAlign: "center"
+                style:{
+                    textAlign:"center"
                 },
                 headerStyle: { fontWeight: 'bold' },
+                sortable: false,
                 filterable: false
             },
             {
                 Header: "Creation Date",
                 accessor: "committeeCreationDate",
-                style: {
-                    textAlign: "center"
+                style:{
+                    textAlign:"center"
                 },
                 headerStyle: { fontWeight: 'bold' }
             },
             {
                 Header: "Desolving Date",
                 accessor: "committeeDesolveDate",
-                style: {
-                    textAlign: "center"
+                style:{
+                    textAlign:"center"
                 },
-                headerStyle: { fontWeight: 'bold' },
+                headerStyle: { fontWeight: 'bold' }
             },
             {
                 Header: "Description",
                 accessor: "Description",
-                sortable: false,
-                style: {
-                    textAlign: "center"
+                style:{
+                    textAlign:"center"
                 },
                 headerStyle: { fontWeight: 'bold' },
+                sortable: false,
                 filterable: false
             },
             {
@@ -117,7 +130,8 @@ export default class ViewCommittees extends Component {
                 headerStyle: { fontWeight: 'bold' },
                 Cell: props => {
                     return(
-                        <Link to="" onClick={() => { console.log(props.row._original);this.detailsRow(props.row.idCommittee)}}><button className="btn btn-primary">Details</button></Link>
+                        
+                        <button className="btn btn-primary" onClick= {e => {this.viewCommitteeDetails(props.original.idCommittee)}} ><i class="fas fa-eye"></i> Details</button>
                     )
                 },
                 sortable: false,
@@ -134,8 +148,7 @@ export default class ViewCommittees extends Component {
                         <link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
                         <h2>Committees in CS Department</h2>
                         <hr></hr>
-
-                        <ReactTable className ="-striped -highlight"
+                        <ReactTable className = "-striped -highlight"
                             columns = {columns}
                             data = {
                                 this.state.posts
@@ -146,9 +159,11 @@ export default class ViewCommittees extends Component {
                             pageSizeOptions = {[2,4,6]}
                             >
                         </ReactTable>
-                    </div>
-                </div>
-            </div>
-        )
+                       </div>
+                 </div>
+                {this.state.showView ? <Modalview show={this.state.showView} close = {this.handleCloseView} committeeDetails = {this.state.committeeDetails} memberDetails = {this.state.memberDetails} headDetails = {this.state.headDetails}></Modalview>: <div></div>} 
+                 <hr />
+                 </div>
+        );
     }
 }
