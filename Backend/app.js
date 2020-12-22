@@ -75,6 +75,8 @@ var viewHOCADMIN= require('./routes/Admin/dataHOC/viewHOC');
 //var dataStudent
 var viewStudentADMIN= require('./routes/admin/dataStudent/viewStudent');
 
+var viewTaskFaculty = require('./routes/Faculty/viewTask');
+
 
 
 var app = express();
@@ -168,6 +170,7 @@ app.use('/viewHOCADMIN',viewHOCADMIN);
 //dataStudent
 app.use('/viewStudentADMIN',viewStudentADMIN);
 
+app.use('/viewTaskFaculty', viewTaskFaculty)
 
 ///////////////////////////////////////////////////////////////////////
 
