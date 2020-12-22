@@ -21,7 +21,7 @@ export default class ParticipantBased extends Component {
     }
 
     async getOptions(){
-        const res = await axios.get('http://localhost:3306/createMeetingADMIN/createMeetingHOD')
+        const res = await axios.get('http://localhost:3306/createMeetingADMIN')
         const data = res.data
     
         const options = data.map(d => ({
@@ -103,7 +103,7 @@ export default class ParticipantBased extends Component {
 
             var res = await axios({
                 method: 'post',
-                url: 'http://localhost:3306/createMeetingADMIN/createMeetingHOD',
+                url: 'http://localhost:3306/createMeetingADMIN',
                 data: {
                     user: createUser,
                     date: Dates,
@@ -195,7 +195,7 @@ export default class ParticipantBased extends Component {
                                 
                                 <div className="form-group">
                                     <div className="col-md-offset-2 col-md-10">
-                                        <Link to="Admin/UpcomingMeetings"><input type="submit" onClick={() => this.CreateMeeting()} className="btn btn-default" /> </Link>
+                                        <Link to="/Admin/UpcomingMeetings"><input type="submit" onClick={() => this.CreateMeeting()} className="btn btn-default" /> </Link>
                                     </div>
                                 </div>
                             </div>
