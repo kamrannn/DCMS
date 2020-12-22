@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import './MenuFooter.css'
 
 export default class Menu extends Component {
     render() {
@@ -22,9 +23,9 @@ export default class Menu extends Component {
                                         <li>
                                             <Link to="/Admin/CreateCommittee"> Create Commitee<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
                                         </li>
-                                        <li>
+                                        {/* <li>
                                             <Link to="/Admin/ExcelCommittee"> Import Excel Sheet<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
-                                        </li>
+                                        </li> */}
                                         {/* <li>
                                             <Link to="/Admin/CommitteeFeedbackQuestions"> Feedback Questions<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
                                         </li> */}
