@@ -18,7 +18,6 @@ Router.get('/', function (req, res) {
 });
 
 Router.post('/', function (req, res) {
-    // let idMilestone = req.body.idMilestone;
     let Description = req.body.Description;
     let Status = 0;
     let Deadline = req.body.Deadline;
@@ -28,23 +27,35 @@ Router.post('/', function (req, res) {
     for (var e in userId) 
     {
         let user = userId[e].value;
-        let values = [Description,Status,Deadline, user,CreatedBy];
-        console.log(values);
-    db.query('INSERT INTO `task`(`Description`, `Status`, `Deadline`, `Users_idUser`, `AssignedBy`, `AssignDate`) VALUES (? , CURDATE())', [values], function (err, result) {
-        if (err) {
-            res.json({
-                success: false,
-                err:err.message
-            })
-            console.log(err.message);
-        }
-        if(result){
-            res.json({
-                success: true
-            });
-        }
-            
-    });
+        db.query('INSERT INTO `taskuser`(`Users_idUser`) VALUES (?)', [CreatedBy], function (err, result1) {
+            let taskUser = result1.insertId
+            let values = [Description,Status,Deadline, user, taskUser];
+            console.log(values);
+            if(result1){
+                db.query('INSERT INTO `task`(`Description`, `Status`, `Deadline`, `Users_idUser`, `AssignedBy`, `AssignDate`) VALUES (? , CURDATE())', [values], function (err, result) {
+                    if (err) {
+                        res.json({
+                            success: false,
+                            err:err.message
+                        })
+                        console.log(err.message);
+                        return;
+                    }
+                    if(result){
+                        res.json({
+                            success: true
+                        });
+                    }
+                        
+                });
+                if(err){
+                    res.json({
+                        success: false,
+                        err:err.message
+                    })
+                }
+            }
+        })
 }
 });
 module.exports = Router;
