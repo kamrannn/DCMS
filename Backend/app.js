@@ -12,6 +12,7 @@ var MilestonesHoc = require('./routes/HOC/Committee/SetMilestone');
 var ViewMilestoneHoc= require('./routes/HOC/Committee/ViewMilestone');
 var AssignTaskHoc= require('./routes/HOC/Tasks/Assigntask');
 var AllassignTaskHoc= require('./routes/HOC/Tasks/AllassignedTask');
+var myTaskHoc= require('./routes/HOC/Tasks/myTask');
 var SubmittedTaskHoc = require('./routes/HOC/Tasks/SubmittedTask');
 var RejectedTaskHoc = require('./routes/HOC/Tasks/RejectedTask');
 var CallMeetingHoc = require('./routes/HOC/Meetings/CallMeeting');
@@ -56,6 +57,7 @@ var assignTaskADMIN= require ('./routes/Admin/Tasks/assignTask');
 
 //var Meetings
 var viewRecentMeetingsADMIN= require('./routes/Admin/Meetings/viewRecentMeetings');
+var viewUpcommingMeetingADMIN= require('./routes/Admin/Meetings/upcomingMeetings');
 var createMeetingADMIN = require('./routes/Admin/Meetings/createMeeting');
 
 //var dataCM
@@ -103,6 +105,7 @@ app.use('/MilestoneHoc',MilestonesHoc);
 app.use('/ViewMilestonesHoc',ViewMilestoneHoc);
 app.use('/AssignTasksHoc',AssignTaskHoc);
 app.use('/AllassignTasksHoc',AllassignTaskHoc);
+app.use('/myTaskHoc',myTaskHoc);
 app.use('/SubmittedTasksHoc',SubmittedTaskHoc);
 app.use('/RejectedTasksHoc',RejectedTaskHoc);
 app.use('/CallMeetingsHoc',CallMeetingHoc);
@@ -147,6 +150,7 @@ app.use('/assignTaskADMIN',assignTaskADMIN);
 
 /////////////////Meeting Routers/////////////////////////////////
 app.use('/viewRecentMeetingsADMIN',viewRecentMeetingsADMIN);
+app.use('/viewUpcommingMeetingsADMIN', viewUpcommingMeetingADMIN)
 app.use('/createMeetingADMIN',createMeetingADMIN);
 
 //dataCommitteeMember
