@@ -25,7 +25,6 @@ export default class MainHeader extends Component {
                     </div>
                 </header>
             </div>
-
         )
     }
 }

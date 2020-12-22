@@ -14,12 +14,14 @@ Router.get('/', function (req, res) {
         }
         if (data) {
             res.json(data);
+            console.log(data);
         }
     });
 });
 
 Router.post('/', function (req, res) {
     let CommitteeName = req.body.CommitteeName;
+    console.log(CommitteeName);
     let CommitteeGoal = req.body.CommitteeGoal;
     let CommitteeCreationDate = moment(new Date()).format("YYYY-MM-DD");
     let CommitteeDesolvingDate = moment(req.body.CommitteeDesolvingDate).format("YYYY-MM-DD") 

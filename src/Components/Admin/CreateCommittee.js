@@ -22,6 +22,7 @@ export default class CreateCommittee extends Component
     async getOptions(){
         const res = await axios.get('http://localhost:3306/ADMINcreateCommittee')
         const data = res.data
+        
     
         const options = data.map(d => ({
             "value" : d.idUser,
@@ -235,7 +236,7 @@ CreateCommittee = async () => {
                         <div className="col-lg-12">
                             <div className="form-group">
                             <div>
-                            <div className="container-fluid" style={mystyle}><Link to="/HOD/ViewCommittees">
+                            <div className="container-fluid" style={mystyle}><Link to="/Admin/ViewCommittees">
                                     <input style={mystyle} type="submit" defaultValue="Create" onClick={() => this.CreateCommittee()} className="btn btn-primary" /></Link>
                                 </div>
                             </div>
