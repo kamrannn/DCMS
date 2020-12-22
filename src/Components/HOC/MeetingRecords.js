@@ -1,143 +1,121 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios';
 import ReactTable from "react-table-6";
-import "react-table-6/react-table.css";
-
+import "react-table-6/react-table.css"
+import axios from 'axios'
 
 export default class MeetingRecords extends Component {
 
-    
-    constructor (props) {
+    constructor(props) {
         super(props);
+
         this.state = {
-            data: []
+            posts: []
         }
     }
 
-async componentDidMount() {
-    await axios.get('http://localhost:3306/MeetingRecordsHoc').then(
-        res => {
-            this.setState({
-                data: res.data.sessionsData
-            })
-            console.log(res.data.sessionsData)
-        },
-        err => {
-            console.log(err);
-        }
-    )
-}
-    render() {
-        const columns = [
-            //     {
-            //     Header: "ID",
-            //     accessor:"idMilestone"
-                
-            // },
-            // { 
-            //     Header: "Meeting ID",
-            //     accessor:"idMeeting",
-            //     style:{
-            //         textAlign:"center"
-            //     }
-            // },
-            {
-                Header: "Meeting Date",
-                accessor:"Date",
-                headerStyle: { fontWeight: 'bold' },
-                style:{
-                    textAlign:"center"
-                }
+    async componentDidMount() {
+        await axios.get('http://localhost:3306/MeetingRecordsHoc', { headers: {
+            'X-Custom-Header': localStorage.getItem('userId')
+        }}).then(res =>{
+            this.setState({posts: res.data.result})
+            console.log(res.data);
+        }, err => { console.log(err)});
+    }
 
-            }, 
+    render() {
+        const columns = [ 
             {
-                Header: "Meeting Time",
-                accessor:"Time",
-                headerStyle: { fontWeight: 'bold' },
+                Header: "Date",
+                accessor: "Date",
                 style:{
                     textAlign:"center"
-                }
+                },
+                headerStyle: { fontWeight: 'bold' },
+                sortable: false
+            },
+            {
+                Header: "Time",
+                accessor: "Time",
+                style:{
+                    textAlign:"center"
+                },
+                headerStyle: { fontWeight: 'bold' },
+                sortable: false,
+                filterable: false
             },
             {
                 Header: "Duration",
                 accessor: "Duration",
-                headerStyle: { fontWeight: 'bold' },
                 style:{
                     textAlign:"center"
-                }
-            },       
-            {
-                Header: "MeetingMinutes",
-                accessor: "MeetingMinutes",
-                filterable:'',
+                },
                 headerStyle: { fontWeight: 'bold' },
-                style:{
-                    textAlign:"center"
-                }
+                sortable: false
             },
             {
-                Header:"Agenda",
-                accessor:"Agenda",
-                headerStyle: { fontWeight: 'bold' },
-                filterable:'',
+                Header: "Agenda",
+                accessor: "Agenda",
                 style:{
                     textAlign:"center"
-                }
+                },
+                headerStyle: { fontWeight: 'bold' }
+            },
+            {
+                Header: "Venue",
+                accessor: "Venue",
+                style:{
+                    textAlign:"center"
+                },
+                headerStyle: { fontWeight: 'bold' }
+                
+            },
+            {
+                Header: "Participants Invited",
+                accessor: "ParticipantInvited",
+                style:{
+                    textAlign:"center"
+                },
+                headerStyle: { fontWeight: 'bold' }
 
             },
             {
-                Header:"Venue",
-                accessor:"Venue",
-                headerStyle: { fontWeight: 'bold' },
-                filterable:'',
+                Header: "Committee Name",
+                accessor: "CommitteeName",
                 style:{
                     textAlign:"center"
-                }
+                },
+                headerStyle: { fontWeight: 'bold' }
 
-            },
-            {
-                Header:"ParticipantInvited",
-                accessor:"ParticipantInvited",
-                headerStyle: { fontWeight: 'bold' },
-                filterable:'',
-                style:{
-                    textAlign:"center"
-                }
-
-            },
-            {
-                Header:"CommitteeName",
-                accessor:"CommitteeName",
-                headerStyle: { fontWeight: 'bold' },
-                filterable:'',
-                style:{
-                    textAlign:"center"
-                }
-
-            },
-]
+            }
+        ]
         return (
-            <div>
-                <div id="page-wrapper" style={{}}>
-                    <div className="row">
-                        <div className="col-lg-12">
-                            <br></br>
-                            <h2>Meeting Records</h2>
+            <div id="page-wrapper" style={{}}>
+                <div className="row">
+                    <div className="col-lg-12">
+                        <h2>Upcoming Meeting Details</h2>
+                        <hr></hr>
+                        <ReactTable className = "-striped -highlight"
+                            columns = {columns}
+                            data = {
+                                this.state.posts
+                            }
+                            filterable
+                            defaultPageSize = {10}
+                            noDataText = {"Please Wait.."}
+                            pageSizeOptions = {[2,4,6]}
+                            >
+                        </ReactTable>
+
                             
-                            <hr></hr>
-                            <ReactTable className="-striped -highlight"
-                              columns = {columns}
-                              data = {this.state.data}
-                              filterable
-                              defaultPageSize={10}>
-                            </ReactTable>      
-                        </div>
-                       
+                        
+                        {/* /.col-lg-12 */}
                     </div>
+                    {/* /.row */}
                 </div>
                 <hr />
             </div>
+
         )
     }
 }

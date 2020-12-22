@@ -52,7 +52,9 @@ Router.post('/',function(req, res){
             res.json({
                 success:true,
                 token: accessToken,
-                role:  data[0].role_name
+                role:  data[0].role_name,
+                roleId:  data[0].roles_id,
+                userId: data[0].idUser
             });
 
         }

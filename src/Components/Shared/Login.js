@@ -54,6 +54,8 @@ export const Login=()=> {
             if(result){
                 localStorage.setItem('token', result.token);
                 localStorage.setItem('role', result.role);
+                localStorage.setItem('userId', result.userId);
+                localStorage.setItem('roleId', role1);
                 console.log(result.role);
 
                 if(result.role=='Admin'){

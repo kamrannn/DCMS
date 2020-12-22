@@ -1,6 +1,6 @@
 const express= require('express');
 const Router = express.Router();
-var db= require('../../database/connectionDB');
+var db= require('../../../database/connectionDB');
 const { join } = require('path');
 const Formidable = require('formidable');
 const child_process = require('child_process');
