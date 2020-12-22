@@ -11,9 +11,9 @@ export default class MainFooter extends Component {
                             <br></br>
                             <p>COMSATS Institue of Information Technology, Islamabad</p>
                         </div>
-                        <div className="col-md-4">
+                        {/* <div className="col-md-4">
                             <span style={{ color: 'white' }} className="fa fa-mobile dark" /> <p>0092-3085181004</p>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
