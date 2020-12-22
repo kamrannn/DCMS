@@ -4,8 +4,7 @@ import Select from 'react-select';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2'
 
-
-export default class CreateMeeting extends Component {
+export default class CommitteeBased extends Component {
 
      
     constructor (props) {
@@ -17,15 +16,14 @@ export default class CreateMeeting extends Component {
             Duration: '',
             Agenda: '',
             Venue: '',
-            Committee:"", 
+            Committee:"",            
         };
     }
-    async getOptions(){
-        const res = await axios.get('http://localhost:3306/CallMeetingsHoc',{ headers: {
-            'X-Custom-Header': localStorage.getItem('userId')
-        }})
-        const data = res.data
 
+    async getOptions(){
+        const res = await axios.get('http://localhost:3306/createMeetingADMIN/CommitteeList')
+        const data = res.data
+    
         const options = data.map(d => ({
             "value" : d.idCommittee,
             "label" : d.CommitteeName
@@ -33,7 +31,6 @@ export default class CreateMeeting extends Component {
     
         this.setState({selectOptions: options})
     }
-
     handleDateChange = (event) => {
         this.setState({
             Date: event.target.value
@@ -51,7 +48,6 @@ export default class CreateMeeting extends Component {
             Duration: event.target.value
         });
     }
-
     handleAgendaChange = (event) => {
         this.setState({
             Agenda: event.target.value
@@ -105,7 +101,7 @@ export default class CreateMeeting extends Component {
 
             var res = await axios({
                 method: 'post',
-                url: 'http://localhost:3306/CallMeetingsHoc',
+                url: 'http://localhost:3306/createMeetingADMIN/CommitteeList',
                 data: {
                     user: createUser,
                     date: Dates,
@@ -185,8 +181,6 @@ export default class CreateMeeting extends Component {
                                     </div>
                                 
                                 </div>
-                                
-                                
                                 <div className="form-group">
                                     <label className="control-label col-md-2">
                                     Select Commiittee
@@ -194,24 +188,20 @@ export default class CreateMeeting extends Component {
                                     <div className="col-md-10">
                                     <Select options={this.state.selectOptions} onChange={this.handleCommitteeChange.bind(this)}  />
                                     </div>
-                                </div> 
-                          
+                                </div>                                
                                 <div className="form-group">
                                     <div className="col-md-offset-2 col-md-10">
                                         
-                                        <Link to="/HOC/MeetingRecords"><input type="submit" onClick={() => this.CreateMeeting()} className="btn btn-default" /> </Link>
+                                        <Link to="/Admin/UpcomingMeetings"><input type="submit" onClick={() => this.CreateMeeting()} className="btn btn-default" /> </Link>
                                     </div>
                                 </div>
-
-
                             </div>
-                            <div>
-                                <Link to="/HOC/MeetingRecords">Back to List</Link>
-                            </div>
+                            {/* <div>
+                                <Link to="/HOC/MeetingRecordsHoc">Back to List</Link>
+                            </div> */}
                         </div>
                     </div>
                 </div>
-            
                 <hr />
             </div>
 

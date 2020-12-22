@@ -5,7 +5,7 @@ import "react-table-6/react-table.css"
 import axios from 'axios'
 import Swal from 'sweetalert2'
 
-export default class ViewTask extends Component {
+export default class MyTask extends Component {
     constructor(props) {
         super(props);
 
@@ -14,8 +14,8 @@ export default class ViewTask extends Component {
             fileName: []
         }
     }
-    async componentDidMount() {
-        await axios.get('http://localhost:3306/viewTaskMOC', { headers: {
+   async componentDidMount() {
+        await axios.get('http://localhost:3306/myTaskHoc', { headers: {
             'X-Custom-Header': localStorage.getItem('userId')
         }}).then(res =>{
             this.setState({posts: res.data.result})
@@ -31,7 +31,7 @@ export default class ViewTask extends Component {
           form.append('files', files[i], files[i].name)
         }
         try {
-          let request = await fetch('http://localhost:3306/viewTaskMOC/upload', {
+          let request = await fetch('http://localhost:3306/myTaskHoc/upload', {
             method: 'post',
             body: form,
           })
@@ -47,7 +47,7 @@ export default class ViewTask extends Component {
     async submitRow(id){
         try {
             var taskId = id;
-            await axios.post(`http://localhost:3306/viewTaskMOC/uploadFileName`, { file: this.state.fileName[0], taskId: taskId })
+            await axios.post(`http://localhost:3306/myTaskHoc/uploadFileName`, { file: this.state.fileName[0], taskId: taskId })
             .then(res =>{
                 console.log(res);
             }, err => {
@@ -56,7 +56,7 @@ export default class ViewTask extends Component {
 
             var res = await axios({
                 method: 'post',
-                url: 'http://localhost:3306/viewTaskMOC/submitTask',
+                url: 'http://localhost:3306/myTaskHoc/submitTask',
                 data: {
                     taskId: taskId,
                 }
@@ -77,6 +77,7 @@ export default class ViewTask extends Component {
         }
     }
     render() {
+        {console.log("kuch huwa")}
         const columns = [
             { 
                 Header: "Assigned Date",
@@ -146,7 +147,7 @@ export default class ViewTask extends Component {
                             fontweight: 700,
                             color: "black",
                             display: "inline-block"
-                        }}><i class="fa fa-upload" aria-hidden="true"><strong> File Choose</strong></i></label></>
+                        }}><i class="fa fa-upload" aria-hidden="true"><strong> {props.value} File Choose</strong></i></label></>
                         // {/* <i class="fa fa-upload" aria-hidden="true"></i><input type="file" multiple style={{display: "inline-block"}}/></> */}
                         // onChange={e => uploadFile(e)}
                     )

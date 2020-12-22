@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import ReactTable from "react-table-6";
 import "react-table-6/react-table.css"
+import axios from 'axios';
 
 export default class ViewMeeting extends Component {
     constructor(props) {
@@ -12,91 +13,76 @@ export default class ViewMeeting extends Component {
         }
     }
 
-    componentDidMount() {
-        const url = "http://localhost:3306/viewRecentMeetingMOC";
-        fetch(url, {
-            method: "GET"
-        }).then(response => response.json()).then(post => {
-            this.setState({posts: post.result})
-        })
+    async componentDidMount() {
+        await axios.get('http://localhost:3306/viewRecentMeetingMOC', { headers: {
+            'X-Custom-Header': localStorage.getItem('userId')
+        }}).then(res =>{
+            this.setState({posts: res.data.result})
+            console.log(res.data);
+        }, err => { console.log(err)});
     }
     render() {
         const columns = [ 
             {
                 Header: "Date",
                 accessor: "Date",
-                headerStyle: { fontWeight: 'bold' },
-                style: {
-                    textAlign: "center"
+                style:{
+                    textAlign:"center"
                 },
+                headerStyle: { fontWeight: 'bold' },
                 sortable: false
             },
             {
                 Header: "Time",
                 accessor: "Time",
-                headerStyle: { fontWeight: 'bold' },
-                style: {
-                    textAlign: "center"
+                style:{
+                    textAlign:"center"
                 },
+                headerStyle: { fontWeight: 'bold' },
                 sortable: false,
                 filterable: false
             },
             {
                 Header: "Duration",
                 accessor: "Duration",
-                headerStyle: { fontWeight: 'bold' },
-                style: {
-                    textAlign: "center"
+                style:{
+                    textAlign:"center"
                 },
+                headerStyle: { fontWeight: 'bold' },
                 sortable: false
             },
             {
                 Header: "Agenda",
                 accessor: "Agenda",
-                headerStyle: { fontWeight: 'bold' },
-                style: {
-                    textAlign: "center"
-                }
+                style:{
+                    textAlign:"center"
+                },
+                headerStyle: { fontWeight: 'bold' }
             },
             {
                 Header: "Venue",
                 accessor: "Venue",
-                headerStyle: { fontWeight: 'bold' },
-                style: {
-                    textAlign: "center"
-                }
+                style:{
+                    textAlign:"center"
+                },
+                headerStyle: { fontWeight: 'bold' }
             },
             {
                 Header: "Participants Invited",
                 accessor: "ParticipantInvited",
-                headerStyle: { fontWeight: 'bold' },
-                style: {
-                    textAlign: "center"
-                }
-            },
-            {
-                Header: "Head of Committee",
-                accessor: "Name",
-                sortable: false,
-                headerStyle: { fontWeight: 'bold' },
-                style: {
-                    textAlign: "center"
-                }
-            },
-            {
-                Header: "Actions",
-                headerStyle: { fontWeight: 'bold' },
-                Cell: props => {
-                    return(
-                        // <a href="" className="btn btn-sm btn-danger"> Delete</a> 
-                        <Link to="" onClick={() => { if(window.confirm('Delete the item?')){ this.deleteRow(props.row.idMeeting)}}}><button className="btn btn-primary">Delete</button></Link>
-                    )
+                style:{
+                    textAlign:"center"
                 },
-                sortable: false,
-                filterable: false,
-                width: 100,
-                maxWidth: 100,
-                minWidth: 100
+                headerStyle: { fontWeight: 'bold' }
+            },
+            {
+                Header: "Committee Name",
+                accessor: "CommitteeName",
+                style:{
+                    textAlign:"center"
+                },
+                headerStyle: { fontWeight: 'bold' }
+
             }
         ]
         return (
@@ -105,7 +91,7 @@ export default class ViewMeeting extends Component {
                     <div className="col-lg-12">
                         <h2>Recent Meeting Details</h2>
                         <hr></hr>
-                        <ReactTable className = "-stripped -highlight"
+                        <ReactTable className = "-striped -highlight"
                             columns = {columns}
                             data = {
                                 this.state.posts
@@ -117,8 +103,11 @@ export default class ViewMeeting extends Component {
                             >
                         </ReactTable>
                     </div>
+                    {/* /.row */}
                 </div>
+                <hr />
             </div>
+
         )
     }
 }

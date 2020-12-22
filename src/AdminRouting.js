@@ -11,6 +11,8 @@ import EditCourse from './Components/Admin/EditCourse'
 import UpcomingMeetings from './Components/Admin/UpcomingMeetings'
 import RecentMeetings from './Components/Admin/RecentMeetings'
 import CreateMeeting from './Components/Admin/CreateMeeting'
+import CommitteeBased from './Components/Admin/Meeting/CommitteeBased'
+import ParticipantBased from './Components/Admin/Meeting/ParticipantBased'
 import SectionDetails from './Components/Admin/SectionDetails'
 import SectionCourse from './Components/Admin/SectionCourse'
 import ViewStudents from './Components/Admin/ViewStudents'
@@ -137,6 +139,16 @@ export default class AdminRouting extends Component {
           <Route path="/Admin/CreateMeeting" exact strict render={
             () => {
               return (<CreateMeeting />)
+            }
+          } />
+          <Route path="/Admin/Meeting/CommitteeBased" exact strict render={
+            () => {
+              return (<CommitteeBased />)
+            }
+          } />
+          <Route path="/Admin/Meeting/ParticipantBased" exact strict render={
+            () => {
+              return (<ParticipantBased />)
             }
           } />
           <Route path="/Admin/RecentMeetings" exact strict render={

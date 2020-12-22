@@ -53,7 +53,10 @@ export default class Menu extends Component {
                                             <Link to="/Admin/CreateMeeting"> Create Meeting<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
                                         </li>
                                         <li>
-                                            <Link to="/Admin/RecentMeetings"> View Meeting Records<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
+                                            <Link to="/Admin/UpcomingMeetings"> View Upcoming Meetings<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
+                                        </li>
+                                        <li>
+                                            <Link to="/Admin/RecentMeetings"> View Recent Meetings<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
                                         </li>
                                     </ul>
                                     {/* /.nav-second-level */}

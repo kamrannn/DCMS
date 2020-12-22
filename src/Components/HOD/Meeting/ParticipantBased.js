@@ -4,8 +4,7 @@ import Select from 'react-select';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2'
 
-
-export default class CreateMeeting extends Component {
+export default class ParticipantBased extends Component {
 
      
     constructor (props) {
@@ -17,20 +16,19 @@ export default class CreateMeeting extends Component {
             Duration: '',
             Agenda: '',
             Venue: '',
-            Committee:"", 
+            ParticipantInvited:[]
         };
     }
-    async getOptions(){
-        const res = await axios.get('http://localhost:3306/CallMeetingsHoc',{ headers: {
-            'X-Custom-Header': localStorage.getItem('userId')
-        }})
-        const data = res.data
 
-        const options = data.map(d => ({
-            "value" : d.idCommittee,
-            "label" : d.CommitteeName
-        }))
+    async getOptions(){
+        const res = await axios.get('http://localhost:3306/createMeetingHOD')
+        const data = res.data
     
+        const options = data.map(d => ({
+            "value" : d.idUser,
+            "label" : d.Name
+        }))
+
         this.setState({selectOptions: options})
     }
 
@@ -51,7 +49,6 @@ export default class CreateMeeting extends Component {
             Duration: event.target.value
         });
     }
-
     handleAgendaChange = (event) => {
         this.setState({
             Agenda: event.target.value
@@ -63,11 +60,12 @@ export default class CreateMeeting extends Component {
         });
     }
 
-    handleCommitteeChange = (event) => {
+    handleParticipantInvitedChange = (event) => {
         this.setState({
-            Committee: event.value
+            ParticipantInvited: event
         });
     }
+
     componentDidMount(){
         this.getOptions()
     }
@@ -100,12 +98,12 @@ export default class CreateMeeting extends Component {
             var Durations = this.state.Duration;
             var Agendas = this.state.Agenda;
             var Venues = this.state.Venue;
-            var Committees= this.state.Committee;
+            var ParticipantInviteds = this.state.ParticipantInvited;
             var createUser = localStorage.getItem('userId')
 
             var res = await axios({
                 method: 'post',
-                url: 'http://localhost:3306/CallMeetingsHoc',
+                url: 'http://localhost:3306/createMeetingHOD',
                 data: {
                     user: createUser,
                     date: Dates,
@@ -113,13 +111,13 @@ export default class CreateMeeting extends Component {
                     duration: Durations,
                     agenda :Agendas,
                     venue :Venues,
-                    Committee:  Committees
+                    participantInvited:ParticipantInviteds
                 }
             })
             var result = res.data;
             console.log(result);
             if (result.success) {
-                Swal.fire('Meeting Created!','The Committee based meeting has been created', 'success');
+                Swal.fire('Meeting Created!','The Participant based meeting has been created', 'success');
                 // this.resetForm();
             }
 
@@ -185,33 +183,25 @@ export default class CreateMeeting extends Component {
                                     </div>
                                 
                                 </div>
-                                
-                                
+
                                 <div className="form-group">
                                     <label className="control-label col-md-2">
-                                    Select Commiittee
+                                    Participant Invited
                                     </label>
                                     <div className="col-md-10">
-                                    <Select options={this.state.selectOptions} onChange={this.handleCommitteeChange.bind(this)}  />
-                                    </div>
-                                </div> 
-                          
-                                <div className="form-group">
-                                    <div className="col-md-offset-2 col-md-10">
-                                        
-                                        <Link to="/HOC/MeetingRecords"><input type="submit" onClick={() => this.CreateMeeting()} className="btn btn-default" /> </Link>
+                                        <Select options={this.state.selectOptions} onChange={this.handleParticipantInvitedChange.bind(this)} isMulti />
                                     </div>
                                 </div>
-
-
-                            </div>
-                            <div>
-                                <Link to="/HOC/MeetingRecords">Back to List</Link>
+                                
+                                <div className="form-group">
+                                    <div className="col-md-offset-2 col-md-10">
+                                        <Link to="/HOD/UpcomingMeetings"><input type="submit" onClick={() => this.CreateMeeting()} className="btn btn-default" /> </Link>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            
                 <hr />
             </div>
 

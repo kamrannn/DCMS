@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
 import ReactTables from "../../../node_modules/react-table-v6";
 import "react-table-v6/react-table.css";
+import axios from 'axios';
 
 export default class AssignedTask extends Component {
 
@@ -12,15 +13,11 @@ export default class AssignedTask extends Component {
         }
     }
 
-componentDidMount(){
-    const url="http://localhost:3306/viewAssignedTasksADMIN";
-    
-    fetch(url,{
-        method: "GET"
-    }).then(response=> response.json()).then(data=>{
-         //console.log("Committees",data)
-        this.setState({data:data})
-    })
+async componentDidMount(){
+    await axios.get('http://localhost:3306/viewAssignedTasksADMIN').then(res =>{
+            this.setState({data: res.data})
+            console.log(res.data);
+        }, err => { console.log(err)});
 }
     render() {
         
