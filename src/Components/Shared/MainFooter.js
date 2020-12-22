@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './mainFooter.css'
 
 export default class MainFooter extends Component {
     render() {
