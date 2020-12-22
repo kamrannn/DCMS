@@ -2,25 +2,79 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import ReactTable from "react-table-6";
 import "react-table-6/react-table.css"
+import axios from 'axios'
+import Swal from 'sweetalert2'
 
 export default class ViewTask extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            posts: []
+            posts: [],
+            fileName: []
         }
     }
-    componentDidMount() {
-        const url = "http://localhost:3306/viewTaskMOC";
-        fetch(url, {
-            method: "GET"
-        }).then(response => response.json()).then(post => {
-            this.setState({posts: post.result})
-        })
+    async componentDidMount() {
+        await axios.get('http://localhost:3306/viewTaskMOC', { headers: {
+            'X-Custom-Header': localStorage.getItem('userId')
+        }}).then(res =>{
+            this.setState({posts: res.data.result})
+            console.log(res.data);
+        }, err => { console.log(err)});
     }
-    submitRow(id){
 
+    uploadFile = async e => {
+        const files = e.target.files
+        console.log('files', files[0].name)
+        const form = new FormData()
+        for (let i = 0; i < files.length; i++) {
+          form.append('files', files[i], files[i].name)
+        }
+        try {
+          let request = await fetch('http://localhost:3306/viewTaskMOC/upload', {
+            method: 'post',
+            body: form,
+          })
+          const response = await request.json()
+          this.setState({fileName: response.files})
+          console.log('Response', response)
+        } catch (err) {
+          alert('Error uploading the files')
+          console.log('Error uploading the files', err)
+        }
+      }
+      
+    async submitRow(id){
+        try {
+            var taskId = id;
+            await axios.post(`http://localhost:3306/viewTaskMOC/uploadFileName`, { file: this.state.fileName[0], taskId: taskId })
+            .then(res =>{
+                console.log(res);
+            }, err => {
+                console.log(err);
+            })
+
+            var res = await axios({
+                method: 'post',
+                url: 'http://localhost:3306/viewTaskMOC/submitTask',
+                data: {
+                    taskId: taskId,
+                }
+            })
+            var result = res.data;
+            console.log(result.data);
+            if (result) {
+                Swal.fire('Submitted!','this task has been Submitted', 'success');
+                window.location.reload();
+            }
+    
+            else if (result && result.success === false) {
+                Swal.fire('failed','something wrong', 'warning')
+            }
+        }
+        catch (e) {
+            console.log(e);
+        }
     }
     render() {
         const columns = [
@@ -33,7 +87,7 @@ export default class ViewTask extends Component {
                 }
             },
             {
-                Header: "Assigned to",
+                Header: "Assigned by",
                 accessor:"Name",
                 headerStyle: { fontWeight: 'bold' },
                 filterable:'',
@@ -52,20 +106,62 @@ export default class ViewTask extends Component {
             },
             {
                 Header: "Status",
-                accessor: "Status",
+                accessor: "StatusName",
                 headerStyle: { fontWeight: 'bold' },
                 style:{
                     textAlign:"center"
                 }
             },
             {
+                Header: "Description",
+                accessor: "Description",
+                headerStyle: { fontWeight: 'bold' },
+                style:{
+                    textAlign:"center"
+                }
+            },
+            {
+                Header: "File upload",
+                headerStyle: { fontWeight: 'bold' },
+                Cell: props => {
+                    return(<>
+                        <input type="file" name="file" id="file" class="inputfile" multiple onChange={e => this.uploadFile(e)}
+                        style={{
+                            width: "0.1px",
+                            height: "0.1px",
+                            opacity: 0,
+                            overflow: "hidden",
+                            position: "absolute",
+                            zindex: -1,
+                            cursor: "pointer",
+                            fontsize: "1.25em",
+                            fontweight: 700,
+                            color: "black",
+                            display: "inline-block"
+                        }} />
+                        <label for="file" 
+                        style={{
+                            cursor: "pointer",
+                            fontsize: "1.25em",
+                            fontweight: 700,
+                            color: "black",
+                            display: "inline-block"
+                        }}><i class="fa fa-upload" aria-hidden="true"><strong> File Choose</strong></i></label></>
+                        // {/* <i class="fa fa-upload" aria-hidden="true"></i><input type="file" multiple style={{display: "inline-block"}}/></> */}
+                        // onChange={e => uploadFile(e)}
+                    )
+                },
+                sortable: false,
+                filterable: false,
+                width: 100,
+                maxWidth: 100,
+                minWidth: 100
+            },
+            {
                 Header: "Actions",
                 headerStyle: { fontWeight: 'bold' },
                 Cell: props => {
-                    return(
-                        // <a href="" className="btn btn-sm btn-danger"> Delete</a> 
-                        <Link to="" onClick={() => { if(window.confirm('Delete the item?')){ this.submitRow(props.row.idTask)}}}><button className="btn btn-primary">Submit</button></Link>
-                    )
+                    return <button className="btn btn-primary" onClick= {e => {this.submitRow(props.original.idTask)}}>Submit</button>    
                 },
                 sortable: false,
                 filterable: false,

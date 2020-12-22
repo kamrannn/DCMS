@@ -1,0 +1,43 @@
+<ion-header >
+  <ion-toolbar class="toolbar" >
+  
+    <ion-title style="color: white;font-family: serif;">DCMS</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+   <div  class="main-cards">
+      <h3>Welcome {{role}}</h3>
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="data('View Committe')" [routerLink]="['/home-detail']" class="btn-color" type="submit" expand="full">View Committe</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="data('View Task')" class="btn-color" type="submit" expand="full">View Task</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="data('View Meeting')" class="btn-color" type="submit" expand="full">View Meeting</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col *ngIf="role == 'HOD'">
+          <ion-button (click)="data('View Hoc')" class="btn-color" type="submit" expand="full">View Hoc</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col *ngIf="role == 'HOD'">
+          <ion-button (click)="data('View CM')" class="btn-color" type="submit" expand="full">View CM</ion-button>
+        </ion-col>
+      </ion-row>
+    </div>
+
+    <ion-button (click)="logout()" class="btn-col" type="submit" expand="full">Logout</ion-button>
+
+    
+
+</ion-content>

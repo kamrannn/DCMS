@@ -12,9 +12,9 @@ var express = require ('express');
 
 const db = mysql.createConnection({
     host:"remotemysql.com",
-    user: "cO4dIPDQlQ",
-    password:"GDmbPithNm",
-    database:"cO4dIPDQlQ"
+    user: "jIui6JBi8x",
+    password:"WrPkUsCIw5",
+    database:"jIui6JBi8x"
 });
 
 db.connect(function(err){

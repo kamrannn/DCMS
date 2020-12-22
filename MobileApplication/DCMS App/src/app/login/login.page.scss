@@ -1,0 +1,94 @@
+.login-logo {
+   
+    min-height: 200px;
+    text-align: center;
+  }
+  
+  .login-logo img {
+    max-width: 300px;
+  }
+  
+  .list {
+    margin-bottom: 0;
+  }
+  
+  .btn-color{
+    --background:#3880ff;
+    --background-activated:#3880ff;
+  }
+  .select-icon-inner{
+    color : #3880ff
+  }
+  
+  
+  .item ion-icon[item-left]+.item
+  .login-logo {
+      
+      min-height: 200px;
+      text-align: center;
+    }
+  
+    .login-logo img {
+      max-width: 300px;
+    }
+  
+    .list {
+      margin-bottom: 0;
+    }
+  
+    .btn-color{
+      --background:#7f48c5;
+      --background-activated:#7f48c5;
+    }
+    .select-icon-inner{
+      color : #7f48c5
+    }
+  
+  
+    .item ion-icon[item-left]+.item-inner,
+    .item ion-icon[item-left]+.item-input {
+        margin-left: 10px !important;
+    }
+    inner,
+  .item ion-icon[item-left]+.item-input {
+      margin-left: 10px !important;
+  }
+
+  
+  .main-cards{
+    box-shadow: 0 0px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19);
+    
+    text-align: center;
+    padding: 5px;
+      margin: 0px;
+      border-radius: 10px;
+      background: #7f48c5;
+  
+    .subcontainer{
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+      border-radius: 12px 12px 0px 0px;
+  
+    }
+  
+  
+    .appIcon{
+      font-size: 40px;
+      margin: 15px;
+      color: #5e5ec5;
+    }
+    .appText{
+      font-style: normal;
+      font-size: 16px;
+      padding: 7px;
+  
+    }
+  }
+
+  .toolbar{
+    text-align: center;
+    --background: #7f48c5;
+   
+
+  }

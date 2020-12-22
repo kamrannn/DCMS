@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import ReactTable from "react-table-6";
 import "react-table-6/react-table.css"
+import axios from 'axios'
 
 export default class UpcomingMeetings extends Component {
 
@@ -13,13 +14,13 @@ export default class UpcomingMeetings extends Component {
         }
     }
 
-    componentDidMount() {
-        const url = "http://localhost:3306/viewUpcommingMeetingMOC";
-        fetch(url, {
-            method: "GET"
-        }).then(response => response.json()).then(post => {
-            this.setState({posts: post.result})
-        })
+    async componentDidMount() {
+        await axios.get('http://localhost:3306/viewUpcommingMeetingHOD', { headers: {
+            'X-Custom-Header': localStorage.getItem('userId')
+        }}).then(res =>{
+            this.setState({posts: res.data.result})
+            console.log(res.data);
+        }, err => { console.log(err)});
     }
 
     render() {
@@ -77,15 +78,6 @@ export default class UpcomingMeetings extends Component {
                 },
                 headerStyle: { fontWeight: 'bold' }
 
-            },
-            {
-                Header: "Head of Committee",
-                accessor: "Name",
-                style:{
-                    textAlign:"center"
-                },
-                headerStyle: { fontWeight: 'bold' },
-                sortable: false
             }
         ]
         return (

@@ -1,5 +1,6 @@
 const express= require('express');
 const Router = express.Router();
+const moment = require('moment');
 var db= require('../../database/connectionDB');
 
 Router.get('/', function (req, res) {
@@ -21,11 +22,12 @@ Router.get('/', function (req, res) {
 Router.post('/', function (req, res) {
     let CommitteeName = req.body.CommitteeName;
     let CommitteeGoal = req.body.CommitteeGoal;
-    let CommitteeCreationDate = req.body.CommitteeCreationDate;
-    let CommitteeDesolvingDate = req.body.CommitteeDesolvingDate;
+    let CommitteeCreationDate = moment(new Date()).format("YYYY-MM-DD");
+    let CommitteeDesolvingDate = moment(req.body.CommitteeDesolvingDate).format("YYYY-MM-DD") 
     let CommitteeDescription = req.body.CommitteeDescription;
     let headID = req.body.headID;
     let Members = req.body.Members;
+    let status = req.body.status;
     // MembersId:[];
 
     // for (var e in Members) {
@@ -35,8 +37,8 @@ Router.post('/', function (req, res) {
     // console.log(MembersId)
 
 
-    var values = [CommitteeName, CommitteeGoal,CommitteeCreationDate,CommitteeDesolvingDate,CommitteeDescription];
-    db.query('INSERT INTO `committee`(`CommitteeName`, `goal`, `committeeCreationDate`, `committeeDesolveDate`, `Description`) VALUES (?)', [values], function (err, result) 
+    var values = [CommitteeName, CommitteeGoal,CommitteeCreationDate,CommitteeDesolvingDate,CommitteeDescription,status];
+    db.query('INSERT INTO `committee`(`CommitteeName`, `goal`, `committeeCreationDate`, `committeeDesolveDate`, `Description`, `Status`) VALUES (?)', [values], function (err, result) 
     {
         if (err) {
             res.json({

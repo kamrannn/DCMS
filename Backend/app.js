@@ -12,6 +12,7 @@ var MilestonesHoc = require('./routes/HOC/Committee/SetMilestone');
 var ViewMilestoneHoc= require('./routes/HOC/Committee/ViewMilestone');
 var AssignTaskHoc= require('./routes/HOC/Tasks/Assigntask');
 var AllassignTaskHoc= require('./routes/HOC/Tasks/AllassignedTask');
+var myTaskHoc= require('./routes/HOC/Tasks/myTask');
 var SubmittedTaskHoc = require('./routes/HOC/Tasks/SubmittedTask');
 var RejectedTaskHoc = require('./routes/HOC/Tasks/RejectedTask');
 var CallMeetingHoc = require('./routes/HOC/Meetings/CallMeeting');
@@ -56,6 +57,7 @@ var assignTaskADMIN= require ('./routes/Admin/Tasks/assignTask');
 
 //var Meetings
 var viewRecentMeetingsADMIN= require('./routes/Admin/Meetings/viewRecentMeetings');
+var viewUpcommingMeetingADMIN= require('./routes/Admin/Meetings/upcomingMeetings');
 var createMeetingADMIN = require('./routes/Admin/Meetings/createMeeting');
 
 //var dataCM
@@ -73,6 +75,8 @@ var viewHOCADMIN= require('./routes/Admin/dataHOC/viewHOC');
 //var dataStudent
 var viewStudentADMIN= require('./routes/admin/dataStudent/viewStudent');
 
+var viewTaskFaculty = require('./routes/Faculty/viewTask');
+
 
 
 var app = express();
@@ -89,7 +93,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function(req, res, next){
   res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, X-Custom-Header");
   res.header("Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, OPTIONS");
   next();
 })
@@ -103,6 +107,7 @@ app.use('/MilestoneHoc',MilestonesHoc);
 app.use('/ViewMilestonesHoc',ViewMilestoneHoc);
 app.use('/AssignTasksHoc',AssignTaskHoc);
 app.use('/AllassignTasksHoc',AllassignTaskHoc);
+app.use('/myTaskHoc',myTaskHoc);
 app.use('/SubmittedTasksHoc',SubmittedTaskHoc);
 app.use('/RejectedTasksHoc',RejectedTaskHoc);
 app.use('/CallMeetingsHoc',CallMeetingHoc);
@@ -147,6 +152,7 @@ app.use('/assignTaskADMIN',assignTaskADMIN);
 
 /////////////////Meeting Routers/////////////////////////////////
 app.use('/viewRecentMeetingsADMIN',viewRecentMeetingsADMIN);
+app.use('/viewUpcommingMeetingsADMIN', viewUpcommingMeetingADMIN)
 app.use('/createMeetingADMIN',createMeetingADMIN);
 
 //dataCommitteeMember
@@ -164,6 +170,7 @@ app.use('/viewHOCADMIN',viewHOCADMIN);
 //dataStudent
 app.use('/viewStudentADMIN',viewStudentADMIN);
 
+app.use('/viewTaskFaculty', viewTaskFaculty)
 
 ///////////////////////////////////////////////////////////////////////
 

@@ -1,0 +1,35 @@
+.toolbar{
+    text-align: center;
+    --background: #7f48c5;
+   
+
+  }
+
+  .main-cards{
+    box-shadow: 0 0px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    padding: 10px;
+    margin: 15px;
+    border-radius: 10px;
+    background: #e8e8e8;
+  
+    .subcontainer{
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+      border-radius: 12px 12px 0px 0px;
+  
+    }
+
+    .btn-color{
+        --background:#7f48c5;
+        --background-activated:#7f48c5;
+        max-width: 80%;
+        margin-left: 30px;
+      }
+}
+
+.font{
+  font-size: 10px;
+  font-family: sans-serif;
+}

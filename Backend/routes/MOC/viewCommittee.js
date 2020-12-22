@@ -4,10 +4,30 @@ var db= require('../../database/connectionDB');
 require('dotenv').config;
 
 Router.get('/', (req, res) =>{
-    db.query('SELECT * FROM users, committee, user_roles WHERE users.idUser = user_roles.Users_idUser AND committee.idCommittee = user_roles.Committee_idCommittee and user_roles.roles_roles_id = 3', (err, data)=>{
+    var userId = req.headers['x-custom-header'];
+    db.query('SELECT * FROM users, committee, user_roles WHERE users.idUser = user_roles.Users_idUser AND committee.idCommittee = user_roles.Committee_idCommittee AND user_roles.roles_roles_id=4 and committee.Status = 1 AND users.idUser=?',[userId], (err, data)=>{
         res.json({
             result: data
         })
+    })
+});
+
+Router.get('/details', (req, res) =>{
+    var committeeId = req.headers['x-custom-header'];
+    db.query('SELECT * FROM committee where committee.idCommittee = ?',[committeeId], (err, data)=>{
+        if(data){
+            db.query('SELECT * FROM users, user_roles where users.idUser = user_roles.Users_idUser AND user_roles.Committee_idCommittee = ? AND user_roles.roles_roles_id = 3',[committeeId], (err, data1)=>{
+                if(data1){
+                    db.query('SELECT * FROM users, committeemembers where users.idUser = committeemembers.Users_idUser AND committeemembers.Committee_idCommittee = ?',[committeeId], (err, data2)=>{
+                        res.json({
+                            resultCommittee: data,
+                            resultHead: data1,
+                            resultMembers: data2,
+                        })
+                    })
+                }  
+            })
+        }
     })
 });
 
