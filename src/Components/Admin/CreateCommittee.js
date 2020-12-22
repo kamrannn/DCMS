@@ -14,14 +14,15 @@ export default class CreateCommittee extends Component
         headID: "",
         CommitteeName:"",
         CommitteeGoal:"",
-        CommitteeCreationDate:"",
         CommitteeDesolvingDate:"",
         CommitteeDescription:"",
+        committeeStatus: 1
         }
     }
     async getOptions(){
         const res = await axios.get('http://localhost:3306/ADMINcreateCommittee')
         const data = res.data
+        
     
         const options = data.map(d => ({
             "value" : d.idUser,
@@ -34,7 +35,7 @@ export default class CreateCommittee extends Component
     //////////////////////////////////
     handleChange(e){
         this.setState({headID:e.value})
-        // console.log(e.value)
+        console.log(e.value)
     }
     
     handleMultipleMembersChange(e){
@@ -52,13 +53,6 @@ export default class CreateCommittee extends Component
         this.setState({
             CommitteeGoal: event.target.value
         })
-    }
-    
-    handleCommitteeCreationDatechange = (event) => {
-        this.setState({
-            CommitteeCreationDate: event.target.value
-        })
-        // console.log(event.target.value)
     }
 
     handleCommitteeDesolvingDatechange = (event) => {
@@ -109,11 +103,11 @@ CreateCommittee = async () => {
     try {
         var CommitteeName = this.state.CommitteeName;
         var CommitteeGoal = this.state.CommitteeGoal;
-        var CommitteeCreationDate = this.state.CommitteeCreationDate;
         var CommitteeDesolvingDate = this.state.CommitteeDesolvingDate;
         var CommitteeDescription = this.state.CommitteeDescription;
         var headID =  this.state.headID;
         var Members = this.state.Members;
+        var status = this.state.committeeStatus;
 
         var res = await axios({
             method: 'post',
@@ -121,9 +115,9 @@ CreateCommittee = async () => {
             data: {
                 CommitteeName: CommitteeName,
                 CommitteeGoal: CommitteeGoal,
-                CommitteeCreationDate: CommitteeCreationDate,
                 CommitteeDesolvingDate: CommitteeDesolvingDate,
                 CommitteeDescription: CommitteeDescription,
+                status: status,
                 headID : headID,
                 Members: Members
             }
@@ -143,9 +137,7 @@ CreateCommittee = async () => {
     catch (e) {
         console.log(e);
     }
-
 }
-
 
     render() {
         const mystyle = {
@@ -156,7 +148,6 @@ CreateCommittee = async () => {
             font: "900 40px",
             width:"100%"
         };
-
         return (
         <div>
             <div id="page-wrapper" style={{}}>
@@ -183,21 +174,6 @@ CreateCommittee = async () => {
                                 </label>
                                 <div className="col-md-10">
                                     <input onChange={this.handleCommitteeGoalchange} type="text" className="form-control text-box single-line" ></input>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br></br>
-                    <div className="row">
-                        <div className="col-lg-12">
-                            <div className="form-group">
-                                <label className="control-label col-md-2">
-                                    Committee Creation Date
-                                </label>
-                                <div className="col-md-10">
-                                    {/* <input onChange={this.handleCommitteeCreationDatechange} type="date" className="form-control text-box single-line" defaultValue="2020-10-27"></input> */}
-                                    <input onChange={this.handleCommitteeCreationDatechange} type="date" className="form-control text-box single-line"  placeholder="YYYY-MM-DD" required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" />
-
                                 </div>
                             </div>
                         </div>
@@ -259,9 +235,11 @@ CreateCommittee = async () => {
                     <div className="row">
                         <div className="col-lg-12">
                             <div className="form-group">
-                                <div className="container-fluid" style={mystyle}><Link to="/Admin/ViewCommittees">
+                            <div>
+                            <div className="container-fluid" style={mystyle}><Link to="/Admin/ViewCommittees">
                                     <input style={mystyle} type="submit" defaultValue="Create" onClick={() => this.CreateCommittee()} className="btn btn-primary" /></Link>
                                 </div>
+                            </div>
                             </div>
                         </div>
                     </div>

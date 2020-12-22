@@ -1,0 +1,37 @@
+<ion-header >
+  <ion-toolbar class="toolbar" >
+  
+    <ion-title style="color: white;font-family: serif;">DCMS</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+   <div  class="main-cards">
+      <h3>{{data}}</h3>
+
+      <h6>Committes in CS Department</h6>
+
+      <ion-grid class="font">
+        <ion-row>
+          <ion-col  size="2"  style="font-weight: 700;">Agenda</ion-col>
+          <ion-col  size="2" style="font-weight: 700;">Date</ion-col>
+          <ion-col  size="3" style="font-weight: 700;">Duration</ion-col>
+          <ion-col  size="3" style="font-weight: 700;">ParticipantInvited</ion-col>
+          <ion-col  size="2" style="font-weight: 700;">Venue</ion-col>
+        </ion-row>
+        <ion-row *ngFor="let obj of table; index as i">
+          <ion-col  size="2">{{obj.Agenda}}</ion-col>
+          <ion-col  size="2">{{ obj.Date }}</ion-col>
+          <ion-col  size="3">{{ obj.Duration }}</ion-col>
+          <ion-col  size="3">{{ obj.ParticipantInvited }}</ion-col>
+          <ion-col  size="2">{{ obj.Venue }}</ion-col>
+        </ion-row>
+      </ion-grid>
+   </div>
+
+   
+  
+    
+
+</ion-content>

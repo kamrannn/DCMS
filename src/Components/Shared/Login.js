@@ -1,14 +1,28 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import axios from 'axios'; 
-
+import Select from 'react-select'
+import axios from 'axios';
 
 export const Login=()=> {
     let history= useHistory();
 
     const [Email, setEmail]= useState('');
     const [Password, setPassword]= useState('');
-
+    const [Role, setRole]= useState('');
+    const [selectRoleOptions, setRoleOptions]= useState([]);
+    var result = null;
+    
+    useEffect(() => {
+    (async () => {    
+        const res = await axios.get('http://localhost:3306/login/roles');
+        const data = res.data;
+        const options = data.map(d => ({
+            "value" : d.roles_id,
+            "label" : d.role_name
+        }));        
+        setRoleOptions(options);
+    })();
+    }, []);
     const handleEmail=(event)=>{
         setEmail(event.target.value);
     }
@@ -16,23 +30,32 @@ export const Login=()=> {
     const handlePassword= (event)=>{
         setPassword(event.target.value);
     }
+
+    const handleRole= (event)=>{
+        setRole(event.value);
+    }
+
     const login=async ()=>{
         try{
             var email= Email;
             var password= Password;
+            var role1 = Role;
             var response= await axios({
                 method:'post',
                 url:'http://localhost:3306/login',
                 data:{
                     email: email,
-                    password: password
+                    password: password,
+                    role: role1
                 }
             });
-            var result= response.data;
+            result= response.data;
             console.log(result);
             if(result){
-                localStorage.setItem('token', result.Token);
+                localStorage.setItem('token', result.token);
                 localStorage.setItem('role', result.role);
+                localStorage.setItem('userId', result.userId);
+                localStorage.setItem('roleId', role1);
                 console.log(result.role);
 
                 if(result.role=='Admin'){
@@ -92,6 +115,12 @@ export const Login=()=> {
                                                             <div className="col-md-10">
                                                                 <input className="form-control" data-val-regex="Your password must be at least 8 characters long and contain at least 1 letter, 1 number and one special character" data-val-regex-pattern="(?=.*\d)(?=.*[A-Za-z])(?=.*[@#$&~!%^-]).{8,}" data-val-required="The Password field is required." id="Password" name="Password" type="password" onChange={handlePassword} />
                                                                 <span className="field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true" />
+                                                            </div>
+                                                        </div>
+                                                        <div className="form-group">
+                                                            <label className="col-md-2 control-label">Select Role</label>
+                                                            <div className="col-md-10">
+                                                                <Select options={selectRoleOptions} onChange={handleRole.bind()}/>
                                                             </div>
                                                         </div>
                                                         <br />

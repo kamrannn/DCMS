@@ -7,6 +7,9 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.20.0",
+    "bluebird": "^3.7.2",
+    "download": "^8.0.0",
+    "formidable": "^1.2.2",
     "multiselect-react-dropdown": "^1.6.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -19,7 +22,9 @@
     "react-table": "^7.5.2",
     "react-table-6": "6.11.0",
     "react-table-v6": "^6.8.6",
-    "reacttable": "^0.2.0"
+    "reacttable": "^0.2.0",
+    "sweetalert2": "^10.12.5",
+    "moment": "^2.29.1"
   },
   "scripts": {
     "start": "react-scripts start",
