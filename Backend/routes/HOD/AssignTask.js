@@ -19,16 +19,18 @@ Router.get('/', function (req, res) {
 
 Router.post('/', function (req, res) {
     // let idMilestone = req.body.idMilestone;
-    let Users_idUser = req.body.userID;
     let Description = req.body.Description;
-    let Status = req.body.Status;
-    let AssignDate = req.body.AssignDate;
+    let Status = 0;
     let Deadline = req.body.Deadline;
-    let uploadFile = req.body.uploadFile;
-
-    var values = [Description,Status,AssignDate,Deadline, Users_idUser];
-    console.log(values)
-    db.query('INSERT INTO `task`(`Description`, `Status`, `AssignDate`, `Deadline`, `Users_idUser`) VALUES (?)', [values], function (err, result) {
+    let userId = req.body.userId;
+    let CreatedBy =  req.body.createBy
+    console.log(userId)
+    for (var e in userId) 
+    {
+        let user = userId[e].value;
+        let values = [Description,Status,Deadline, user,CreatedBy];
+        console.log(values);
+    db.query('INSERT INTO `task`(`Description`, `Status`, `Deadline`, `Users_idUser`, `AssignedBy`, `AssignDate`) VALUES (? , CURDATE())', [values], function (err, result) {
         if (err) {
             res.json({
                 success: false,
@@ -43,5 +45,6 @@ Router.post('/', function (req, res) {
         }
             
     });
+}
 });
 module.exports = Router;
