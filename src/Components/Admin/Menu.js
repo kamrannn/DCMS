@@ -144,6 +144,7 @@ export default class Menu extends Component {
                                         <li>
                                             <Link to="/Admin/ReportCommitteeMeetings">Committee's Meeting Report<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
                                         </li>
+                                        
                                         <li>
                                             <Link to="/Admin/MembersTasksReport">Member Tasks Report<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
                                         </li>
