@@ -139,18 +139,19 @@ export default class Menu extends Component {
                                     <ul className="nav nav-second-level">
                                 
                                         <li>
-                                            <Link to="/Admin/ReportCommittee">Committee Report<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
+                                            <Link to="/Admin/ReportCommittee">Committee Member Report<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
                                         </li>
                                         <li>
-                                            <Link to="/Admin/ReportHOD">Head of Department Report<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
+                                            <Link to="/Admin/ReportCommitteeMeetings">Committee's Meeting Report<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
                                         </li>
+                                        
                                         <li>
-                                            <Link to="/Admin/ReportHOC">Head of Committee Report<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
+                                            <Link to="/Admin/MembersTasksReport">Member Tasks Report<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
                                         </li>
                                         <li>
                                             <Link to="/Admin/ReportFaculty">Faculty Member Report<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
                                         </li>
-                                        <li>
+                                        {/* <li>
                                             <Link to="/Admin/ReportCM">Committee Member Report<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
                                         </li>
                                         <li>
@@ -161,7 +162,7 @@ export default class Menu extends Component {
                                         </li>
                                         <li>
                                             <Link to="/Admin/Industry"> View Reports History<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
-                                        </li>
+                                        </li> */}
                                     </ul>
                                     {/* /.nav-second-level */}
                                 </li>
