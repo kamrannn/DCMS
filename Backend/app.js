@@ -30,9 +30,11 @@ var viewUpcommingMeetingHOD = require('./routes/HOD/UpcommingMeeting')
 var viewRecentMeetingHOD = require('./routes/HOD/RecentMeeting')
 var viewCommitteeMembersHOD = require('./routes/HOD/viewCommitteeMember')
 var viewFacultyHOD = require('./routes/HOD/viewFaculty')
+var addFacultyHOD = require('./routes/HOD/addFaculty')
 var viewDetailsHOD = require('./routes/HOD/viewHOD')
 var viewDetailsHOC = require('./routes/HOD/viewHOC')
 var viewDetailsStudent = require('./routes/HOD/viewStudent')
+var addStudentHOD = require('./routes/HOD/addStudent')
 var AssignTaskHOD = require('./routes/HOD/AssignTask')
 var AssignedTaskHOD = require('./routes/HOD/AssignedTask')
 var createMeetingHOD = require('./routes/HOD/createMeeting')
@@ -68,12 +70,14 @@ var viewFacultyADMIN= require('./routes/Admin/dataFaculty/viewFaculty');
 
 //var dataHOD
 var viewHODADMIN= require('./routes/Admin/dataHOD/viewHOD');
+var createfacultyAdmin = require('./routes/Admin/dataFaculty/addFaculty')
 
 //var dataHOC
 var viewHOCADMIN= require('./routes/Admin/dataHOC/viewHOC');
 
 //var dataStudent
 var viewStudentADMIN= require('./routes/admin/dataStudent/viewStudent');
+var addStudentADMIN = require('./routes/Admin/dataStudent/addStudent');
 
 var viewTaskFaculty = require('./routes/Faculty/viewTask');
 
@@ -129,6 +133,8 @@ app.use('/viewUpcommingMeetingHOD/', viewUpcommingMeetingHOD)
 app.use('/viewRecentMeetingHOD/', viewRecentMeetingHOD)
 app.use('/viewCommitteeMembersHOD/', viewCommitteeMembersHOD)
 app.use('/viewFacultyHOD/', viewFacultyHOD)
+app.use('/addFacultyHOD/',addFacultyHOD)
+app.use('/addStudentHOD/',addStudentHOD)
 app.use('/viewDetailsHOD/', viewDetailsHOD)
 app.use('/viewDetailsHOC/', viewDetailsHOC)
 app.use('/viewDetailsStudent/', viewDetailsStudent)
@@ -165,6 +171,7 @@ app.use('/viewCMADMIN',viewCMADMIN);
 
 //dataFaculty
 app.use('/viewFacultyADMIN',viewFacultyADMIN);
+app.use('/AddFacultyADMIN',createfacultyAdmin);
 
 //dataHOD
 app.use('/viewHODADMIN',viewHODADMIN);
@@ -174,6 +181,7 @@ app.use('/viewHOCADMIN',viewHOCADMIN);
 
 //dataStudent
 app.use('/viewStudentADMIN',viewStudentADMIN);
+app.use('/addStudentADMIN',addStudentADMIN)
 
 app.use('/viewTaskFaculty', viewTaskFaculty)
 

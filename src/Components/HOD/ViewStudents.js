@@ -56,16 +56,7 @@ export default class ViewStudents extends Component {
                 },
                 headerStyle: { fontWeight: 'bold' },
                 sortable: false
-            },
-            {
-                Header: "CGPA",
-                accessor: "CGPA",
-                style:{
-                    textAlign:"center"
-                },
-                headerStyle: { fontWeight: 'bold' },
-                sortable: false
-            },
+            }
         ]
         return (
             <div id="page-wrapper" style={{}}>
