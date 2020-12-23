@@ -36,16 +36,16 @@ export default class extends Component {
                         <th scope="col">Total Number Of Committee Members</th>
                         <th scope="col">Total Number Of Faculty Members</th>
                         <th scope="col">Total Number Of HOC's</th>
-                        <th scope="col">Total Number Of Faculty Members</th>
+                        <th scope="col">Total Number Of Students</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                         <th scope="row">1</th>
+                        <td>15</td>
+                        <td>9</td>
+                        <td>15</td>
                         <td>20</td>
-                        <td>30</td>
-                        <td>40</td>
-                        <td>50</td>
                         </tr>
                     </tbody>
                     </table>

@@ -149,7 +149,7 @@ export default class Menu extends Component {
                                             <Link to="/Admin/MembersTasksReport">Member Tasks Report<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
                                         </li>
                                         <li>
-                                            <Link to="/Admin/ReportFaculty">Faculty Member Report<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
+                                            <Link to="/Admin/ReportFaculty">Members Meeting Report<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
                                         </li>
                                         {/* <li>
                                             <Link to="/Admin/ReportCM">Committee Member Report<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
