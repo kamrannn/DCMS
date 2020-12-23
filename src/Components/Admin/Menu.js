@@ -84,9 +84,9 @@ export default class Menu extends Component {
                                         <li>
                                             <Link to="/Admin/CreateFaculty"> Add Faculty Members<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
                                         </li>
-                                        <li>
+                                        {/* <li>
                                             <Link to="/Admin/ExcelFaculty"> Import Excel Sheet<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
-                                        </li>
+                                        </li> */}
                                     </ul>
                                     {/* /.nav-second-level */}
                                 </li>
@@ -127,9 +127,9 @@ export default class Menu extends Component {
                                         <li>
                                             <Link to="/Admin/CreateStudent"> Add Student<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
                                         </li>
-                                        <li>
+                                        {/* <li>
                                             <Link to="/Admin/ExcelStudent"> Import Excel Sheet<span className="fa fa-share" style={{ float: 'left', margin: '3px' }}>&nbsp;</span></Link>
-                                        </li>
+                                        </li> */}
                                     </ul>
                                     {/* /.nav-second-level */}
                                 </li>
