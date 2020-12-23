@@ -56,8 +56,12 @@ import Header from './Components/Admin/Header'
 // import Footer from './Components/Shared/MainFooter'
 // import AdminRoutes from './Components/Admin/AdminRoutes'
 import ReportCommittee from './Components/Admin/ReportCommittee'
+import ReportCommitteeMeetings from './Components/Admin/ReportCommitteeMeetings'
+import MembersTasksReport from './Components/Admin/MembersTasksReport'
+
+
+
 import ReportCM from './Components/Admin/ReportCM'
-import ReportHOD from './Components/Admin/ReportHOD'
 import ReportHOC from './Components/Admin/ReportHOC'
 import ReportFaculty from './Components/Admin/ReportFaculty' 
 import ReportsSection from './Components/Admin/ReportsSection'
@@ -80,8 +84,10 @@ export default class AdminRouting extends Component {
         {/* Reports of Admin section */}
 
         <Route path="/Admin/ReportCommittee" exact strict render={() => { return (<ReportCommittee />) }} />
+        <Route path="/Admin/MembersTasksReport" exact strict render={() => { return (<MembersTasksReport />) }} />
+
         <Route path="/Admin/ReportFaculty" exact strict render={() => { return (<ReportFaculty />) }} />
-        <Route path="/Admin/ReportHOD" exact strict render={() => { return (<ReportHOD />) }} />
+        <Route path="/Admin/ReportCommitteeMeetings" exact strict render={() => { return (<ReportCommitteeMeetings />) }} />
         <Route path="/Admin/ReportHOC" exact strict render={() => { return (<ReportHOC/>) }} />
         <Route path="/Admin/ReportCM" exact strict render={() => { return (<ReportCommittee/>) }} />
 

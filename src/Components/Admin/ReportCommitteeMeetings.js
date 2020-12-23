@@ -2,13 +2,9 @@ import React, { Component } from 'react'
 
 import axios from 'axios'
 
-import Select from 'react-select'
-
 import { Bar, Pie, polarArea } from 'react-chartjs-2'
 
-
-
-export default class ReportCommittee extends Component {
+export default class ReportCommitteeMeetings extends Component {
 
     constructor (props) {
 
@@ -18,7 +14,7 @@ export default class ReportCommittee extends Component {
 
         committeeName: [],
 
-        totalCommitteeMembers: [],
+        Total_Meetings_Made: [],
 
         }
 
@@ -29,18 +25,18 @@ export default class ReportCommittee extends Component {
         try {
             var res = await axios({
                 method: 'get',
-                url: `http://localhost:3306/viewCommitteeReportAdmin`,
+                url: `http://localhost:3306/viewCommitteeMeetingsReportAdmin`,
                 params: {
                 }
             })
             var result = res.data;
             if (result.success) {
-                this.setState({committeeName: result.committeeName, totalCommitteeMembers:result.totalCommitteeMembers})
+                this.setState({committeeName: result.committeeName, Total_Meetings_Made:result.Total_Meetings_Made})
             }
             else if (result && result.success === false) {
                 alert(result.err);
             }
-            console.log(this.state.committeeName, this.state.totalCommitteeMembers)
+            console.log(this.state.committeeName, this.state.Total_Meetings_Made)
         }
         catch (e) {
             console.log(e);
@@ -53,7 +49,7 @@ render() {
         <div>
             <div  id="page-wrapper" >
                 <div className="row">
-                <hr></hr><h1 style={{marginLeft:"150px" }}>CS Department Committees Report</h1><hr>
+                <hr></hr><h1 style={{marginLeft:"150px" }}>CS Department Committees Meeting Report</h1><hr>
                 </hr>
                 <div>
   <Bar
@@ -61,10 +57,10 @@ render() {
       labels: this.state.committeeName,
       datasets: [
         {
-          label: 'Number of Members in Each Committee',
-          data: this.state.totalCommitteeMembers,
+          label: 'Number of Meetings Held by Each Committee',
+          data: this.state.Total_Meetings_Made,
           backgroundColor: 
-          'purple'
+          'rgba(255, 99, 132, 0.2)'
           ,
           borderColor: 
             'rgba(255, 99, 132, 1)'

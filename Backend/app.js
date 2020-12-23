@@ -77,6 +77,11 @@ var viewStudentADMIN= require('./routes/admin/dataStudent/viewStudent');
 
 var viewTaskFaculty = require('./routes/Faculty/viewTask');
 
+//var Admin Committee Reports
+var viewCommitteeReportAdmin= require('./routes/admin/Reports/CommitteeReport/CommitteeReport');
+
+//var Admin Committee Reports
+var viewCommitteeMeetingsReportAdmin= require('./routes/admin/Reports/CommitteeReport/committeeMeetingReports');
 
 
 var app = express();
@@ -172,6 +177,11 @@ app.use('/viewStudentADMIN',viewStudentADMIN);
 
 app.use('/viewTaskFaculty', viewTaskFaculty)
 
+//Admin Committee Reports
+app.use('/viewCommitteeReportAdmin',viewCommitteeReportAdmin);
+
+//Admin Meeting Reports
+app.use('/viewCommitteeMeetingsReportAdmin',viewCommitteeMeetingsReportAdmin);
 ///////////////////////////////////////////////////////////////////////
 
 // catch 404 and forward to error handler
