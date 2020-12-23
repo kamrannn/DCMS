@@ -1,6 +1,8 @@
 var express = require('express');
 var Router = express.Router();
 var db = require('../../../database/connectionDB');
+var nodemailer = require('nodemailer');
+var smtpTransport = require('nodemailer-smtp-transport');
 
 Router.get('/', function (req, res) {
 
@@ -41,13 +43,70 @@ Router.post('/', function (req, res) {
                         console.log(err.message);
                         return;
                     }
-                    if(result){
-                        res.json({
-                            success: true
+            if(result){
+                        console.log("1 record inserted");
+                        console.log(userId[0].value);
+
+
+            for(let CID in userId){
+            db.query('SELECT users.Email FROM users WHERE users.idUser = ?',[userId[CID].value], async(err,data)=>{
+    
+                if(err){
+                    res.json({
+                        success:'false',
+                        err:err.message
+                    })
+    
+                }
+                if(data){
+                 res.json(data)   
+                    
+                   
+                        let email = data[0].Email;
+                    try {
+                        var transporter = nodemailer.createTransport(smtpTransport({
+                            service: 'gmail',
+                            host: 'smtp.gmail.com',
+                            auth: {
+                                user: 'dcms337@gmail.com',
+                                pass: 'yasirfaheem'
+                            }
+                        }));
+            
+                        let mailOptions = await transporter.sendMail({
+                            from: '"DCMS" <dcms337@gmail.com>', // sender address
+                            to: email, // list of receivers
+                            subject: "Notification", // Subject line
+                            text: ``, // plain text body
+                            html: `Dear User you have a new task and description of task is " ${Description} " and Deadline of task is ${Deadline}`, // html body
                         });
+            
+                        transporter.sendMail(mailOptions, function (error, info) {
+                            if (error) {
+                                console.log(error);
+                            } else {
+                                console.log('Email sent: ' + info.response);
+                            }
+                        });
+                        // console.log("Message sent: %s", info.messageId);
+            
                     }
+                    catch (e) {
+                        console.log(e);
+                    }
+                    // console.log(data)
+                    }
+                
+            
+            })
+            
+        }
+    
                         
-                });
+            }
+           
+                        
+        });
                 if(err){
                     res.json({
                         success: false,
