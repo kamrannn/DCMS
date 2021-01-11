@@ -29,6 +29,7 @@ var createCommitteeHOD = require('./routes/HOD/createCommittee')
 var viewUpcommingMeetingHOD = require('./routes/HOD/UpcommingMeeting')
 var viewRecentMeetingHOD = require('./routes/HOD/RecentMeeting')
 var viewCommitteeMembersHOD = require('./routes/HOD/viewCommitteeMember')
+var AddCommitteeMembersHOD = require('./routes/HOD/addCommitteeMember')
 var viewFacultyHOD = require('./routes/HOD/viewFaculty')
 var addFacultyHOD = require('./routes/HOD/addFaculty')
 var viewDetailsHOD = require('./routes/HOD/viewHOD')
@@ -38,6 +39,7 @@ var addStudentHOD = require('./routes/HOD/addStudent')
 var AssignTaskHOD = require('./routes/HOD/AssignTask')
 var AssignedTaskHOD = require('./routes/HOD/AssignedTask')
 var createMeetingHOD = require('./routes/HOD/createMeeting')
+var addhocHOD = require('./routes/HOD/addHOC')
 
 var viewCommitteeMOC = require('./routes/MOC/viewCommittee')
 var createCommitteeMOC = require('./routes/MOC/createCommittee')
@@ -64,16 +66,19 @@ var createMeetingADMIN = require('./routes/Admin/Meetings/createMeeting');
 
 //var dataCM
 var viewCMADMIN= require('./routes/Admin/dataCM/viewCM');
+var addCMADMIN= require('./routes/Admin/dataCM/addCM');
 
 //var dataFaculty
 var viewFacultyADMIN= require('./routes/Admin/dataFaculty/viewFaculty');
+var createfacultyAdmin = require('./routes/Admin/dataFaculty/addFaculty')
 
 //var dataHOD
 var viewHODADMIN= require('./routes/Admin/dataHOD/viewHOD');
-var createfacultyAdmin = require('./routes/Admin/dataFaculty/addFaculty')
+var addHODADMIN= require('./routes/Admin/dataHOD/addHOD');
 
 //var dataHOC
 var viewHOCADMIN= require('./routes/Admin/dataHOC/viewHOC');
+var addHOCADMIN= require('./routes/Admin/dataHOC/addHOC');
 
 //var dataStudent
 var viewStudentADMIN= require('./routes/admin/dataStudent/viewStudent');
@@ -131,6 +136,7 @@ app.use('/viewCommitteeHOD/', viewCommitteeHOD)
 app.use('/createCommitteeHOD/', createCommitteeHOD)
 app.use('/viewUpcommingMeetingHOD/', viewUpcommingMeetingHOD)
 app.use('/viewRecentMeetingHOD/', viewRecentMeetingHOD)
+app.use('/addCommitteeMemberHOD/', AddCommitteeMembersHOD)
 app.use('/viewCommitteeMembersHOD/', viewCommitteeMembersHOD)
 app.use('/viewFacultyHOD/', viewFacultyHOD)
 app.use('/addFacultyHOD/',addFacultyHOD)
@@ -141,6 +147,7 @@ app.use('/viewDetailsStudent/', viewDetailsStudent)
 app.use('/AssignTaskHOD/', AssignTaskHOD)
 app.use('/AssignedTaskHOD/', AssignedTaskHOD)
 app.use('/createMeetingHOD/', createMeetingHOD)
+app.use('/addhocHOD/', addhocHOD)
 
 app.use('/viewCommitteeMOC/', viewCommitteeMOC)
 app.use('/createCommitteeMOC/', createCommitteeMOC)
@@ -168,6 +175,7 @@ app.use('/createMeetingADMIN',createMeetingADMIN);
 
 //dataCommitteeMember
 app.use('/viewCMADMIN',viewCMADMIN);
+app.use('/addCMADMIN', addCMADMIN);
 
 //dataFaculty
 app.use('/viewFacultyADMIN',viewFacultyADMIN);
@@ -175,9 +183,11 @@ app.use('/AddFacultyADMIN',createfacultyAdmin);
 
 //dataHOD
 app.use('/viewHODADMIN',viewHODADMIN);
+app.use('/addHODADMIN',addHODADMIN);
 
 //dataHOC
 app.use('/viewHOCADMIN',viewHOCADMIN);
+app.use('/addHOCADMIN',addHOCADMIN);
 
 //dataStudent
 app.use('/viewStudentADMIN',viewStudentADMIN);

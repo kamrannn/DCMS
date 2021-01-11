@@ -19,7 +19,7 @@ export default class ViewHOC extends Component {
             this.setState({posts: post.result})
         })
     }
-    detailsRow(id){
+    deleteRow(id){
 
     }
     updateRow(id){
@@ -67,9 +67,8 @@ export default class ViewHOC extends Component {
                 Header: "Actions",
                 headerStyle: { fontWeight: 'bold' },
                 Cell: props => {
-                    return(
-                        // <a href="" className="btn btn-sm btn-danger"> Delete</a> 
-                        <Link to="/Admin/ViewHOC"><button className="btn btn-primary">Delete</button></Link>
+                    return( 
+                        <button className="btn btn-danger" onClick={e => {this.deleteRow(props.original.idCommittee)}}><i className="fas fa-trash"></i>Delete</button>
                     )
                 },
                 sortable: false,
@@ -83,8 +82,7 @@ export default class ViewHOC extends Component {
                 headerStyle: { fontWeight: 'bold' },
                 Cell: props => {
                     return(
-                        // <a href="" className="btn btn-sm btn-danger"> Delete</a> 
-                        <Link to="" onClick={() => { console.log(props.row._original);this.updateRow(props.row.idUser)}}><button className="btn btn-primary">Edit</button></Link>
+                        <button className="btn btn-Warning" onClick={() => { this.updateRow(props.original.idCommittee)}}><i className="fas fa-edit"></i> Edit</button>
                     )
                 },
                 sortable: false,

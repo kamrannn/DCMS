@@ -31,7 +31,7 @@ export default class CreateMeeting extends Component {
                 </div>
               
                 <div className="modal-footer">
-                  <button onClick={this.handleCloseView} type="button" className="btn btn-danger" data-dismiss="modal">Close</button>
+                <Link to="/HOD/UpcomingMeetings"><button onClick={this.handleCloseView} type="button" className="btn btn-danger" data-dismiss="modal">Close</button></Link>
                 </div>
               </div>
         </div>

@@ -47,6 +47,34 @@ export default class ViewFaculty extends Component {
                 },
                 headerStyle: { fontWeight: 'bold' },
                 sortable: false
+            },
+            {
+                Header: "Actions",
+                headerStyle: { fontWeight: 'bold' },
+                Cell: props => {
+                    return( 
+                        <button className="btn btn-danger" onClick={e => {this.deleteRow(props.original.idCommittee)}}><i className="fas fa-trash"></i>Delete</button>
+                    )
+                },
+                sortable: false,
+                filterable: false,
+                width: 100,
+                maxWidth: 100,
+                minWidth: 100
+            },
+            {
+                Header: "Actions",
+                headerStyle: { fontWeight: 'bold' },
+                Cell: props => {
+                    return(
+                        <button className="btn btn-Warning" onClick={() => { this.updateRow(props.original.idCommittee)}}><i className="fas fa-edit"></i> Edit</button>
+                    )
+                },
+                sortable: false,
+                filterable: false,
+                width: 100,
+                maxWidth: 100,
+                minWidth: 100
             }
         ]
         return (

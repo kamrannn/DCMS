@@ -57,12 +57,34 @@ export default class ViewCommitteeMembers extends Component {
                 headerStyle: { fontWeight: 'bold' }
             },
             {
+                Header: "Email",
+                accessor: "Email",
+                style:{
+                    textAlign:"center"
+                },
+                headerStyle: { fontWeight: 'bold' },
+                sortable: false
+            },
+            {
+                Header: "Actions",
+                headerStyle: { fontWeight: 'bold' },
+                Cell: props => {
+                    return( 
+                        <button className="btn btn-danger" onClick={e => {this.deleteRow(props.original.idCommittee)}}><i className="fas fa-trash"></i>Delete</button>
+                    )
+                },
+                sortable: false,
+                filterable: false,
+                width: 100,
+                maxWidth: 100,
+                minWidth: 100
+            },
+            {
                 Header: "Actions",
                 headerStyle: { fontWeight: 'bold' },
                 Cell: props => {
                     return(
-                        // <a href="" className="btn btn-sm btn-danger"> Delete</a> 
-                        <Link to="" onClick={() => { console.log(props.row._original);this.detailsRow(props.row.idUser)}}><button className="btn btn-primary">Details</button></Link>
+                        <button className="btn btn-Warning" onClick={() => { this.updateRow(props.original.idCommittee)}}><i className="fas fa-edit"></i> Edit</button>
                     )
                 },
                 sortable: false,
@@ -71,6 +93,21 @@ export default class ViewCommitteeMembers extends Component {
                 maxWidth: 100,
                 minWidth: 100
             }
+            // {
+            //     Header: "Actions",
+            //     headerStyle: { fontWeight: 'bold' },
+            //     Cell: props => {
+            //         return(
+            //             // <a href="" className="btn btn-sm btn-danger"> Delete</a> 
+            //             <Link to="" onClick={() => { console.log(props.row._original);this.detailsRow(props.row.idUser)}}><button className="btn btn-primary">Details</button></Link>
+            //         )
+            //     },
+            //     sortable: false,
+            //     filterable: false,
+            //     width: 100,
+            //     maxWidth: 100,
+            //     minWidth: 100
+            // }
         ]
         return (
             <div id="page-wrapper" style={{}}>
