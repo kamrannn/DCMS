@@ -48,6 +48,15 @@ export default class ViewHOD extends Component {
                 },
                 headerStyle: { fontWeight: 'bold' },
                 sortable: false
+            },
+            {
+                Header: "Status",
+                accessor: "StatusName",
+                style:{
+                    textAlign:"center"
+                },
+                headerStyle: { fontWeight: 'bold' },
+                sortable: false
             }
         ]
         return (

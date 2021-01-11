@@ -11,9 +11,6 @@ Router.post('/', function (req, res) {
     let role = 5
 
     var values = [Email, Password, PhoneNo, Name, Designation]
-    if(values = ['','', '', '', '']){
-        return;
-    }
     db.query('INSERT INTO `users`(`Email`, `Password`, `PhoneNo`, `Name`, `Designation`) VALUES (?)', [values], function (err, result) 
     {
         if (err) {

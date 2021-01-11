@@ -28,7 +28,6 @@ Router.post('/',function(req, res){
     let roleId = req.body.role;
 
         db.query('SELECT users.idUser,users.Name,users.Email,roles.role_name FROM user_roles,users,roles WHERE user_roles.Users_idUser=users.idUser AND user_roles.roles_roles_id= roles.roles_id AND users.Email=? AND users.Password=? AND roles.roles_id=? LIMIT 1',[email,password,roleId],function (err,data) {
-
         if(err){
             res.json({
                 success: false,
@@ -57,6 +56,30 @@ Router.post('/',function(req, res){
                 userId: data[0].idUser
             });
 
+        } else {
+            if(roleId == 4){
+                db.query('SELECT users.idUser,users.Name,users.Email,roles.role_name FROM users, committeemembers, roles Where users.idUser = committeemembers.Users_idUser AND users.Email=? AND users.Password=? AND roles.roles_id=4 LIMIT 1',[email,password,roleId],function (err,data1) { 
+                    const usersData= {
+                        name: data1[0].Name,
+                        email: data1[0].Email,
+                        role: data1[0].role_name,
+                        userId: data1[0].idUser
+                    }
+                    console.log(usersData);
+        
+                    const accessToken = generateAccessToken(usersData);
+                    // res.cookie('jwt', 'dsa', { maxAge: 86400});
+                    // res.setHeader('Set-cookie', 'newUser=true')
+                    
+                    res.json({
+                        success:true,
+                        token: accessToken,
+                        role:  data1[0].role_name,
+                        roleId:  data1[0].roles_id,
+                        userId: data1[0].idUser
+                    });
+                 })
+            }
         }
     });
 
